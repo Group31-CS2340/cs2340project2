@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invalid Login</title>
+    <link href="{% static 'users/style.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center mb-4">Invalid Login</h2>
+            <p class="text-center text-danger">The username or password you entered is incorrect.</p>
+            <p class="text-center">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-block">Try logging in again</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

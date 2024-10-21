@@ -1,0 +1,106 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+.navbar-brand {
+    font-size: 1.8em;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity if needed */
+    z-index: 1; /* Ensure the overlay is above the video */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure the content is above both the video and overlay */
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+#hero-video {
+    width: 100%; /* Make the video take up the full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the video fills the section without stretching */
+    position: absolute; /* Allows positioning it properly within the section */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Places the video behind the text content */
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 30px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Features Section */
+.features-section {
+    padding: 60px 0;
+}
+
+.features-section h3 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.features-section img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.features-section h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.features-section p {
+    font-size: 1.1em;
+    color: #555555;
+}
+
+.features-section i {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.features-section h4 {
+    font-size: 1.5em;
+    margin-top: 15px;
+}

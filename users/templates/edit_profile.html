@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #nav-bar {
+            margin: 0;
+            height: 50px;
+        }
+
+        #nav-bar #picture-container {
+            margin: 0;
+        }
+
+        #divider {
+            background-color: #0056b3;
+            height: 5px;
+            margin: 0;
+        }
+
+        #title-container {
+            padding-top: 10px;
+            padding-left: 40px;
+            margin-top: 10px;
+        }
+
+        #profile-details-container {
+            padding-top: 30px;
+            padding-left: 105px;
+            padding-bottom: 20px;
+        }
+
+        #profile-details-container #buttons {
+            display: flex;
+        }
+
+        #profile-details-container #cancel-button {
+            width: 165px;
+        }
+
+        #profile-details-container #save-button {
+            width: 165px;
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'home' %}">Atlanta Food Finder</a>
+            <div id="picture-container">
+                <img src="../../static/users/002.jpg" style="width: 20vh;" alt="Atlanta Skyline">
+            </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+            </ul>
+        </div>
+        </nav>
+    </div>
+    <div id="divider">
+        <p></p>
+    </div>
+    <div id="title-container">
+        <h2><strong>Edit Profile</strong></h2>
+    </div>
+    <div id="profile-details-container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="first_name"><strong>First Name:</strong></label>
+                <input type="text" name="first_name" id="first_name" value="{{ form.first_name.value }}">
+            </div>
+            <div class="form-group">
+                <label for="last_name"><strong>Last Name:</strong></label>
+                <input type="text" name="last_name" id="last_name" value="{{ form.last_name.value }}">
+            </div>
+
+            <div class="form-group">
+                <label><strong>Dietary restrictions:</strong></label>
+                {% for value, label in additional_form.dietary_restrictions.field.choices %}
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="dietary_restrictions_{{ forloop.counter }}" name="dietary_restrictions" value="{{ value }}"
+                            {% if value in additional_form.dietary_restrictions.value %}checked{% endif %}>
+                        <label class="form-check-label" for="dietary_restrictions_{{ forloop.counter }}">{{ label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label><strong>Favorite cuisine types: </strong></label>
+                {% for value, label in additional_form.favorite_cuisine_types.field.choices %}
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="favorite_cuisine_types_{{ forloop.counter }}" name="favorite_cuisine_types" value="{{ value }}"
+                            {% if value in additional_form.favorite_cuisine_types.value %}checked{% endif %}>
+                        <label class="form-check-label" for="favorite_cuisine_types_{{ forloop.counter }}">{{ label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        <div id="buttons">
+            <a href="{% url 'profile' request.user.username %}">
+                <button type="button" class="btn btn-primary btn-block" id="cancel-button">Cancel</button>
+            </a>
+            <button type="submit" class="btn btn-primary btn-block" id="save-button">Save changes</button>
+        </div>
+        </form>
+    </div>
+</body>
+</html>
