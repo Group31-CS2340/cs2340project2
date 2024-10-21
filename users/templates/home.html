@@ -1,0 +1,81 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Wrapped Bootleg</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">Spotify Wrapped Bootleg</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <video autoplay muted loop id="hero-video">
+        <source src="{% static 'users/concert.mp4' %}" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div> <!-- Optional dark overlay for text readability -->
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 hero-content">
+                <h1>Spotify Wrapped Bootleg 2024</h1>
+                <p class="lead">Description of Spotify Wrapped Bootleg (I'm thinking of this still).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container text-center">
+        <h3>Why use Spotify Wrapped Bootleg?</h3>
+        <div class="row">
+            <div class="col-lg-4">
+                <i class="fas fa-music fa-3x"></i> <!-- Icon for Restaurant Discovery -->
+                <h4>When It's Released</h4>
+                <p>Spotify Wrapped Bootleg is released in early December every year.</p>
+            </div>
+            <div class="col-lg-4">
+                <i class="fas fa-step-forward fa-3x"></i> <!-- Icon for Read Reviews -->
+                <h4>How It's Used</h4>
+                <p>Spotify Wrapped Bootleg uses algorithms to track listening habits, categorize music, compare listening patterns, and analyze track metadata..</p>
+            </div>
+            <div class="col-lg-4">
+                <i class="fas fa-random fa-3x"></i> <!-- Icon for Find Directions -->
+                <h4>What's Included</h4>
+                <p>Spotify Wrapped Bootleg includes personalized playlists, global top lists, and a personalized music journey.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var video = document.getElementById('hero-video');
+        if (video) {
+            video.play().catch(function(error) {
+                console.log('Autoplay failed:', error);
+            });
+        }
+    });
+</script>
