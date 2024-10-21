@@ -108,3 +108,99 @@ body, html {
     font-size: 1.1em;
     color: #B3B3B3;
 }
+
+/* Existing styles... */
+
+/* Form Styles */
+.form-control {
+    background-color: #282828;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.form-control:focus {
+    background-color: #383838;
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.form-group label {
+    color: #B3B3B3;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card {
+    background-color: #191414;
+    color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+.card .alert {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+a {
+    color: #1DB954;
+}
+
+a:hover {
+    color: #1ed760;
+    text-decoration: none;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #1DB954;
+    border-color: #1DB954;
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-size: 1em;
+}
+
+.btn-primary:hover {
+    background-color: #1ed760;
+    border-color: #1ed760;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Adjust card shadow */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Text Centering */
+.text-center {
+    text-align: center;
+}
+
+/* Alerts */
+.alert-danger {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+/* List Styles */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
