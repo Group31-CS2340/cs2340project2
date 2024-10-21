@@ -2,6 +2,7 @@ from logging import raiseExceptions
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
@@ -31,7 +32,7 @@ def register(request):
 
             return redirect('success')
         else:
-            return render(request, 'register.html', {'form': form, 'additional_info_form': additional_info_form})
+            return render(request, 'register.html', {'form': form})
     else:
         form = RegistrationForm()
     return render(request, 'register.html')
@@ -45,7 +46,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('map')
+                return redirect('songs')
             else:
                 return redirect('invalid_login')
         else:
@@ -98,7 +99,6 @@ def edit_profile(request, username):
             return redirect('profile', username=user.username)
     else:
         form = ProfileEditForm(instance=user)
-        additional_form = AdditionalEditForm(instance=profile)
     return render(request, 'edit_profile.html', {'form':form, 'additional_form':additional_form})
 
 def password_reset(request):
@@ -139,3 +139,6 @@ def password_reset_complete(request):
 
 def user_doesnt_exist(request):
     return render(request, 'user_doesnt_exist.html')  # user does not exist template
+
+def songs_view(request):
+    return render(request, 'songs.html')
