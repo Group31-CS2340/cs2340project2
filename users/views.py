@@ -92,10 +92,8 @@ def edit_profile(request, username):
     profile = request.user.profile
     if request.method == 'POST':
         form = ProfileEditForm(request.POST, instance=user)
-        additional_form = AdditionalEditForm(request.POST, instance=profile)
-        if form.is_valid() and additional_form.is_valid():
+        if form.is_valid():
             form.save()
-            additional_form.save()
             return redirect('profile', username=user.username)
     else:
         form = ProfileEditForm(instance=user)
