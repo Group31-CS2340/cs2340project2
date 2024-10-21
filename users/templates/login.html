@@ -24,14 +24,14 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="{% url 'home' %}">Spotify Wrapped Bootleg</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
 
 <!-- Login Section -->
 <div class="container d-flex justify-content-center align-items-center">
-    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+    <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;"> <!-- Match registration width -->
         <h2 class="text-center mb-4">Login</h2>
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
@@ -40,17 +40,29 @@
                     {{ form.non_field_errors }}
                 </div>
             {% endif %}
-            {% for field in form %}
-                <div class="form-group">
-                    {{ field.label_tag }}
-                    {{ field }}
-                    {% if field.errors %}
-                        <div class="alert alert-danger">
-                            {{ field.errors }}
-                        </div>
-                    {% endif %}
-                </div>
-            {% endfor %}
+
+            <!-- Username Field -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
+                {% if form.username.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.username.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control">
+                {% if form.password.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.password.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
             <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
         <p class="text-center mt-3">
@@ -64,8 +76,8 @@
 
 <!-- Include Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script     src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script     src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
