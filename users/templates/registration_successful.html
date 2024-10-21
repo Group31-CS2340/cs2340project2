@@ -1,35 +1,12 @@
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Created!</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'users/style.css' %}">
-    <style>
-        #title-container {
-            margin-top: 50px;
-            text-align: center;
-        }
-       #login-button {
-            margin-top: 20px;
-           margin-bottom: 20px;
-       }
-    </style>
-</head>
-<body>
-    <div id="title-container">
-        <h2 style="text-align: center" id="page-title">Account Created!</h2>
-    </div>
+{% extends "base_site.html" %}
+{% block title %}Account Created - Spotify Wrapped Bootleg{% endblock %}
 
-    <div id="wrapper" style="text-align: center">
-        <a href="{% url 'login' %}">
-        <button type="button" class="btn btn-primary btn-lg" id="login-button">Login</button>
-    </a>
-        <p>WELCOME TO ATLANTA</p>
-        <img src="../../static/users/002.jpg" style="width: 50vw;" alt="Atlanta Skyline">
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="text-center" style="max-width: 600px; width: 100%;">
+        <h2 class="mb-4">Account Created!</h2>
+        <p>Welcome to Spotify Wrapped Bootleg.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
     </div>
-</body>
-</html>
-
+</div>
+{% endblock %}
