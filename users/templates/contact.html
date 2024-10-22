@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'users/style.css' %}" rel="stylesheet">
+    <title>Contact the Developers</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>Contact the Developers</h1>
+    <h2>Development Team</h2>
+    <ul>
+        {% for developer in developers %}
+            <li>{{ developer.name }} - {{ developer.role }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Send Feedback</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
