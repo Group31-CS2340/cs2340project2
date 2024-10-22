@@ -20,3 +20,6 @@ class LoginForm(forms.Form):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+class FeedbackForm(forms.Form):
+    message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
