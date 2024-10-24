@@ -1,104 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'users/style.css' %}">
-    <style>
-        body {
-            margin: 0;
-        }
-
-        #nav-bar {
-            margin: 0;
-            height: 50px;
-        }
-
-        #nav-bar #picture-container {
-            margin: 0;
-        }
-
-        #divider {
-            background-color: #0056b3;
-            height: 5px;
-            margin: 0;
-        }
-
-        #title-container {
-            display: flex;
-            height: 80px;
-            padding: 10px;
-            padding-left: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            align-content: center;
-        }
-        #title-container #page-title {
-            margin-top: 10px;
-            border-width: 5px;
-            border-color: #007bff;
-        }
-
-        #title-container button#edit-button {
-            margin-left: 20px;
-            margin-top: 15px;
-            height: 30px;
-            width: 50px;
-            text-align: center;
-            padding: 0 0;
-        }
-
-        #title-container button#map-button {
-            margin-left: 850px;
-            margin-top: 5px;
-            text-align: center;
-            {#width: 100px;#}
-            padding: 10px 10px;
-        }
-
-        #profile-details-container {
-            {#background-color: #f0f0f0;#}
-            {#padding-top: 20px;#}
-            padding: 20px;
-        }
-    </style>
-</head>
+{% extends 'base_site.html' %}
 {% block content %}
-<body>
-    <div id="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'home' %}">Atlanta Food Finder</a>
-            <div id="picture-container">
-                <img src="../../static/users/002.jpg" style="width: 20vh;" alt="Atlanta Skyline">
-            </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            </ul>
-        </div>
-        </nav>
-    </div>
-    <div id="divider">
-        <p></p>
-    </div>
-    <div id="title-container">
+        <div id="title-container">
         <div id="page-title">
             <h2><strong>Your Profile</strong></h2>
         </div>
         <a href="{% url 'edit-profile' request.user.username %}" id="edit-button">
             <button type="button" class="btn btn-primary" id="edit-button">Edit</button>
         </a>
-        <a href="{% url 'map' %}">
-            <button type="button" class="btn btn-primary btn-lg" id="map-button">View Map</button>
+        <a href="{% url 'songs' %}">
+            <button type="button" class="btn btn-primary btn-lg" id="songs-button">Songs</button>
         </a>
     </div>
     <div class="container">
@@ -106,11 +16,6 @@
             <p><strong>Username: </strong>{{ profile.user.username }}</p>
             <p><strong>Name: </strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
             <p><strong>Email: </strong> {{ profile.user.email }}</p>
-            <p><strong>Dietary Restrictions:</strong> {{ profile.dietary_restrictions }}</p>
-            <p><strong>Favorite Cuisines:</strong> {{ profile.favorite_cuisine_types }}</p>
-            <p><strong>View/Edit Favorite Restaurants <a href={{url}}/favorites>Here</a></strong></p>
-        </div>
+            </div>
     </div>
-</body>
 {% endblock %}
-</html>

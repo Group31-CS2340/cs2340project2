@@ -10,13 +10,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from .forms import FeedbackForm
 from django.contrib import messages
-from .models import Feedback
 
-from .forms import RegistrationForm, LoginForm, ProfileEditForm
+from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm
 from django.conf import settings
-from .models import Profile
+from .models import Profile, Feedback
 import json
 
 def home(request):
@@ -100,7 +98,7 @@ def edit_profile(request, username):
             return redirect('profile', username=user.username)
     else:
         form = ProfileEditForm(instance=user)
-    return render(request, 'edit_profile.html', {'form':form, 'additional_form':additional_form})
+    return render(request, 'edit_profile.html', {'form':form,})
 
 def password_reset(request):
     if request.method == 'POST':
@@ -167,3 +165,6 @@ def contact_view(request):
     ]
     return render(request, 'contact.html', {'form': form, 'developers': developers})
 
+def delete_account(request):
+    if request.method == 'POST':
+        return redirect('home')

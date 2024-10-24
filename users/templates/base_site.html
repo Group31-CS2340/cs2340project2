@@ -24,6 +24,9 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="{% url 'home' %}">Spotify Wrapped Bootleg</a>
+    {% block nav %}
+        <!-- add items to nav bar here -->
+    {% endblock %}
 </nav>
 
 {% block content %}

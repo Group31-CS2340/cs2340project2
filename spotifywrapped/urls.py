@@ -50,6 +50,7 @@ urlpatterns = [
          auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
          name='password_change_done'),
     # path('user-doesnt-exist/', )
+    path('delete-account/', user_views.delete_account, name='delete-account'),
 
     path('contact/', user_views.contact_view, name ='contact'),
     
