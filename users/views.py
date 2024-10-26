@@ -1,6 +1,6 @@
 from logging import raiseExceptions
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
@@ -168,3 +168,8 @@ def contact_view(request):
 def delete_account(request):
     if request.method == 'POST':
         return redirect('home')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
