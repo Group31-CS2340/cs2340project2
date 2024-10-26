@@ -1,6 +1,9 @@
-{% extends "base_site.html" %}
+{% extends 'base_site.html' %}
 <body>
 {% block nav %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"     aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarNav"> 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -18,7 +21,7 @@
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
-        <h2 class="mb-4">Songs</h2>
+        <h2 class="mb-4">Welcome to your Spotify Wrapped!</h2>
     </div>
 </div>
 {% endblock %}

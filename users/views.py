@@ -5,12 +5,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.contrib.sessions.models import Session
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.contrib import messages
+from django.views.decorators.cache import never_cache
 
 from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm
 from django.conf import settings
@@ -18,7 +20,9 @@ from .models import Profile, Feedback
 import json
 
 def home(request):
-    return render(request, 'home.html')  # home HTML template
+    if request.user.is_authenticated:
+        return redirect('home_logged_in')
+    return render(request, 'home.html')# home HTML template
 
 def register(request):
     if request.method == 'POST':
@@ -47,7 +51,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('songs')
+                return redirect('home_logged_in')
             else:
                 return redirect('invalid_login')
         else:
@@ -169,7 +173,18 @@ def delete_account(request):
     if request.method == 'POST':
         return redirect('home')
 
-
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+@login_required(login_url='login')
+def home_logged_in(request):
+    return render(request, 'logged_in_home.html')
+
+
+def explore(request):
+    return None
+
+
+def public_profile(request):
+    return None

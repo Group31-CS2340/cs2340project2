@@ -54,5 +54,8 @@ urlpatterns = [
     path('logout/', user_views.logout_view, name='logout'),
 
     path('contact/', user_views.contact_view, name ='contact'),
+    path('homepage', user_views.home_logged_in, name='home_logged_in'),
+    path('explore', user_views.explore, name='explore'),
+    path('public-profile/', user_views.public_profile, name='public_profile'),
     
 ]

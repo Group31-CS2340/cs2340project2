@@ -18,6 +18,10 @@
 
     <!-- including custom CSS -->
     <link href="{% static 'users/style.css' %}" rel="stylesheet">
+    
+    {% block style %}
+        <!-- put extra style components here -->
+    {% endblock %}
 </head>
 <body>
 

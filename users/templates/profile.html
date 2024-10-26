@@ -1,24 +1,52 @@
 {% extends 'base_site.html' %}
+{% block style %}
+    <style>
+        #title-container {
+            display: flex;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        #page-title {
+            margin-right: auto;
+        }
+
+        #profile-details-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+    </style>
+{% endblock %}
+
 {% block content %}
-        <div id="title-container">
+    <div id="title-container">
         <div id="page-title">
             <h2><strong>Your Profile</strong></h2>
         </div>
         <a href="{% url 'edit-profile' request.user.username %}" id="edit-button">
             <button type="button" class="btn btn-primary" id="edit-button">Edit</button>
         </a>
-        <a href="{% url 'songs' %}">
-            <button type="button" class="btn btn-primary btn-lg" id="songs-button">Songs</button>
+        <a href="{% url 'public_profile' %}">
+            <button type="button" class="btn btn-primary btn-lg" id="public-profile-button">Public Profile</button>
         </a>
-        <a href="{% url 'home' %}">
-            <button type="button" class="btn btn-primary btn-lg" id="songs-button">Log Out</button>
+        <a href="{% url 'logout' %}" onclick="return confirmLogout()">
+            <button type="button" class="btn btn-primary btn-lg" id="logout-button">Log Out</button>
         </a>
     </div>
     <div class="container">
         <div class="profile-details" id="profile-details-container">
             <p><strong>Username: </strong>{{ profile.user.username }}</p>
-            <p><strong>Name: </strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+            <p><strong>Display Name: </strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
             <p><strong>Email: </strong> {{ profile.user.email }}</p>
-            </div>
+        </div>
     </div>
+
+    <!-- JavaScript for Logout Confirmation -->
+    <script>
+        function confirmLogout() {
+            return confirm("Are you sure you want to log out?");
+        }
+    </script>
 {% endblock %}

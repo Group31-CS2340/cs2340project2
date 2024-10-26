@@ -1,4 +1,40 @@
 {% extends 'base_site.html' %}
+{% block style %}
+    <style>
+        #title-container {
+            margin: 20px;
+        }
+
+        #profile-details-container {
+            margin: 20px;
+        }
+
+        #edit-details-container {
+            margin-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        #first_name {
+            margin-left: 10px;
+            width: auto;
+        }
+
+        #last_name {
+            margin-left: 10px;
+            width: auto;
+        }
+
+        #buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        #save-button {
+            margin-right: auto;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <div id="title-container">
         <h2><strong>Edit Profile</strong></h2>
@@ -6,22 +42,31 @@
     <div id="profile-details-container">
         <form method="POST" action="">
             {% csrf_token %}
+            <div id="edit-details-container">
             <div class="form-group">
                 <label for="first_name"><strong>First Name:</strong></label>
-                <input type="text" name="first_name" id="first_name" value="{{ form.first_name.value }}">
+                <input type="text" name="first_name" id="first_name" class="form-control" value="{{ form.first_name.value }}">
             </div>
             <div class="form-group">
                 <label for="last_name"><strong>Last Name:</strong></label>
-                <input type="text" name="last_name" id="last_name" value="{{ form.last_name.value }}">
+                <input type="text" name="last_name" id="last_name" class="form-control" value="{{ form.last_name.value }}">
+            </div>
             </div>
         <div id="buttons">
             <a href="{% url 'profile' request.user.username %}">
-                <button type="button" class="btn btn-primary btn-block" id="cancel-button">Cancel</button>
+                <button type="button" class="btn btn-primary" id="cancel-button">Cancel</button>
             </a>
-            <button type="submit" class="btn btn-primary btn-block" id="save-button">Save changes</button>
+            <button type="submit" class="btn btn-primary" id="save-button">Save changes</button>
             <!-- button to delete account -->
-            <a href="{% url 'delete-account' %}" class="btn btn-primary btn-lg">Delete account</a>
+            <a href="{% url 'delete-account' %}" onclick="return confirmDelete()" class="btn btn-primary btn-lg">Delete account</a>
         </div>
         </form>
     </div>
+    
+    <!-- JavaScript for Delete Account Confirmation -->
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete your account?");
+        }
+    </script>
 {% endblock %}
