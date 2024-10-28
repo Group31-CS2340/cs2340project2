@@ -17,6 +17,14 @@ from django.views.decorators.cache import never_cache
 from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm
 from django.conf import settings
 from .models import Profile, Feedback
+from django.conf import settings
+from django.shortcuts import redirect
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+from django.shortcuts import render
+from django.contrib.auth import logout
+
+
 import json
 
 def home(request):
@@ -188,3 +196,69 @@ def explore(request):
 
 def public_profile(request):
     return None
+
+def spotify_login(request):
+    request.session.flush()  # Clear any existing session data
+    sp_oauth = SpotifyOAuth(
+        client_id=settings.SPOTIFY_CLIENT_ID,
+        client_secret=settings.SPOTIFY_CLIENT_SECRET,
+        redirect_uri=settings.SPOTIFY_REDIRECT_URI,
+        scope="user-top-read",
+        show_dialog=True  # Force re-authentication
+    )
+    auth_url = sp_oauth.get_authorize_url()
+    return redirect(auth_url)
+
+
+def spotify_callback(request):
+    code = request.GET.get('code')
+    sp_oauth = SpotifyOAuth(
+        client_id=settings.SPOTIFY_CLIENT_ID,
+        client_secret=settings.SPOTIFY_CLIENT_SECRET,
+        redirect_uri=settings.SPOTIFY_REDIRECT_URI
+    )
+    token_info = sp_oauth.get_access_token(code)
+    request.session['spotify_token'] = token_info['access_token']
+    return redirect('users:spotify_data')
+
+
+# users/views.py
+# users/views.py
+def spotify_data(request):
+    token = request.session.get('spotify_token')
+    if not token:
+        return redirect('users:spotify_login')
+
+    sp = spotipy.Spotify(auth=token)
+    top_artists = sp.current_user_top_artists(limit=10)  # Fetch top 10 artists
+
+    # Debugging: Print the data structure to confirm it contains expected information
+    print("Top Artists Data:", top_artists)
+
+    return render(request, 'users/spotify_data.html', {'top_artists': top_artists})
+
+# users/views.py
+from django.contrib.auth import logout
+
+# users/views.py
+from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
+
+from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
+
+
+from django.shortcuts import redirect
+
+def spotify_logout(request):
+    # Clear Spotify token and session data
+    request.session.pop('spotify_token', None)  # Remove access token
+    request.session.pop('spotify_refresh_token', None)  # If you're storing refresh token
+    request.session.flush()  # Ensure all session data is cleared
+
+    # Clear session ID cookie
+    response = redirect('users:spotify_login')
+    response.delete_cookie('sessionid')
+
+    return response
+

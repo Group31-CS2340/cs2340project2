@@ -1,0 +1,29 @@
+<!-- users/templates/users/spotify_data.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Top Spotify Artists</title>
+</head>
+<body>
+    <h1>Your Top Spotify Artists</h1>
+
+    {% if top_artists.items %}
+      <ul>
+        {% for artist in top_artists.items %}
+          <li>
+            <strong>{{ artist.name }}</strong><br>
+            Genres: {{ artist.genres|join:", " }}<br>
+            Popularity: {{ artist.popularity }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No artist data available. Please try logging in again.</p>
+    {% endif %}
+
+    <form action="{% url 'users:spotify_logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Logout from Spotify</button>
+    </form>
+</body>
+</html>
