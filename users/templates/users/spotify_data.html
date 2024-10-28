@@ -1,12 +1,12 @@
-<!-- users/templates/users/spotify_data.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Top Spotify Artists</title>
+    <title>Your Spotify Wrapped</title>
 </head>
 <body>
-    <h1>Your Top Spotify Artists</h1>
+    <h1>Your Spotify Wrapped</h1>
 
+    <h2>Top Artists (Last Month)</h2>
     {% if top_artists.items %}
       <ul>
         {% for artist in top_artists.items %}
@@ -18,7 +18,26 @@
         {% endfor %}
       </ul>
     {% else %}
-      <p>No artist data available. Please try logging in again.</p>
+      <p>No top artists data available.</p>
+    {% endif %}
+
+    <h2>Top Tracks (Last Month)</h2>
+    {% if top_tracks.items %}
+      <ul>
+        {% for track in top_tracks.items %}
+          <li>
+            <strong>{{ track.name }}</strong> by 
+            {% for artist in track.artists %}
+                {{ artist.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            <br>
+            Album: {{ track.album.name }}<br>
+            Popularity: {{ track.popularity }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No top tracks data available.</p>
     {% endif %}
 
     <form action="{% url 'users:spotify_logout' %}" method="post">

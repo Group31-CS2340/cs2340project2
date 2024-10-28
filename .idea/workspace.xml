@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1911e83e-a8e1-4330-a631-4c1808ba94f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/users/templates/users/spotify_data.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotifywrapped/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotifywrapped/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotifywrapped/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotifywrapped/urls.py" afterDir="false" />
+    <list default="true" id="1911e83e-a8e1-4330-a631-4c1808ba94f9" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
+      <change beforePath="$PROJECT_DIR$/users/templates/users/spotify_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/spotify_data.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +26,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ShrayesU"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ShrayesU/cs2340project2",
+    "accountId": "d577de14-a3e6-4fba-a514-eb5746bc5d7f"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -117,11 +126,35 @@
       <workItem from="1730081113328" duration="2000" />
       <workItem from="1730081148114" duration="97000" />
       <workItem from="1730081292642" duration="55000" />
-      <workItem from="1730081428692" duration="3937000" />
+      <workItem from="1730081428692" duration="7963000" />
     </task>
+    <task id="LOCAL-00001" summary="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
+      <option name="closed" value="true" />
+      <created>1730085500211</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730085500211</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/" />
+    <option name="LAST_COMMIT_MESSAGE" value="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/" />
   </component>
 </project>

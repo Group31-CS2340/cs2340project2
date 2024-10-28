@@ -1,3 +1,4 @@
+import time
 from logging import raiseExceptions
 
 from django.contrib.auth import authenticate, login, logout
@@ -199,6 +200,8 @@ def public_profile(request):
 
 def spotify_login(request):
     request.session.flush()  # Clear any existing session data
+    print("Session cleared in spotify_login")  # Debug: Confirm session flush
+    cleanup()
     sp_oauth = SpotifyOAuth(
         client_id=settings.SPOTIFY_CLIENT_ID,
         client_secret=settings.SPOTIFY_CLIENT_SECRET,
@@ -209,7 +212,7 @@ def spotify_login(request):
     auth_url = sp_oauth.get_authorize_url()
     return redirect(auth_url)
 
-
+# users/views.py
 def spotify_callback(request):
     code = request.GET.get('code')
     sp_oauth = SpotifyOAuth(
@@ -217,25 +220,47 @@ def spotify_callback(request):
         client_secret=settings.SPOTIFY_CLIENT_SECRET,
         redirect_uri=settings.SPOTIFY_REDIRECT_URI
     )
-    token_info = sp_oauth.get_access_token(code)
-    request.session['spotify_token'] = token_info['access_token']
-    return redirect('users:spotify_data')
+
+    try:
+        time.sleep(2)
+        token_info = sp_oauth.get_access_token(code)
+        if token_info:
+            request.session['spotify_token'] = token_info['access_token']
+            print("New token saved in session:", request.session['spotify_token'])  # Debug
+            return redirect('users:spotify_data')
+        else:
+            print("No token retrieved in spotify_callback")  # Debug
+            return redirect('users:spotify_login')
+    except Exception as e:
+        print("Error retrieving token in spotify_callback:", e)
+        return redirect('users:spotify_login')
 
 
-# users/views.py
-# users/views.py
+from django.views.decorators.cache import never_cache
+
+@never_cache
 def spotify_data(request):
     token = request.session.get('spotify_token')
     if not token:
         return redirect('users:spotify_login')
 
+    # Initialize Spotify client with the session's current token
     sp = spotipy.Spotify(auth=token)
-    top_artists = sp.current_user_top_artists(limit=10)  # Fetch top 10 artists
 
-    # Debugging: Print the data structure to confirm it contains expected information
-    print("Top Artists Data:", top_artists)
+    # Fetch the most recent data from Spotify
+    try:
+        top_artists = sp.current_user_top_artists(limit=10, time_range="short_term")
+        top_tracks = sp.current_user_top_tracks(limit=10, time_range="short_term")
+    except Exception as e:
+        print("Error fetching data in spotify_data:", e)
+        return redirect('users:spotify_login')
 
-    return render(request, 'users/spotify_data.html', {'top_artists': top_artists})
+    return render(request, 'users/spotify_data.html', {
+        'top_artists': top_artists,
+        'top_tracks': top_tracks
+    })
+
+
 
 # users/views.py
 from django.contrib.auth import logout
@@ -251,14 +276,22 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 
 def spotify_logout(request):
-    # Clear Spotify token and session data
-    request.session.pop('spotify_token', None)  # Remove access token
-    request.session.pop('spotify_refresh_token', None)  # If you're storing refresh token
+    print("Clearing session data in spotify_logout")  # Debug
+    request.session.pop('spotify_token', None)
     request.session.flush()  # Ensure all session data is cleared
-
-    # Clear session ID cookie
     response = redirect('users:spotify_login')
     response.delete_cookie('sessionid')
-
+    print("Session and cookies cleared in spotify_logout")  # Debug
+    time.sleep(3)
     return response
+
+import os
+
+def cleanup():
+    # Locate and remove any .cache files created by SpotifyOAuth
+    for filename in os.listdir():
+        if filename.startswith(".cache"):
+            os.remove(filename)
+            print(f"Removed cache file: {filename}")
+
 
