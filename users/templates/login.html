@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@
 <!-- Login Section -->
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;"> <!-- Match registration width -->
-        <h2 class="text-center mb-4">Login</h2>
+        <h2 class="text-center mb-4"> {% trans "Login" %} </h2>
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             {% if form.non_field_errors %}
@@ -43,7 +44,7 @@
 
             <!-- Username Field -->
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">{% trans "Username" %}</label>
                 <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
                 {% if form.username.errors %}
                     <div class="alert alert-danger">
@@ -54,7 +55,7 @@
 
             <!-- Password Field -->
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">{% trans "Password" %}</label>
                 <input type="password" id="password" name="password" class="form-control">
                 {% if form.password.errors %}
                     <div class="alert alert-danger">
@@ -63,13 +64,13 @@
                 {% endif %}
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Login" %}</button>
         </form>
         <p class="text-center mt-3">
-            Don't have an account? <a href="{% url 'register' %}">Register here</a>.
+            {% trans "Don't have an account?" %} <a href="{% url 'register' %}">{% trans "Register here." %}</a>
         </p>
         <p class="text-center mt-2">
-            <a href="{% url 'password_reset' %}">Forgot your password?</a>
+            <a href="{% url 'password_reset' %}">{% trans "Forgot your password?" %}</a>
         </p>
     </div>
 </div>

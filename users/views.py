@@ -148,22 +148,17 @@ def contact_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            # save the feedback to the database
+            # Save the feedback to the database
             Feedback.objects.create(
                 message=form.cleaned_data['message']
             )
             messages.success(request, 'Your feedback has been submitted successfully.')
             return redirect('contact')
+        else:
+            messages.error(request, 'There was an error with your submission. Please try again.')
     else:
         form = FeedbackForm()
+    return render(request, 'contact.html', {'form': form})
 
-    developers = [
-        {'name': 'Jacob', 'role': 'Backend'},
-        {'name': 'Shrayes', 'role': 'Backend'},
-        {'name': 'Katya', 'role': 'Frontend'},
-        {'name': 'Anderson', 'role': 'Frontend'},
-        {'name': 'Audrey', 'role': 'Full-Stack'},
-        
-    ]
-    return render(request, 'contact.html', {'form': form, 'developers': developers})
+    
 

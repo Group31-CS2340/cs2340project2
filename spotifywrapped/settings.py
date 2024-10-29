@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +47,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'spotifywrapped.urls'
@@ -113,7 +114,10 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -125,3 +129,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('es', 'Spanish'),
+    ('zh-hans', 'Simplified Chinese')
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]

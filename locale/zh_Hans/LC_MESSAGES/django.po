@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-28 22:34-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\users\templates\contact.html:26
+msgid "Spotify Wrapped Bootleg"
+msgstr ""
+
+#: .\users\templates\contact.html:33
+msgid "Contact the Developers"
+msgstr "联系开发者"
+
+#: .\users\templates\home.html:34 .\users\templates\login.html:36
+#: .\users\templates\login.html:67 .\users\templates\register.html:103
+msgid "Login"
+msgstr "登录"
+
+#: .\users\templates\home.html:37 .\users\templates\register.html:36
+msgid "Register"
+msgstr "注册"
+
+#: .\users\templates\home.html:40
+msgid "Contact"
+msgstr "联系"
+
+#: .\users\templates\login.html:47 .\users\templates\register.html:59
+msgid "Username"
+msgstr "帐号"
+
+#: .\users\templates\login.html:58 .\users\templates\register.html:81
+msgid "Password"
+msgstr "密码"
+
+#: .\users\templates\login.html:70
+msgid "Don't have an account?"
+msgstr "没有帐号?"
+
+#: .\users\templates\login.html:70
+msgid "Register here."
+msgstr "在此注册"
+
+#: .\users\templates\login.html:73
+msgid "Forgot your password?"
+msgstr "忘记密码?"
+
+#: .\users\templates\register.html:47
+msgid "First Name"
+msgstr "名字"
+
+#: .\users\templates\register.html:53
+msgid "Last Name"
+msgstr "姓"
+
+#: .\users\templates\register.html:70
+msgid "Email"
+msgstr "电子邮箱"
+
+#: .\users\templates\register.html:92
+msgid "Re-enter Password"
+msgstr "重新输入密码"
+
+#: .\users\templates\register.html:101
+msgid "Create Account"
+msgstr "创建帐号"
+
+#: .\users\templates\register.html:103
+msgid "Already have an account?"
+msgstr "已有帐户?"

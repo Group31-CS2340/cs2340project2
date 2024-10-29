@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@
 <!-- Registration Section -->
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;">
-        <h2 class="text-center mb-4">Register</h2>
+        <h2 class="text-center mb-4">{% trans "Register" %}</h2>
         <form method="POST" action="{% url 'register' %}">
             {% csrf_token %}
             {% if form.errors %}
@@ -43,19 +44,19 @@
 
             <!-- First Name -->
             <div class="form-group">
-                <label for="first_name">First Name</label>
+                <label for="first_name">{% trans "First Name" %}</label>
                 <input type="text" id="first_name" name="first_name" class="form-control" value="{{ form.first_name.value|default_if_none:'' }}">
             </div>
 
             <!-- Last Name -->
             <div class="form-group">
-                <label for="last_name">Last Name</label>
+                <label for="last_name">{% trans "Last Name" %}</label>
                 <input type="text" id="last_name" name="last_name" class="form-control" value="{{ form.last_name.value|default_if_none:'' }}">
             </div>
 
             <!-- Username -->
 <div class="form-group">
-    <label for="username">Username</label>
+    <label for="username">{% trans "Username" %}</label>
     <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
     {% if form.username.errors %}
         <div class="alert alert-danger">
@@ -66,7 +67,7 @@
 
 <!-- Email -->
 <div class="form-group">
-    <label for="email">Email</label>
+    <label for="email">{% trans "Email" %}</label>
     <input type="email" id="email" name="email" class="form-control" value="{{ form.email.value|default_if_none:'' }}">
     {% if form.email.errors %}
         <div class="alert alert-danger">
@@ -77,7 +78,7 @@
 
 <!-- Password1 -->
 <div class="form-group">
-    <label for="password1">Password</label>
+    <label for="password1">{% trans "Password" %}</label>
     <input type="password" id="password1" name="password1" class="form-control">
     {% if form.password1.errors %}
         <div class="alert alert-danger">
@@ -88,7 +89,7 @@
 
 <!-- Password2 -->
 <div class="form-group">
-    <label for="password2">Re-enter Password</label>
+    <label for="password2">{% trans "Re-enter Password" %}</label>
     <input type="password" id="password2" name="password2" class="form-control">
     {% if form.password2.errors %}
         <div class="alert alert-danger">
@@ -97,9 +98,9 @@
     {% endif %}
 </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Create Account" %}</button>
         </form>
-        <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login</a>.</p>
+        <p class="text-center mt-3">{% trans "Already have an account?" %} <a href="{% url 'login' %}">{% trans "Login" %}</a>.</p>
     </div>
 </div>
 

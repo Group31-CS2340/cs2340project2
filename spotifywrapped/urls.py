@@ -19,6 +19,11 @@ from django.urls import path, include
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 
+from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from django.urls import path, include
+from django.views.i18n import set_language
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', user_views.home, name='home'),
@@ -52,5 +57,6 @@ urlpatterns = [
     # path('user-doesnt-exist/', )
 
     path('contact/', user_views.contact_view, name ='contact'),
+    path('i18n/', include('django.conf.urls.i18n')),
     
 ]
