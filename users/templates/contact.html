@@ -1,36 +1,157 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'users/style.css' %}" rel="stylesheet">
+     <!-- Include Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+     <!-- Include FontAwesome for icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 
+     <!-- Include Google Fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+ 
+     <!-- Include custom CSS -->
+     <link href="{% static 'users/style.css' %}" rel="stylesheet">
     <title>Contact the Developers</title>
     <style>
-    </style>
+       
+   .wrap{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+   }
+    .team-section {
+      text-align: center;
+      max-width: 1200px;
+      margin: 20px;
+      padding: 10px;
+    }
+    .team-header {
+      font-size: 2em;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .team-member {
+      background-color: #282828;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 200px;
+      text-align: center;
+      flex-shrink: 0
+    }
+    .member-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .member-name {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #B3B3B3;
+      margin: 10px 0 5px;
+    }
+    .member-title {
+      font-size: 0.9em;
+      color:#FFFFFF;
+    }
+      </style>
 </head>
+
 <body>
-    <h1>Contact the Developers</h1>
-    <h2>Development Team</h2>
-    <ul>
-        {% for developer in developers %}
-            <li>{{ developer.name }} - {{ developer.role }}</li>
-        {% endfor %}
-    </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">{% trans "Spotify Wrapped Bootleg" %}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
 
-    <h2>Send Feedback</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <!-- Team Section -->
+    <div class="wrap" >
+      <div class="team-section">
+        <h2 class="team-header">Meet the Team</h2>
+        <div class="team-container">
+          
+          <div class="team-member">
+            <img src="{% static 'users/jacob3.jpg' %}" alt="Jacob" class="member-photo">
+            <div class="member-name">Jacob</div>
+            <div class="member-title">Backend</div>
+          </div>
+          
+          <div class="team-member">
+            <img src="{% static 'users/shrayes3.jpg' %}" alt="Shrayes" class="member-photo">
+            <div class="member-name">Shrayes</div>
+            <div class="member-title">Backend</div>
+          </div>
+          
+          <div class="team-member">
+            <img src="{% static 'users/katya2.jpg' %}" alt="Katya" class="member-photo">
+            <div class="member-name">Katya</div>
+            <div class="member-title">Frontend</div>
+          </div>
+          
+          <div class="team-member">
+            <img src="{% static 'users/anderson2.jpg' %}" alt="Anderson" class="member-photo">
+            <div class="member-name">Anderson</div>
+            <div class="member-title">Frontend</div>
+          </div>
+          
+          <div class="team-member">
+            <img src="{% static 'users/audrey2.jpg' %}" alt="Audrey" class="member-photo">
+            <div class="member-name">Audrey</div>
+            <div class="member-title">Fullstack</div>
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+          </div>
+    </div >
+    <br><br>
+
+  <!-- Feedback Section -->
+  <h2>We’d Love to Hear From You!</h2>
+  <br>
+    <div class="wrap" >
+      <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;">
+        <form method="POST" action="{% url 'contact' %}">
+          {% csrf_token %}
+          {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert-success">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+          {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                  {{ form.non_field_errors }}
+              </div>
+          {% endif %}
+    
+          <div class="form-group">
+              <label for="message">{% trans "Feedback" %}</label>
+              <textarea id="message" name="message" class="form-control" style="height:150px;">{{ form.message.value|default_if_none:'' }}</textarea>
+              {% if form.message.errors %}
+                  <div class="alert alert-danger">
+                      {{ form.message.errors }}
+                  </div>
+              {% endif %}
+                </div>
+          <button type="submit" class="btn btn-primary btn-block">{% trans "Submit" %}</button>
+
+        
+      </div>
+    </div>
+    
+
 </body>
 </html>

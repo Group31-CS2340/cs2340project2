@@ -20,6 +20,11 @@ from users import views as user_views
 from django.contrib.auth import views as auth_views
 
 
+from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from django.urls import path, include
+from django.views.i18n import set_language
+
 urlpatterns = [
     path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
@@ -59,5 +64,6 @@ urlpatterns = [
     path('homepage', user_views.home_logged_in, name='home_logged_in'),
     path('explore', user_views.explore, name='explore'),
     path('public-profile/', user_views.public_profile, name='public_profile'),
+    path('i18n/', include('django.conf.urls.i18n')),
     
 ]

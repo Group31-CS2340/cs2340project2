@@ -23,3 +23,5 @@ class LoginForm(forms.Form):
 
 class FeedbackForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    
+    
