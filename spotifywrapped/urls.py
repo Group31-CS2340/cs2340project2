@@ -58,6 +58,7 @@ urlpatterns = [
          name='password_change_done'),
     # path('user-doesnt-exist/', )
     path('delete-account/', user_views.delete_account, name='delete-account'),
+    path('deleted', user_views.account_deleted, name='deleted'),
     path('logout/', user_views.logout_view, name='logout'),
 
     path('contact/', user_views.contact_view, name ='contact'),

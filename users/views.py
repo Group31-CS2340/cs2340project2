@@ -174,8 +174,12 @@ def contact_view(request):
     
 
 def delete_account(request):
-    if request.method == 'POST':
-        return redirect('home')
+        user = request.user
+        user.delete()
+        return redirect('deleted')
+
+def account_deleted(request):
+    return render(request, 'account_deleted.html')
 
 def logout_view(request):
     logout(request)
