@@ -20,13 +20,15 @@ from django.conf import settings
 from .models import Profile, Feedback
 from django.conf import settings
 from django.shortcuts import redirect
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
 from django.shortcuts import render
 from django.contrib.auth import logout
 
 
 import json
+import webbrowser
+from urllib.parse import urlencode
+import base64
+import requests
 
 def home(request):
     if request.user.is_authenticated:
@@ -201,38 +203,43 @@ def spotify_login(request):
     request.session.flush()  # Clear any existing session data
     print("Session cleared in spotify_login")  # Debug: Confirm session flush
     cleanup()
-    sp_oauth = SpotifyOAuth(
-        client_id=settings.SPOTIFY_CLIENT_ID,
-        client_secret=settings.SPOTIFY_CLIENT_SECRET,
-        redirect_uri=settings.SPOTIFY_REDIRECT_URI,
-        scope="user-top-read",
-        show_dialog=True  # Force re-authentication
-    )
-    auth_url = sp_oauth.get_authorize_url()
-    return redirect(auth_url)
+    client_id = settings.SPOTIFY_CLIENT_ID
+    auth_headers = {
+    "client_id": client_id,
+    "response_type": "code",
+    "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
+    "scope": "user-top-read"
+    }
+
+    webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
+
+    return redirect("spotify_data")
 
 # users/views.py
 def spotify_callback(request):
+    spotifyToken = request.session.get('spotify_token', None)
     code = request.GET.get('code')
-    sp_oauth = SpotifyOAuth(
-        client_id=settings.SPOTIFY_CLIENT_ID,
-        client_secret=settings.SPOTIFY_CLIENT_SECRET,
-        redirect_uri=settings.SPOTIFY_REDIRECT_URI
-    )
+    if not spotifyToken and code:
+        client_id = settings.SPOTIFY_CLIENT_ID
+        client_secret = settings.SPOTIFY_CLIENT_SECRET
 
-    try:
-        time.sleep(2)
-        token_info = sp_oauth.get_access_token(code)
-        if token_info:
-            request.session['spotify_token'] = token_info['access_token']
-            print("New token saved in session:", request.session['spotify_token'])  # Debug
-            return redirect('users:spotify_data')
-        else:
-            print("No token retrieved in spotify_callback")  # Debug
-            return redirect('users:spotify_login')
-    except Exception as e:
-        print("Error retrieving token in spotify_callback:", e)
-        return redirect('users:spotify_login')
+        encoded_credentials = base64.b64encode(client_id.encode() + b':' + client_secret.encode()).decode("utf-8")
+
+        token_headers = {
+            "Authorization": "Basic " + encoded_credentials,
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+        token_data = {
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": settings.SPOTIFY_REDIRECT_URI
+        }
+
+        r = requests.post("https://accounts.spotify.com/api/token", data=token_data, headers=token_headers)
+        token = r.json()["access_token"]
+        request.session["spotify_token"] = token
+    return redirect('users:spotify_data')
 
 
 from django.views.decorators.cache import never_cache
@@ -242,21 +249,28 @@ def spotify_data(request):
     token = request.session.get('spotify_token')
     if not token:
         return redirect('users:spotify_login')
+    
+    user_headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
 
-    # Initialize Spotify client with the session's current token
-    sp = spotipy.Spotify(auth=token)
+    user_params = {
+        "limit": 10,
+        "time_range": "short_term"
+    }
 
     # Fetch the most recent data from Spotify
     try:
-        top_artists = sp.current_user_top_artists(limit=10, time_range="short_term")
-        top_tracks = sp.current_user_top_tracks(limit=10, time_range="short_term")
+        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params, headers=user_headers)
+        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
     except Exception as e:
         print("Error fetching data in spotify_data:", e)
-        return redirect('users:spotify_login')
+        # return redirect('users:spotify_login')
 
     return render(request, 'users/spotify_data.html', {
-        'top_artists': top_artists,
-        'top_tracks': top_tracks
+        'top_artists': top_artists.json(),
+        'top_tracks': top_tracks.json()
     })
 
 

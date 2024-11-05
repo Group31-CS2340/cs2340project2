@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,8 +38,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 # settings.py
-SPOTIFY_CLIENT_ID = "3f0cea75644347cea29930744526b4bc"
-SPOTIFY_CLIENT_SECRET = "13be6530c9724c849a73dbd8affe65ba"
+SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
+SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
 SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8000/users/callback"
 
 INSTALLED_APPS = [
