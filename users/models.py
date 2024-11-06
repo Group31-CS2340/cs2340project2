@@ -36,3 +36,6 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback submitted on {self.submitted_at}"
+
+class Wrap(models.Model):
+    title = models.CharField(max_length=100)

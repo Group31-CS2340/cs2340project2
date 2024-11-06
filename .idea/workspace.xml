@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1911e83e-a8e1-4330-a631-4c1808ba94f9" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
+      <change afterPath="$PROJECT_DIR$/users/migrations/0006_wrap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/templates/explore.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/templates/public_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spotifywrapped/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotifywrapped/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/delete_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/account_deleted.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/base_site.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/base_site.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/logged_in_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/logged_in_home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +136,7 @@
       <workItem from="1730081428692" duration="7963000" />
       <workItem from="1730389378730" duration="6000" />
       <workItem from="1730390532281" duration="17000" />
-      <workItem from="1730397441093" duration="2048000" />
+      <workItem from="1730397441093" duration="4293000" />
     </task>
     <task id="LOCAL-00001" summary="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
       <option name="closed" value="true" />

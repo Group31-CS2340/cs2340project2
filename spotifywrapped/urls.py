@@ -66,5 +66,6 @@ urlpatterns = [
     path('explore', user_views.explore, name='explore'),
     path('public-profile/', user_views.public_profile, name='public_profile'),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('new-wrap/', user_views.new_wrap, name='new-wrap')
     
 ]

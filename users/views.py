@@ -193,11 +193,11 @@ def home_logged_in(request):
 
 
 def explore(request):
-    return None
+    return render(request, 'explore.html')
 
 
 def public_profile(request):
-    return None
+    return render(request, 'public_profile.html')
 
 def spotify_login(request):
     request.session.flush()  # Clear any existing session data
@@ -308,3 +308,5 @@ def cleanup():
             print(f"Removed cache file: {filename}")
 
 
+def new_wrap(request):
+    return None

@@ -1,7 +1,6 @@
 {% extends 'base_site.html' %}
-{% load static %}
 {% load i18n %}
-<body>
+
 {% block nav %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"     aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,7 +11,7 @@
                 <a class="nav-link" href="{% url 'profile' request.user.username %}">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'explore' %}">Explore</a>
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
@@ -33,14 +32,3 @@
         </ul>
     </div>
 {% endblock %}
-{% block content %}
-<div class="container d-flex justify-content-center align-items-center">
-    <div class="text-center" style="max-width: 600px; width: 100%;">
-        <h2 class="mb-4">Welcome to your Spotify Wrapped!</h2>
-    </div>
-    <a href="{% url 'new-wrap' %}">
-            <button type="button" class="btn btn-primary btn-lg" id="new-wrap-button">Generate New Wrap</button>
-    </a>
-</div>
-{% endblock %}
-</body>
