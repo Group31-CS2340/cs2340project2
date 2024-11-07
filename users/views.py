@@ -115,6 +115,11 @@ def edit_profile(request, username):
         form = ProfileEditForm(instance=user)
     return render(request, 'edit_profile.html', {'form':form,})
 
+def public_profile(request, username):
+    user = request.user
+    profile = request.user.profile
+    return render(request, 'public_profile.html', {'user': user, 'profile': profile})
+
 def password_reset(request):
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
@@ -196,8 +201,7 @@ def explore(request):
     return render(request, 'explore.html')
 
 
-def public_profile(request):
-    return render(request, 'public_profile.html')
+
 
 def spotify_login(request):
     request.session.flush()  # Clear any existing session data
