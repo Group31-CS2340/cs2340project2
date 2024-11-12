@@ -314,3 +314,9 @@ def cleanup():
 
 def new_wrap(request):
     return None
+
+def home(request):
+    view_mode = request.GET.get('view', 'desktop')  # Default to 'desktop' view
+    if view_mode == 'mobile':
+        return render(request, 'home_mobile.html')
+    return render(request, 'home.html')
