@@ -15,9 +15,9 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
 
-from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm
+from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm
 from django.conf import settings
-from .models import Profile, Feedback
+from .models import Profile, Feedback, Wrap
 from django.conf import settings
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -194,7 +194,8 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def home_logged_in(request):
-    return render(request, 'logged_in_home.html')
+    user_wraps = Wrap.objects.filter(user=request.user).order_by('-created_at')  # Ensure Wrap model has a created_at field
+    return render(request, 'logged_in_home.html', {'wraps': user_wraps})
 
 
 def explore(request):
@@ -277,7 +278,76 @@ def spotify_data(request):
         'top_tracks': top_tracks.json()
     })
 
+from .forms import WrapSettingsForm
 
+@login_required()
+def wrap_generate(request):
+    token = request.session.get('spotify_token')
+    if not token:
+        return redirect('users:spotify_login')
+
+    if request.method == 'POST':
+        form = WrapSettingsForm(request.POST)
+        if form.is_valid():
+            time_range = form.cleaned_data['time_range']
+            limit = form.cleaned_data['limit']
+    else:
+        form = WrapSettingsForm()
+        time_range = 'short_term'
+        limit = 10
+
+    user_headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+
+    user_params = {
+        "limit": limit,
+        "time_range": time_range
+    }
+
+    # Fetch the most recent data from Spotify
+    try:
+        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params,
+                                   headers=user_headers)
+        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
+    except Exception as e:
+        print("Error fetching data in spotify_data:", e)
+        # return redirect('users:spotify_login')
+
+    top_artists_data = top_artists.json()
+    top_tracks_data = top_tracks.json()
+
+    return render(request, 'users/newWrap.html', {
+        'top_artists': top_artists_data,
+        'top_tracks': top_tracks_data,
+        'form': form
+    })
+
+def save_wrap_to_profile(request):
+    if request.method == "POST":
+        # Get wrap data and title from the form
+        title = request.POST.get("title", "My Spotify Wrap")  # Default title if empty
+        top_artists_data = request.session.get("top_artists")
+        top_tracks_data = request.session.get("top_tracks")
+
+        if not top_artists_data or not top_tracks_data:
+            return redirect('new_wrap')  # Redirect to generate if no data available
+
+        # Save wrap to profile with the provided title
+        wrap = Wrap.objects.create(
+            user=request.user,
+            title=title,
+            top_artists=top_artists_data,
+            top_tracks=top_tracks_data
+        )
+        return redirect('profile')  # Redirect to the profile or wraps list page
+    else:
+        return redirect('home')
+
+def wrap_detail(request, wrap_id):
+    wrap = get_object_or_404(Wrap, id=wrap_id)
+    return render(request, 'wrap_detail.html', {'wrap': wrap})
 
 # users/views.py
 from django.contrib.auth import logout
@@ -310,7 +380,3 @@ def cleanup():
         if filename.startswith(".cache"):
             os.remove(filename)
             print(f"Removed cache file: {filename}")
-
-
-def new_wrap(request):
-    return None

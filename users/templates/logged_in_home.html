@@ -69,42 +69,30 @@
         <h2 class="mb-4">Welcome to your Spotify Wrapped!</h2>
     </div>
 </div>
+    <div>
+        <a href="{% url 'new_wrap' %}" class="btn btn-primary">Generate a New Wrap</a>
+    </div>
 <div id="wraps">
-    <div class="gallery-container" id="months"></div>
+    <div id="wraps">
+    <div class="gallery-container">
+        {% for wrap in wraps %}
+            <a href="{% url 'wrap_detail' wrap.id %}">
+                <div class="gallery-item">
+                    {{ wrap.title }} - {{ wrap.created_at|date:"F Y" }}
+                </div>
+            </a>
+        {% empty %}
+            <p>No saved wraps yet. Generate a new wrap to see it here!</p>
+        {% endfor %}
+    </div>
+</div>
+
 </div>
 
     <script>
-    function generateGalleryItems() {
-        const gallery = document.getElementById("months");
-        const startYear = 2022;
-        const startMonth = 0; // January is 0 in JavaScript's Date
-        const currentDate = new Date();
-
-        let year = currentDate.getFullYear();
-        let month = currentDate.getMonth();
-
-        while (year > startYear || (year === startYear && month >= startMonth)) {
-            const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
-            const galleryItem = document.createElement("div");
-            galleryItem.className = "gallery-item";
-            galleryItem.innerText = `${monthName} ${year}`;
-            galleryItem.onclick = () => showDetails(`${monthName} ${year}`);
-            gallery.appendChild(galleryItem);
-
-            // Move to the previous month
-            month--;
-            if (month < 0) {  // Reset to December of the previous year
-                month = 11;
-                year--;
-            }
-        }
-    }
-
     function showDetails(monthYear) {
-        alert(`You clicked on ${monthYear}`);
+        
     }
 
-    // Generate items on page load
-    window.onload = generateGalleryItems;
     </script>
 {% endblock %}
