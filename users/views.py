@@ -212,7 +212,7 @@ def spotify_login(request):
     "client_id": client_id,
     "response_type": "code",
     "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
-    "scope": "user-top-read"
+    "scope": "user-top-read user-read-email user-read-private app-remote-control streaming"
     }
 
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
@@ -274,7 +274,8 @@ def spotify_data(request):
 
     return render(request, 'users/spotify_data.html', {
         'top_artists': top_artists.json(),
-        'top_tracks': top_tracks.json()
+        'top_tracks': top_tracks.json(),
+        'token' : request.session["spotify_token"]
     })
 
 
@@ -314,3 +315,9 @@ def cleanup():
 
 def new_wrap(request):
     return None
+
+def home(request):
+    view_mode = request.GET.get('view', 'desktop')  # Default to 'desktop' view
+    if view_mode == 'mobile':
+        return render(request, 'home_mobile.html')
+    return render(request, 'home.html')
