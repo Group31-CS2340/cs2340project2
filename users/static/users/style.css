@@ -218,3 +218,38 @@ select:focus {
     outline: none; 
     
   }
+
+.view-toggle .btn {
+    margin-right: 5px;
+}
+
+.view-toggle .btn.active {
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+}
+
+/* Mobile-specific adjustments */
+.navbar-nav .nav-link {
+    font-size: 1em;
+    /* center all of the navbar content */
+    display: flex;
+    align-items: center;
+}
+
+.form-inline .form-control-sm {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.hero-section h1 {
+    font-size: 2em;
+}
+
+.hero-section p {
+    font-size: 1em;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 1em;
+}
