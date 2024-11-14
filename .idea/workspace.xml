@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1911e83e-a8e1-4330-a631-4c1808ba94f9" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotifywrapped/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotifywrapped/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/logged_in_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/logged_in_home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/env" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
@@ -29,11 +33,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="wrapModeling" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -143,6 +142,8 @@
       <workItem from="1731005847718" duration="13000" />
       <workItem from="1731005870579" duration="6751000" />
       <workItem from="1731092295346" duration="3089000" />
+      <workItem from="1731005870579" duration="6527000" />
+      <workItem from="1731438139592" duration="3088000" />
     </task>
     <task id="LOCAL-00001" summary="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
       <option name="closed" value="true" />

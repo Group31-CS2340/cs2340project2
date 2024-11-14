@@ -1,0 +1,22 @@
+{% extends 'base_site.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ wrap.title }}</h2>
+    <p><strong>Created on:</strong> {{ wrap.created_at|date:"F d, Y" }}</p>
+
+    <h3>Top Artists</h3>
+    <ul>
+        {% for artist in wrap.top_artists %}
+            <li>{{ artist.name }} - {{ artist.details }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Top Tracks</h3>
+    <ul>
+        {% for track in wrap.top_tracks %}
+            <li>{{ track.name }} - {{ track.details }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

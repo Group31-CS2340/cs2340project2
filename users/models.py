@@ -15,7 +15,7 @@ def register_user(username, first_name, last_name, email, password):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    wraps = models.ManyToManyField('Wrap', blank=True)
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -38,4 +38,11 @@ class Feedback(models.Model):
         return f"Feedback submitted on {self.submitted_at}"
 
 class Wrap(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100)
+    top_artists = models.JSONField(default=list)
+    top_tracks = models.JSONField(default=list)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.title

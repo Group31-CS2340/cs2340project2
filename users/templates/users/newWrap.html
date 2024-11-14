@@ -1,0 +1,30 @@
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Generate Wrap</button>
+</form>
+
+<h2>Top Artists</h2>
+<ul>
+    {% for artist in top_artists.items %}
+        <li>{{ artist.name }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Top Tracks</h2>
+<ul>
+    {% for track in top_tracks.items %}
+        <li>{{ track.name }} by {{ track.artists.0.name }}</li>
+    {% endfor %}
+</ul>
+<form action="{% url 'save_wrap_to_profile' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="wrapTitle">Title your Spotify Wrap:</label>
+        <input type="text" id="wrapTitle" name="title" class="form-control" placeholder="Enter title">
+    </div>
+    <button type="submit" class="btn btn-success">Save Wrap</button>
+</form>
+<a href="{% url 'profile' request.user.username %}">
+    <button type="button" class="btn btn-primary" id="cancel-button">Cancel</button>
+</a>
