@@ -17,7 +17,7 @@ from django.views.decorators.cache import never_cache
 
 from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm
 from django.conf import settings
-from .models import Profile, Feedback
+from .models import Profile, Feedback, Wrap
 from django.conf import settings
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -277,7 +277,108 @@ def spotify_data(request):
         'top_tracks': top_tracks.json()
     })
 
+from .forms import WrapSettingsForm
 
+@login_required()
+def wrap_generate(request):
+    if request.method == 'POST':
+        form = WrapSettingsForm(request.POST)
+        if form.is_valid():
+            time_range = form.cleaned_data['time_range']
+            limit = form.cleaned_data['limit']
+
+            request.session['time_range'] = time_range
+            request.session['limit'] = limit
+
+            return redirect('new_wrap')
+
+    else:
+        form = WrapSettingsForm()
+    return render(request, 'wrap_setup.html', {'form': form})
+
+
+def new_wrap(request):
+    token = request.session.get('spotify_token')
+    if not token:
+        return redirect('users:spotify_login')
+
+    time_range = request.session.get('time_range', 'short_term')
+    limit = request.session.get('limit', 10)
+
+    user_headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+
+    user_params = {
+        "limit": limit,
+        "time_range": time_range
+    }
+
+    # Fetch data from Spotify
+    try:
+        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params,
+                                   headers=user_headers)
+        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
+
+        top_artists_data = top_artists.json()
+        top_tracks_data = top_tracks.json()
+
+        top_artists = [{
+            'name': artist['name'],
+            'image': artist['images'][0]['url'] if artist['images'] else None
+        } for artist in top_artists_data['items']]
+        top_tracks = [{
+            'name': track['name'],
+            'artist': track['artists'][0]['name'] if track['artists'] else None
+        } for track in top_tracks_data['items']]
+        request.session['top_artists'] = top_artists
+        request.session['top_tracks'] = top_tracks
+    except Exception as e:
+        print("Error fetching data in spotify_data:", e)
+        return redirect('users:spotify_login')
+
+
+    if request.method == "POST":
+        print("Top Artists:", top_artists)
+        print("Top Tracks:", top_tracks)
+        title = request.POST.get('title', '')
+        if title:
+            wrap = Wrap(
+                title=title,
+                user=request.user,
+                top_artists=top_artists,
+                top_tracks=top_tracks,
+            )
+            wrap.save()
+            return redirect('wrap_detail', wrap_id=wrap.id)
+    else:
+        # Initial GET request for the wrap form
+        form = WrapForm()
+
+        return render(request, 'new_wrap.html', {
+            'form': WrapForm(instance=None),
+            'top_artists': top_artists,
+            'top_tracks': top_tracks
+        })
+
+def wrap_detail(request, wrap_id):
+    wrap = get_object_or_404(Wrap, id=wrap_id)
+    return render(request, 'wrap_detail.html', {'wrap': wrap})
+
+@login_required
+def wrap_delete(request, wrap_id):
+    wrap = get_object_or_404(Wrap, id=wrap_id)
+
+    # Check if the current user is the one who created the wrap
+    if wrap.user == request.user:
+        if request.method == 'POST':
+            wrap.delete()
+            return redirect('home_logged_in')  # Redirect after deletion
+    else:
+        return redirect('wrap_detail', wrap_id=wrap.id)
+
+    return render(request, 'wrap_detail.html', {'wrap': wrap})
 
 # users/views.py
 from django.contrib.auth import logout
