@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1911e83e-a8e1-4330-a631-4c1808ba94f9" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spotifywrapped/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotifywrapped/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/logged_in_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/logged_in_home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/spotify_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/spotify_data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+    <list default="true" id="9328f4f9-c96b-4b63-b382-d538c7304a44" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/" />
+    <list id="665574aa-4a62-45e0-bbd4-b9b3035ec5a4" name="Added urls for making and saving wrap" comment="Added urls for making and saving wrap" />
+    <list id="a7f28c47-477e-4758-9454-d7c465272af4" name="Added Wrap to Admin" comment="Added Wrap to Admin" />
+    <list id="e716ada3-a3b6-429b-b760-4429a7226e80" name="Changed the 'generate wrap' button on homepage" comment="Changed the 'generate wrap' button on homepage" />
+    <list id="33cc4740-4059-4cfd-a415-22057e6f070e" name="Changes to wrap_detail template" comment="Changes to wrap_detail template">
+      <change beforePath="$PROJECT_DIR$/users/templates/wrap_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/wrap_detail.html" afterDir="false" />
     </list>
+    <list id="8f92e687-483d-48dc-9c75-010978427bfd" name="Fixed views for wraps" comment="Fixed views for wraps" />
+    <list id="36067c94-5490-4684-859a-ef746105fbec" name="Fixed Wrap forms" comment="Fixed Wrap forms" />
+    <list id="ce6a21e4-8d31-4218-8e0e-675fe04d7978" name="Page to create and save wrap" comment="Page to create and save wrap" />
+    <list id="1f81195d-0af4-4a58-8ea7-63d4a0a87566" name="Set up page for wrap" comment="Set up page for wrap" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -58,55 +62,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.cs2340project2.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "wrapModeling",
-    "last_opened_file_path": "/Users/shrayesupadhyayula/PycharmProjects/cs2340project2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.cs2340project2.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/shrayesupadhyayula/PycharmProjects/cs2340project2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.cs2340project2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;wrapModeling&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/shrayesupadhyayula/PycharmProjects/cs2340project2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -140,14 +98,6 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23726.102" />
-        <option value="bundled-python-sdk-5e1850174b45-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23726.102" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -214,6 +164,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Wrap to Admin" />
+    <MESSAGE value="Fixed Wrap forms" />
+    <MESSAGE value="Changed the 'generate wrap' button on homepage" />
+    <MESSAGE value="Page to create and save wrap" />
+    <MESSAGE value="Added urls for making and saving wrap" />
+    <MESSAGE value="Fixed views for wraps" />
+    <MESSAGE value="Set up page for wrap" />
+    <MESSAGE value="Changes to wrap_detail template" />
     <MESSAGE value="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/" />
     <option name="LAST_COMMIT_MESSAGE" value="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/" />
   </component>

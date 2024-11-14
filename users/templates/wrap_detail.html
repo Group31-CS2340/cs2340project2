@@ -1,22 +1,25 @@
-{% extends 'base_site.html' %}
+<h2>Top Artists</h2>
+<ul>
+    {% for artist in wrap.top_artists %}
+        <li>
+            <img src="{{ artist.image }}" alt="{{ artist.name }}" width="100">
+            {{ artist.name }}
+        </li>
+    {% endfor %}
+</ul>
 
-{% block content %}
-<div class="container">
-    <h2>{{ wrap.title }}</h2>
-    <p><strong>Created on:</strong> {{ wrap.created_at|date:"F d, Y" }}</p>
+<h2>Top Tracks</h2>
+<ul>
+    {% for track in wrap.top_tracks %}
+        <li>{{ track.name }} by {{ track.artist }}</li>
+    {% endfor %}
+</ul>
 
-    <h3>Top Artists</h3>
-    <ul>
-        {% for artist in wrap.top_artists %}
-            <li>{{ artist.name }} - {{ artist.details }}</li>
-        {% endfor %}
-    </ul>
+<form method="post" action="{% url 'wrap_delete' wrap.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete Wrap</button>
+</form>
 
-    <h3>Top Tracks</h3>
-    <ul>
-        {% for track in wrap.top_tracks %}
-            <li>{{ track.name }} - {{ track.details }}</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock %}
+<a href="{% url 'home_logged_in' %}">
+    <button type="button" class="btn btn-primary">Back</button>
+</a>
