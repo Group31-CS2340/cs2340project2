@@ -3,45 +3,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- meta tags and title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Spotify Wrapped Bootleg{% endblock %}</title>
 
     <!-- including Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- including FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- including Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- including custom CSS -->
     <link href="{% static 'users/style.css' %}" rel="stylesheet">
     
-    {% block style %}
-        <!-- put extra style components here -->
-    {% endblock %}
+    {% block style %}{% endblock %}
 </head>
 <body>
 
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="{% url 'home' %}">Spotify Wrapped Bootleg</a>
-    {% block nav %}
-        <!-- add items to nav bar here -->
-    {% endblock %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">{% trans "Register" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
+            </li>
+        </ul>
+        <!-- Language and View Toggle -->
+        <div class="ml-3">
+            <form action="{% url 'set_language' %}" method="post">
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                {% csrf_token %}
+                <select name="language" onchange="this.form.submit()">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% for code, name in LANGUAGES %}
+                        <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>
+                            {{ name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+            <div class="view-toggle mt-2">
+                <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">Mobile</a>
+                <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">Desktop</a>
+            </div>
+        </div>
+    </div>
 </nav>
 
-{% block content %}
-<!-- content injected here -->
-{% endblock %}
+{% block content %}{% endblock %}
 
-<!-- including Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script     src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script     src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
