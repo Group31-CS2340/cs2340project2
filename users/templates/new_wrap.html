@@ -1,0 +1,23 @@
+<h2>Top Artists</h2>
+<ul>
+    {% for artist in top_artists %}
+        <li>
+            <img src="{{ artist.image }}" alt="{{ artist.name }}" width="100">
+            {{ artist.name }}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Top Tracks</h2>
+<ul>
+    {% for track in top_tracks %}
+        <li>{{ track.name }} by {{ track.artist }}</li>
+    {% endfor %}
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="id_title">Wrap Title:</label>
+    <input type="text" name="title" id="id_title" value="{{ form.instance.title }}" />
+    <button type="submit">Save Wrap</button>
+</form>

@@ -282,19 +282,29 @@ from .forms import WrapSettingsForm
 
 @login_required()
 def wrap_generate(request):
-    token = request.session.get('spotify_token')
-    if not token:
-        return redirect('users:spotify_login')
-
     if request.method == 'POST':
         form = WrapSettingsForm(request.POST)
         if form.is_valid():
             time_range = form.cleaned_data['time_range']
             limit = form.cleaned_data['limit']
+
+            request.session['time_range'] = time_range
+            request.session['limit'] = limit
+
+            return redirect('new_wrap')
+
     else:
         form = WrapSettingsForm()
-        time_range = 'short_term'
-        limit = 10
+    return render(request, 'wrap_setup.html', {'form': form})
+
+
+def new_wrap(request):
+    token = request.session.get('spotify_token')
+    if not token:
+        return redirect('users:spotify_login')
+
+    time_range = request.session.get('time_range', 'short_term')
+    limit = request.session.get('limit', 10)
 
     user_headers = {
         "Authorization": "Bearer " + token,
@@ -306,47 +316,69 @@ def wrap_generate(request):
         "time_range": time_range
     }
 
-    # Fetch the most recent data from Spotify
+    # Fetch data from Spotify
     try:
         top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params,
                                    headers=user_headers)
         top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
+
+        top_artists_data = top_artists.json()
+        top_tracks_data = top_tracks.json()
+
+        top_artists = [{
+            'name': artist['name'],
+            'image': artist['images'][0]['url'] if artist['images'] else None
+        } for artist in top_artists_data['items']]
+        top_tracks = [{
+            'name': track['name'],
+            'artist': track['artists'][0]['name'] if track['artists'] else None
+        } for track in top_tracks_data['items']]
+        request.session['top_artists'] = top_artists
+        request.session['top_tracks'] = top_tracks
     except Exception as e:
         print("Error fetching data in spotify_data:", e)
-        # return redirect('users:spotify_login')
+        return redirect('users:spotify_login')
 
-    top_artists_data = top_artists.json()
-    top_tracks_data = top_tracks.json()
 
-    return render(request, 'users/newWrap.html', {
-        'top_artists': top_artists_data,
-        'top_tracks': top_tracks_data,
-        'form': form
-    })
-
-def save_wrap_to_profile(request):
     if request.method == "POST":
-        # Get wrap data and title from the form
-        title = request.POST.get("title", "My Spotify Wrap")  # Default title if empty
-        top_artists_data = request.session.get("top_artists")
-        top_tracks_data = request.session.get("top_tracks")
-
-        if not top_artists_data or not top_tracks_data:
-            return redirect('new_wrap')  # Redirect to generate if no data available
-
-        # Save wrap to profile with the provided title
-        wrap = Wrap.objects.create(
-            user=request.user,
-            title=title,
-            top_artists=top_artists_data,
-            top_tracks=top_tracks_data
-        )
-        return redirect('profile')  # Redirect to the profile or wraps list page
+        print("Top Artists:", top_artists)
+        print("Top Tracks:", top_tracks)
+        title = request.POST.get('title', '')
+        if title:
+            wrap = Wrap(
+                title=title,
+                user=request.user,
+                top_artists=top_artists,
+                top_tracks=top_tracks,
+            )
+            wrap.save()
+            return redirect('wrap_detail', wrap_id=wrap.id)
     else:
-        return redirect('home')
+        # Initial GET request for the wrap form
+        form = WrapForm()
+
+        return render(request, 'new_wrap.html', {
+            'form': WrapForm(instance=None),
+            'top_artists': top_artists,
+            'top_tracks': top_tracks
+        })
 
 def wrap_detail(request, wrap_id):
     wrap = get_object_or_404(Wrap, id=wrap_id)
+    return render(request, 'wrap_detail.html', {'wrap': wrap})
+
+@login_required
+def wrap_delete(request, wrap_id):
+    wrap = get_object_or_404(Wrap, id=wrap_id)
+
+    # Check if the current user is the one who created the wrap
+    if wrap.user == request.user:
+        if request.method == 'POST':
+            wrap.delete()
+            return redirect('home_logged_in')  # Redirect after deletion
+    else:
+        return redirect('wrap_detail', wrap_id=wrap.id)
+
     return render(request, 'wrap_detail.html', {'wrap': wrap})
 
 # users/views.py
