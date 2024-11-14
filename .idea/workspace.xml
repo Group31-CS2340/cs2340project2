@@ -4,6 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="9328f4f9-c96b-4b63-b382-d538c7304a44" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/" />
+    <list id="665574aa-4a62-45e0-bbd4-b9b3035ec5a4" name="Added urls for making and saving wrap" comment="Added urls for making and saving wrap" />
+    <list id="a7f28c47-477e-4758-9454-d7c465272af4" name="Added Wrap to Admin" comment="Added Wrap to Admin" />
+    <list id="e716ada3-a3b6-429b-b760-4429a7226e80" name="Changed the 'generate wrap' button on homepage" comment="Changed the 'generate wrap' button on homepage" />
+    <list id="33cc4740-4059-4cfd-a415-22057e6f070e" name="Changes to wrap_detail template" comment="Changes to wrap_detail template">
+      <change beforePath="$PROJECT_DIR$/users/templates/wrap_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/wrap_detail.html" afterDir="false" />
     <list default="true" id="1911e83e-a8e1-4330-a631-4c1808ba94f9" name="Changes" comment="I integrated the spotify API into the project. You can test at http://127.0.0.1:8000/users/spotify_login/">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spotifywrapped/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spotifywrapped/urls.py" afterDir="false" />
@@ -73,8 +79,13 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "wrapModeling",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/users/templates/users" />
@@ -140,8 +151,6 @@
       <workItem from="1730919353906" duration="1756000" />
       <workItem from="1730921670721" duration="109000" />
       <workItem from="1731005847718" duration="13000" />
-      <workItem from="1731005870579" duration="6751000" />
-      <workItem from="1731092295346" duration="3089000" />
       <workItem from="1731005870579" duration="6527000" />
       <workItem from="1731438139592" duration="3088000" />
     </task>

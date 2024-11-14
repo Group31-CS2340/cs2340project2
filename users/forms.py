@@ -35,7 +35,8 @@ class WrapSettingsForm(forms.Form):
 
 
 class WrapForm(forms.ModelForm):
-    title = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    title = forms.CharField(max_length=255, required=True)
+
     class Meta:
         model = Wrap
         fields = ['title', 'top_artists', 'top_tracks']
