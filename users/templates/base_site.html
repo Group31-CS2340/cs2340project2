@@ -25,6 +25,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+            {% block nav %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
             </li>
@@ -34,6 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a>
             </li>
+            {% endblock %}
         </ul>
         <!-- Language and View Toggle -->
         <div class="ml-3">

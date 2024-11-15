@@ -15,7 +15,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
 
-from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm
+from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm
 from django.conf import settings
 from .models import Profile, Feedback, Wrap
 from django.conf import settings
@@ -30,10 +30,6 @@ from urllib.parse import urlencode
 import base64
 import requests
 
-def home(request):
-    if request.user.is_authenticated:
-        return redirect('home_logged_in')
-    return render(request, 'home.html')# home HTML template
 
 def register(request):
     if request.method == 'POST':
@@ -62,7 +58,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home_logged_in')
+                return redirect('home_logged_in', user)
             else:
                 return redirect('invalid_login')
         else:
@@ -193,8 +189,10 @@ def logout_view(request):
     return redirect('home')
 
 @login_required(login_url='login')
-def home_logged_in(request):
-    return render(request, 'logged_in_home.html')
+def home_logged_in(request, username):
+    user = get_object_or_404(User, username=username)
+    wraps = Wrap.objects.filter(user=user)
+    return render(request, 'logged_in_home.html', {'wraps': wraps})
 
 
 def explore(request):
@@ -334,14 +332,13 @@ def new_wrap(request):
         } for track in top_tracks_data['items']]
         request.session['top_artists'] = top_artists
         request.session['top_tracks'] = top_tracks
+
     except Exception as e:
         print("Error fetching data in spotify_data:", e)
         return redirect('users:spotify_login')
 
 
     if request.method == "POST":
-        print("Top Artists:", top_artists)
-        print("Top Tracks:", top_tracks)
         title = request.POST.get('title', '')
         if title:
             wrap = Wrap(
@@ -374,7 +371,7 @@ def wrap_delete(request, wrap_id):
     if wrap.user == request.user:
         if request.method == 'POST':
             wrap.delete()
-            return redirect('home_logged_in')  # Redirect after deletion
+            return redirect('home_logged_in', request.user)  # Redirect after deletion
     else:
         return redirect('wrap_detail', wrap_id=wrap.id)
 
@@ -413,11 +410,11 @@ def cleanup():
             print(f"Removed cache file: {filename}")
 
 
-def new_wrap(request):
-    return None
 
 def home(request):
     view_mode = request.GET.get('view', 'desktop')  # Default to 'desktop' view
     if view_mode == 'mobile':
         return render(request, 'home_mobile.html')
+    if request.user.is_authenticated:
+        return redirect('home_logged_in', request.user)
     return render(request, 'home.html')
