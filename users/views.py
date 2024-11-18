@@ -264,6 +264,7 @@ def spotify_data(request):
     })
 
 
+
 @csrf_exempt
 @login_required
 def wrap_generate(request):
