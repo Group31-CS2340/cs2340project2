@@ -409,12 +409,19 @@ def cleanup():
             os.remove(filename)
             print(f"Removed cache file: {filename}")
 
-
-
-def home(request):
+def home_mobile(request):
     view_mode = request.GET.get('view', 'desktop')  # Default to 'desktop' view
     if view_mode == 'mobile':
         return render(request, 'home_mobile.html')
-    if request.user.is_authenticated:
-        return redirect('home_logged_in', request.user)
     return render(request, 'home.html')
+
+def login_mobile(request):
+    return render(request, 'login_mobile.html')
+
+
+def register_mobile(request):
+    return render(request, 'register_mobile.html')
+
+@login_required(login_url='login_mobile')
+def home_logged_in_mobile(request):
+    return render(request, 'logged_in_home_mobile.html')
