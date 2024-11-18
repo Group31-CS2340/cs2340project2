@@ -197,9 +197,9 @@ def logout_view(request):
 def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
-    top_artists = fetch_top_artists(request)
-    print(top_artists)
-    return render(request, 'logged_in_home.html', {'top_artists': top_artists, 'wraps': wraps})
+    data = fetch_data(request)
+    print(data)
+    return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
 
 def explore(request):
     return render(request, 'explore.html')
@@ -290,7 +290,7 @@ from django.contrib.auth.models import User
 
 @csrf_exempt
 @login_required
-def fetch_top_artists(request):
+def fetch_data(request):
     time_range = request.POST.get('time_range', 'short_term')
     limit = int(request.POST.get('limit', 10))
     spotify_token = request.session.get('spotify_token')
@@ -309,7 +309,9 @@ def fetch_top_artists(request):
             }
             for artist in top_artists.get('items', [])
         ]
-    return (artists)
+
+    data = artists
+    return (data)
 
 
 @csrf_exempt
