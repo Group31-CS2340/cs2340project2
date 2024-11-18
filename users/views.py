@@ -240,31 +240,6 @@ def spotify_callback(request):
         request.session["spotify_token"] = token
     return redirect('users:spotify_data')
 
-
-@never_cache
-def spotify_data(request):
-    token = request.session.get('spotify_token')
-    if not token:
-        return redirect('users:spotify_login')
-    user_headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-    }
-    user_params = {
-        "limit": 10,
-        "time_range": "short_term"
-    }
-    try:
-        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params, headers=user_headers)
-        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
-    except Exception as e:
-        print("Error fetching data in spotify_data:", e)
-    return render(request, 'users/spotify_data.html', {
-        'top_artists': top_artists.json(),
-        'top_tracks': top_tracks.json()
-    })
-
-
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -366,59 +341,6 @@ def wrap_generate(request):
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=405)
-
-
-def new_wrap(request):
-    token = request.session.get('spotify_token')
-    if not token:
-        return redirect('users:spotify_login')
-    time_range = request.session.get('time_range', 'short_term')
-    limit = request.session.get('limit', 10)
-    user_headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/json"
-    }
-    user_params = {
-        "limit": limit,
-        "time_range": time_range
-    }
-    try:
-        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params, headers=user_headers)
-        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
-        top_artists_data = top_artists.json()
-        top_tracks_data = top_tracks.json()
-        top_artists = [{
-            'name': artist['name'],
-            'image': artist['images'][0]['url'] if artist['images'] else None
-        } for artist in top_artists_data['items']]
-        top_tracks = [{
-            'name': track['name'],
-            'artist': track['artists'][0]['name'] if track['artists'] else None
-        } for track in top_tracks_data['items']]
-        request.session['top_artists'] = top_artists
-        request.session['top_tracks'] = top_tracks
-    except Exception as e:
-        print("Error fetching data in spotify_data:", e)
-        return redirect('users:spotify_login')
-    if request.method == "POST":
-        title = request.POST.get('title', '')
-        if title:
-            wrap = Wrap(
-                title=title,
-                user=request.user,
-                top_artists=top_artists,
-                top_tracks=top_tracks,
-            )
-            wrap.save()
-            return redirect('wrap_detail', wrap_id=wrap.id)
-    else:
-        form = WrapForm()
-        return render(request, 'new_wrap.html', {
-            'form': WrapForm(instance=None),
-            'top_artists': top_artists,
-            'top_tracks': top_tracks
-        })
-
 
 @login_required
 def wrap_detail(request, wrap_id):
