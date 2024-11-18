@@ -1,0 +1,81 @@
+{% extends "base_site_mobile.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Your Spotify Wrapped - Mobile View{% endblock %}
+{% block content %}
+<!-- Spotify Wrapped Page for Mobile -->
+<section class="spotify-wrapped-section">
+    <div class="container d-flex flex-column align-items-center justify-content-center" style="max-width: 400px; width: 100%;">
+        <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Your Spotify Wrapped" %}</h3>
+
+        <h4 class="mt-4 text-center" style="font-size: 1.5em;">{% trans "Top Artists (Last Month)" %}</h4>
+        {% if top_artists.items %}
+            <ul class="list-unstyled w-100">
+                {% for artist in top_artists.items %}
+                    <li class="mb-3 text-center">
+                        <img src="{{ artist.images.0.url }}" width="150" height="150" class="img-fluid mb-2">
+                        <strong>{{ artist.name }}</strong><br>
+                        <small>{% trans "Genres" %}: {{ artist.genres|join:", " }}</small><br>
+                        <small>{% trans "Popularity" %}: {{ artist.popularity }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-center">{% trans "No top artists data available." %}</p>
+        {% endif %}
+
+        <h4 class="mt-4 text-center" style="font-size: 1.5em;">{% trans "Top Tracks (Last Month)" %}</h4>
+        {% if top_tracks.items %}
+            <ul class="list-unstyled w-100">
+                {% for track in top_tracks.items %}
+                    <li class="mb-3 text-center">
+                        <img src="{{ track.album.images.0.url }}" width="150" height="150" class="img-fluid mb-2">
+                        <strong>{{ track.name }}</strong> <br>
+                        <small>{% trans "by" %}
+                            {% for artist in track.artists %}
+                                {{ artist.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </small><br>
+                        <small>{% trans "Album" %}: {{ track.album.name }}</small><br>
+                        <small>{% trans "Popularity" %}: {{ track.popularity }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-center">{% trans "No top tracks data available." %}</p>
+        {% endif %}
+
+        <form action="{% url 'users:spotify_logout' %}" method="post" class="mt-4 w-100 text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-block">{% trans "Logout from Spotify" %}</button>
+        </form>
+    </div>
+</section>
+<!-- Custom CSS for Mobile View -->
+<style>
+    .spotify-wrapped-section {
+        padding: 15px 15px 30px; /* Adjusted padding for consistency */
+        min-height: 100vh; /* Full height for centering */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .list-unstyled {
+        padding: 0;
+    }
+    .list-unstyled li {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    .btn-danger {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 30px;
+    }
+</style>
+{% endblock %}
