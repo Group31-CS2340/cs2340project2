@@ -197,8 +197,9 @@ def logout_view(request):
 def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
-    return render(request, 'logged_in_home.html', {'wraps': wraps})
-
+    top_artists = fetch_top_artists(request)
+    print(top_artists)
+    return render(request, 'logged_in_home.html', {'top_artists': top_artists, 'wraps': wraps})
 
 def explore(request):
     return render(request, 'explore.html')
@@ -263,6 +264,52 @@ def spotify_data(request):
         'top_tracks': top_tracks.json()
     })
 
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home_logged_in', user)
+            else:
+                return redirect('invalid_login')
+        else:
+            return render(request, 'login.html', {'form': form})
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+import requests
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+@csrf_exempt
+@login_required
+def fetch_top_artists(request):
+    time_range = request.POST.get('time_range', 'short_term')
+    limit = int(request.POST.get('limit', 10))
+    spotify_token = request.session.get('spotify_token')
+    if not spotify_token:
+        return JsonResponse({'success': False, 'error': 'No Spotify token found.'}, status=400)
+    headers = {"Authorization": f"Bearer {spotify_token}"}
+    params = {"limit": limit, "time_range": time_range}
+    try:
+        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", headers=headers, params=params).json()
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
+    artists = [
+            {
+                'name': artist['name'],
+                'image': artist['images'][0]['url'] if artist['images'] else None,
+            }
+            for artist in top_artists.get('items', [])
+        ]
+    return (artists)
 
 
 @csrf_exempt
