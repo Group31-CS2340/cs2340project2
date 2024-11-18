@@ -409,7 +409,7 @@ def cleanup():
             os.remove(filename)
             print(f"Removed cache file: {filename}")
 
-def home_mobile(request):
+def home(request):
     view_mode = request.GET.get('view', 'desktop')  # Default to 'desktop' view
     if view_mode == 'mobile':
         return render(request, 'home_mobile.html')
