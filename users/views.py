@@ -213,7 +213,7 @@ def spotify_login(request):
         "client_id": client_id,
         "response_type": "code",
         "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
-        "scope": "user-top-read"
+        "scope": "user-top-read user-library-read"
     }
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
     return redirect("spotify_data")
@@ -258,6 +258,29 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+@never_cache
+def spotify_data(request):
+    token = request.session.get('spotify_token')
+    if not token:
+        return redirect('users:spotify_login')
+    user_headers = {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+    }
+    user_params = {
+        "limit": 10,
+        "time_range": "short_term"
+    }
+    try:
+        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params, headers=user_headers)
+        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
+    except Exception as e:
+        print("Error fetching data in spotify_data:", e)
+    return render(request, 'users/spotify_data.html', {
+        'top_artists': top_artists.json(),
+        'top_tracks': top_tracks.json()
+    })
+
 import requests
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -275,6 +298,7 @@ def fetch_data(request):
     params = {"limit": limit, "time_range": time_range}
     try:
         top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", headers=headers, params=params).json()
+        saved_albums = requests.get("https://api.spotify.com/v1/me/albums", headers=headers, params=params).json()
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
     artists = [
@@ -284,8 +308,15 @@ def fetch_data(request):
             }
             for artist in top_artists.get('items', [])
         ]
-
-    data = artists
+    albums = [
+        {
+            'name': album['album']['name'],
+            'artists': ', '.join([artist['name'] for artist in album['album']['artists']]),
+            'image': album['album']['images'][0]['url'] if album['album']['images'] else None,
+        }
+        for album in saved_albums.get('items', [])
+    ]
+    data = [artists, albums]
     return (data)
 
 
@@ -384,7 +415,7 @@ def cleanup():
         if filename.startswith(".cache"):
             os.remove(filename)
             print(f"Removed cache file: {filename}")
-
+.0
 
 def home(request):
     view_mode = request.GET.get('view', 'desktop')
