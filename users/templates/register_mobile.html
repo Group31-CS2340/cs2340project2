@@ -1,0 +1,88 @@
+{% extends "base_site_mobile.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Register - Spotify Wrapped Bootleg (Mobile View){% endblock %}
+{% block content %}
+<!-- Register Form for Mobile -->
+<section class="register-section">
+    <div class="container d-flex flex-column align-items-center justify-content-center" style="max-width: 400px; width: 100%;">
+        <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Register for Spotify Wrapped Bootleg" %}</h3>
+        <form method="post" class="w-100">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Username Field -->
+            <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+                <label for="id_username">{% trans "Username" %}</label>
+                <input type="text" name="username" id="id_username" class="form-control" required>
+                {% for error in form.username.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+                <label for="id_email">{% trans "Email" %}</label>
+                <input type="email" name="email" id="id_email" class="form-control" required>
+                {% for error in form.email.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
+                <label for="id_password1">{% trans "Password" %}</label>
+                <input type="password" name="password1" id="id_password1" class="form-control" required>
+                {% for error in form.password1.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+                <label for="id_password2">{% trans "Confirm Password" %}</label>
+                <input type="password" name="password2" id="id_password2" class="form-control" required>
+                {% for error in form.password2.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Register" %}</button>
+        </form>
+        <p class="text-center mt-3">
+            {% trans "Already have an account?" %} <a href="{% url 'login_mobile' %}">{% trans "Login here." %}</a>
+        </p>
+    </div>
+</section>
+<!-- Custom CSS for Mobile View -->
+<style>
+    .register-section {
+        padding: 0 0 30px; /* Adjusted padding for spacing */
+        min-height: 50vh; /* Full height for centering */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-control {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .btn-primary {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 30px;
+    }
+</style>
+{% endblock %}
