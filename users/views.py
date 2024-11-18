@@ -1,5 +1,10 @@
 import time
-from logging import raiseExceptions
+import json
+import webbrowser
+import base64
+import requests
+import os
+from urllib.parse import urlencode
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -14,40 +19,28 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm
-from django.conf import settings
 from .models import Profile, Feedback, Wrap
 from django.conf import settings
-from django.shortcuts import redirect
-from django.shortcuts import render
-from django.contrib.auth import logout
-
-
-import json
-import webbrowser
-from urllib.parse import urlencode
-import base64
-import requests
 
 
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-
         if form.is_valid():
-            user = form.save()  # creating the user
-
-            # profile creation is handled by the signal, so no need to manually create the profile here
-            profile = user.profile  # fetching the profile created by the signal
-            profile.save()  # saving the profile with the additional data
-
+            user = form.save()
+            profile = user.profile
+            profile.save()
             return redirect('success')
         else:
             return render(request, 'register.html', {'form': form})
     else:
         form = RegistrationForm()
-    return render(request, 'register.html')
+    return render(request, 'register.html', {'form': form})
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -67,17 +60,20 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+
 def invalid_login(request):
     return render(request, 'invalid_login.html')
 
+
 def song_view(request):
-    # Pass the API key from settings to template
-    api_key = settings.SPOTIFY_API_KEY # Spotify API key
+    api_key = settings.SPOTIFY_API_KEY
     user = Profile.objects.get(user=request.user)
     return render(request, 'songs.html', {'api_key': api_key})
 
+
 def registration_successful(request):
     return render(request, 'registration_successful.html')
+
 
 @login_required(login_url='login')
 def favorites(request):
@@ -89,7 +85,6 @@ def favorites(request):
     if request.method == 'GET':
         user = Profile.objects.get(user=request.user)
         api_key = settings.SPOTIFY_API_KEY
-
         return render(request, 'songs.html', {"api_key": api_key})
     return render(request, 'songs.html')
 
@@ -98,6 +93,7 @@ def favorites(request):
 def profile(request, username):
     user_profile = get_object_or_404(Profile, user__username=username)
     return render(request, 'profile.html', {'profile': user_profile})
+
 
 def edit_profile(request, username):
     user = request.user
@@ -109,12 +105,14 @@ def edit_profile(request, username):
             return redirect('profile', username=user.username)
     else:
         form = ProfileEditForm(instance=user)
-    return render(request, 'edit_profile.html', {'form':form,})
+    return render(request, 'edit_profile.html', {'form': form})
+
 
 def public_profile(request, username):
     user = request.user
     profile = request.user.profile
     return render(request, 'public_profile.html', {'user': user, 'profile': profile})
+
 
 def password_reset(request):
     if request.method == 'POST':
@@ -143,26 +141,31 @@ def password_reset(request):
             form = PasswordResetForm()
         return render(request, 'password_reset.html', {'form': form})
 
+
 def password_reset_done(request):
     return render(request, 'password_reset_done.html')
+
 
 def password_reset_confirm(request, uidb64, token):
     return render(request, 'password_reset_confirm.html')
 
+
 def password_reset_complete(request):
     return render(request, 'password_reset_complete.html')
 
+
 def user_doesnt_exist(request):
-    return render(request, 'user_doesnt_exist.html')  # user does not exist template
+    return render(request, 'user_doesnt_exist.html')
+
 
 def songs_view(request):
     return render(request, 'songs.html')
+
 
 def contact_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            # Save the feedback to the database
             Feedback.objects.create(
                 message=form.cleaned_data['message']
             )
@@ -174,19 +177,21 @@ def contact_view(request):
         form = FeedbackForm()
     return render(request, 'contact.html', {'form': form})
 
-    
 
 def delete_account(request):
-        user = request.user
-        user.delete()
-        return redirect('deleted')
+    user = request.user
+    user.delete()
+    return redirect('deleted')
+
 
 def account_deleted(request):
     return render(request, 'account_deleted.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('home')
+
 
 @login_required(login_url='login')
 def home_logged_in(request, username):
@@ -199,129 +204,139 @@ def explore(request):
     return render(request, 'explore.html')
 
 
-
-
 def spotify_login(request):
-    request.session.flush()  # Clear any existing session data
-    print("Session cleared in spotify_login")  # Debug: Confirm session flush
+    request.session.flush()
     cleanup()
     client_id = settings.SPOTIFY_CLIENT_ID
     auth_headers = {
-    "client_id": client_id,
-    "response_type": "code",
-    "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
-    "scope": "user-top-read"
+        "client_id": client_id,
+        "response_type": "code",
+        "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
+        "scope": "user-top-read"
     }
-
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
-
     return redirect("spotify_data")
 
-# users/views.py
+
 def spotify_callback(request):
     spotifyToken = request.session.get('spotify_token', None)
     code = request.GET.get('code')
     if not spotifyToken and code:
         client_id = settings.SPOTIFY_CLIENT_ID
         client_secret = settings.SPOTIFY_CLIENT_SECRET
-
         encoded_credentials = base64.b64encode(client_id.encode() + b':' + client_secret.encode()).decode("utf-8")
-
         token_headers = {
             "Authorization": "Basic " + encoded_credentials,
             "Content-Type": "application/x-www-form-urlencoded"
         }
-
         token_data = {
             "grant_type": "authorization_code",
             "code": code,
             "redirect_uri": settings.SPOTIFY_REDIRECT_URI
         }
-
         r = requests.post("https://accounts.spotify.com/api/token", data=token_data, headers=token_headers)
         token = r.json()["access_token"]
         request.session["spotify_token"] = token
     return redirect('users:spotify_data')
 
 
-from django.views.decorators.cache import never_cache
-
 @never_cache
 def spotify_data(request):
     token = request.session.get('spotify_token')
     if not token:
         return redirect('users:spotify_login')
-    
     user_headers = {
         "Authorization": "Bearer " + token,
         "Content-Type": "application/json"
     }
-
     user_params = {
         "limit": 10,
         "time_range": "short_term"
     }
-
-    # Fetch the most recent data from Spotify
     try:
         top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params, headers=user_headers)
         top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
     except Exception as e:
         print("Error fetching data in spotify_data:", e)
-        # return redirect('users:spotify_login')
-
     return render(request, 'users/spotify_data.html', {
         'top_artists': top_artists.json(),
         'top_tracks': top_tracks.json()
     })
 
-from .forms import WrapSettingsForm
 
-@login_required()
+@csrf_exempt
+@login_required
 def wrap_generate(request):
     if request.method == 'POST':
-        form = WrapSettingsForm(request.POST)
-        if form.is_valid():
-            time_range = form.cleaned_data['time_range']
-            limit = form.cleaned_data['limit']
-
-            request.session['time_range'] = time_range
-            request.session['limit'] = limit
-
-            return redirect('new_wrap')
-
+        time_range = request.POST.get('time_range', 'short_term')
+        limit = int(request.POST.get('limit', 10))
+        spotify_token = request.session.get('spotify_token')
+        if not spotify_token:
+            return JsonResponse({'success': False, 'error': 'No Spotify token found.'}, status=400)
+        headers = {"Authorization": f"Bearer {spotify_token}"}
+        params = {"limit": limit, "time_range": time_range}
+        try:
+            top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", headers=headers, params=params).json()
+            top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", headers=headers, params=params).json()
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
+        artists = [
+            {
+                'name': artist['name'],
+                'image': artist['images'][0]['url'] if artist['images'] else None,
+            }
+            for artist in top_artists.get('items', [])
+        ]
+        tracks = [{'name': track['name']} for track in top_tracks.get('items', [])]
+        wrap = Wrap.objects.create(
+            user=request.user,
+            title=f"{time_range.capitalize()} Wrap",
+            top_artists=artists,
+            top_tracks=tracks,
+        )
+        return JsonResponse({
+            'success': True,
+            'wrap_id': wrap.id,
+            'wrap_title': wrap.title,
+            'top_artists': artists,
+            'top_tracks': tracks,
+        })
+    elif request.method == 'PUT':
+        try:
+            body = json.loads(request.body.decode('utf-8'))
+            wrap_id = body.get('wrap_id')
+            custom_title = body.get('custom_title')
+            wrap = Wrap.objects.get(id=wrap_id, user=request.user)
+            wrap.title = custom_title
+            wrap.save()
+            return JsonResponse({'success': True, 'wrap_title': wrap.title})
+        except Wrap.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Wrap not found.'}, status=404)
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
     else:
-        form = WrapSettingsForm()
-    return render(request, 'wrap_setup.html', {'form': form})
+        return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=405)
 
 
 def new_wrap(request):
     token = request.session.get('spotify_token')
     if not token:
         return redirect('users:spotify_login')
-
     time_range = request.session.get('time_range', 'short_term')
     limit = request.session.get('limit', 10)
-
     user_headers = {
         "Authorization": "Bearer " + token,
         "Content-Type": "application/json"
     }
-
     user_params = {
         "limit": limit,
         "time_range": time_range
     }
-
-    # Fetch data from Spotify
     try:
-        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params,
-                                   headers=user_headers)
+        top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", params=user_params, headers=user_headers)
         top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", params=user_params, headers=user_headers)
-
         top_artists_data = top_artists.json()
         top_tracks_data = top_tracks.json()
-
         top_artists = [{
             'name': artist['name'],
             'image': artist['images'][0]['url'] if artist['images'] else None
@@ -332,12 +347,9 @@ def new_wrap(request):
         } for track in top_tracks_data['items']]
         request.session['top_artists'] = top_artists
         request.session['top_tracks'] = top_tracks
-
     except Exception as e:
         print("Error fetching data in spotify_data:", e)
         return redirect('users:spotify_login')
-
-
     if request.method == "POST":
         title = request.POST.get('title', '')
         if title:
@@ -350,70 +362,64 @@ def new_wrap(request):
             wrap.save()
             return redirect('wrap_detail', wrap_id=wrap.id)
     else:
-        # Initial GET request for the wrap form
         form = WrapForm()
-
         return render(request, 'new_wrap.html', {
             'form': WrapForm(instance=None),
             'top_artists': top_artists,
             'top_tracks': top_tracks
         })
 
-def wrap_detail(request, wrap_id):
-    wrap = get_object_or_404(Wrap, id=wrap_id)
-    return render(request, 'wrap_detail.html', {'wrap': wrap})
 
 @login_required
+def wrap_detail(request, wrap_id):
+    try:
+        wrap = Wrap.objects.get(id=wrap_id, user=request.user)
+        return JsonResponse({
+            'success': True,
+            'wrap_id': wrap.id,
+            'wrap_title': wrap.title,
+            'top_artists': wrap.top_artists,
+            'top_tracks': wrap.top_tracks,
+        })
+    except Wrap.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Wrap not found.'}, status=404)
+
+
+@csrf_exempt
+@login_required
 def wrap_delete(request, wrap_id):
-    wrap = get_object_or_404(Wrap, id=wrap_id)
-
-    # Check if the current user is the one who created the wrap
-    if wrap.user == request.user:
-        if request.method == 'POST':
+    if request.method == 'DELETE':
+        try:
+            wrap = Wrap.objects.get(id=wrap_id, user=request.user)
             wrap.delete()
-            return redirect('home_logged_in', request.user)  # Redirect after deletion
-    else:
-        return redirect('wrap_detail', wrap_id=wrap.id)
+            return JsonResponse({'success': True})
+        except Wrap.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Wrap not found.'}, status=404)
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=405)
 
-    return render(request, 'wrap_detail.html', {'wrap': wrap})
-
-# users/views.py
-from django.contrib.auth import logout
-
-# users/views.py
-from django.shortcuts import redirect
-from django.views.decorators.csrf import csrf_exempt
-
-from django.shortcuts import redirect
-from django.views.decorators.csrf import csrf_exempt
-
-
-from django.shortcuts import redirect
 
 def spotify_logout(request):
-    print("Clearing session data in spotify_logout")  # Debug
     request.session.pop('spotify_token', None)
-    request.session.flush()  # Ensure all session data is cleared
+    request.session.flush()
     response = redirect('users:spotify_login')
     response.delete_cookie('sessionid')
-    print("Session and cookies cleared in spotify_logout")  # Debug
     time.sleep(3)
     return response
 
-import os
 
 def cleanup():
-    # Locate and remove any .cache files created by SpotifyOAuth
     for filename in os.listdir():
         if filename.startswith(".cache"):
             os.remove(filename)
             print(f"Removed cache file: {filename}")
 
+
 def home(request):
-    view_mode = request.GET.get('view', 'desktop')  # Default to 'desktop' view
+    view_mode = request.GET.get('view', 'desktop')
     if view_mode == 'mobile':
         return render(request, 'home_mobile.html')
     return render(request, 'home.html')
+
 
 def login_mobile(request):
     return render(request, 'login_mobile.html')
@@ -421,6 +427,7 @@ def login_mobile(request):
 
 def register_mobile(request):
     return render(request, 'register_mobile.html')
+
 
 @login_required(login_url='login_mobile')
 def home_logged_in_mobile(request):

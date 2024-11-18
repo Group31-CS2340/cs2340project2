@@ -10,7 +10,7 @@
             white-space: nowrap;
             padding: 10px;
             gap: 10px;
-            scroll-behavior: smooth;  /* Enables smooth scrolling */
+            scroll-behavior: smooth;
         }
 
         .gallery-item {
@@ -26,28 +26,56 @@
         }
 
         .gallery-item:hover {
-            transform: scale(1.05);  /* Adds a slight zoom effect on hover */
+            transform: scale(1.05);
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            color: black; /* Ensure text is visible */
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .artist-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .artist-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
         }
     </style>
-{% endblock %}
-
-{% block nav %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"     aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav"> 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' request.user.username %}">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'explore' %}">Explore</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-            </li>
-        </ul>
-    </div>
 {% endblock %}
 
 {% block content %}
@@ -56,24 +84,216 @@
         <h2 class="mb-4">Welcome to your Spotify Wrapped!</h2>
     </div>
 </div>
-    <div>
-        <a href="{% url 'wrap_generate' %}" class="btn btn-primary">Generate a New Wrap</a>
+
+<!-- Button to show the form for generating a new wrap -->
+<div>
+    <button id="generateWrapButton" class="btn btn-primary">Generate a New Wrap</button>
+</div>
+
+<!-- Form to specify timeframe and limit -->
+<div id="wrapFormContainer" class="mt-3" style="display: none;">
+    <form id="wrapForm" method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="time_range">Time Range:</label>
+            <select name="time_range" id="time_range">
+                <option value="short_term">Short Term</option>
+                <option value="medium_term">Medium Term</option>
+                <option value="long_term">Long Term</option>
+            </select>
+        </div>
+        <div>
+            <label for="limit">Limit:</label>
+            <input type="number" name="limit" id="limit" min="1" max="50" value="10">
+        </div>
+        <button type="submit" class="btn btn-success mt-2">Generate</button>
+    </form>
+</div>
+
+<!-- Modal for displaying the wrap -->
+<div id="wrapModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h3 id="modalWrapTitle"></h3>
+        <h4>Top Artists:</h4>
+        <ul id="modalTopArtists"></ul>
+        <h4>Top Tracks:</h4>
+        <ul id="modalTopTracks"></ul>
+        <div class="mt-3">
+            <label for="customWrapName">Custom Wrap Name:</label>
+            <input type="text" id="customWrapName" placeholder="Enter a name for your wrap">
+            <button id="saveWrapName" class="btn btn-success mt-2">Save</button>
+            <button id="deleteWrap" class="btn btn-danger mt-2">Delete</button>
+        </div>
     </div>
-<div id="wraps">
-    <div id="wraps">
+</div>
+
+<!-- Gallery of saved wraps -->
+<div id="wraps" class="mt-4">
     <div class="gallery-container">
         {% for wrap in wraps %}
-            <a href="{% url 'wrap_detail' wrap.id %}">
-                <div class="gallery-item">
-                    {{ wrap.title }}
-                </div>
-            </a>
+            <div class="gallery-item" data-wrap-id="{{ wrap.id }}">
+                {{ wrap.title }}
+            </div>
         {% empty %}
             <p>No saved wraps yet. Generate a new wrap to see it here!</p>
         {% endfor %}
     </div>
 </div>
 
-</div>
+<!-- Include the AJAX script -->
+<script>
+    // Function to get CSRF token from cookies
+    function getCSRFToken() {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+            if (name === 'csrftoken') {
+                return value;
+            }
+        }
+        return null;
+    }
 
+    // Show the form for generating a new wrap
+    document.querySelector('#generateWrapButton').addEventListener('click', function () {
+        document.querySelector('#wrapFormContainer').style.display = 'block';
+    });
+
+    // Handle form submission to generate the wrap
+    document.querySelector('#wrapForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        fetch('/wrap-generate/', {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showWrapDetails(data.wrap_id, data.wrap_title, data.top_artists, data.top_tracks);
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Show wrap details in the modal
+    function showWrapDetails(wrapId, wrapTitle, topArtists, topTracks) {
+        document.querySelector('#modalWrapTitle').textContent = wrapTitle;
+
+        const artistsList = document.querySelector('#modalTopArtists');
+        artistsList.innerHTML = '';
+        topArtists.forEach(artist => {
+            const li = document.createElement('li');
+            li.classList.add('artist-item');
+            li.innerHTML = `
+                <img src="${artist.image}" class="artist-image" alt="${artist.name}">
+                <span>${artist.name}</span>
+            `;
+            artistsList.appendChild(li);
+        });
+
+        const tracksList = document.querySelector('#modalTopTracks');
+        tracksList.innerHTML = '';
+        topTracks.forEach(track => {
+            const li = document.createElement('li');
+            li.textContent = track.name;
+            tracksList.appendChild(li);
+        });
+
+        // Set up delete button
+        document.querySelector('#deleteWrap').dataset.wrapId = wrapId;
+
+        document.querySelector('#wrapModal').style.display = 'flex';
+    }
+
+    // Fetch and show wrap details
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function (event) {
+            event.preventDefault();
+            const wrapId = this.dataset.wrapId;
+
+            fetch(`/wrap-detail/${wrapId}/`, {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showWrapDetails(data.wrap_id, data.wrap_title, data.top_artists, data.top_tracks);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+
+    // Save the custom wrap name
+    document.querySelector('#saveWrapName').addEventListener('click', function () {
+        const customName = document.querySelector('#customWrapName').value;
+        const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;
+
+        if (customName && wrapId) {
+            fetch('/wrap-generate/', {
+                method: 'PUT',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken(),
+                },
+                body: JSON.stringify({
+                    wrap_id: wrapId,
+                    custom_title: customName,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`Wrap name saved as: ${data.wrap_title}`);
+                    location.reload();
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    });
+
+    // Delete a wrap
+    document.querySelector('#deleteWrap').addEventListener('click', function () {
+        const wrapId = this.dataset.wrapId;
+
+        fetch(`/wrap-delete/${wrapId}/`, {
+            method: 'DELETE',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': getCSRFToken(),
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Wrap deleted successfully!');
+                location.reload();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Close the modal
+    document.querySelector('#closeModal').addEventListener('click', function () {
+        document.querySelector('#wrapModal').style.display = 'none';
+    });
+</script>
 {% endblock %}
