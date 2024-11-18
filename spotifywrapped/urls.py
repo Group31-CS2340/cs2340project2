@@ -70,4 +70,7 @@ urlpatterns = [
     path('wrap/<int:wrap_id>/', user_views.wrap_detail, name='wrap_detail'),
     path('wrap-setup/', user_views.wrap_generate, name='wrap_generate'),
     path('delete-wrap/<int:wrap_id>', user_views.wrap_delete, name='wrap_delete'),
+    path('mobile_login/', user_views.login_mobile, name='login_mobile'),
+    path('mobile_register/', user_views.register_mobile, name='register_mobile'),
+    path('mobile_homepage/', user_views.home_logged_in_mobile, name='logged_in_home_mobile'),
 ]
