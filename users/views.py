@@ -365,7 +365,7 @@ def fetch_data(request):
         'artist': ', '.join(artist['name'] for artist in track['artists']),
         'album': track['album']['name'],
         'duration_ms': track['duration_ms'],
-        'image': track['album']['images'][0]['url'] if track['album']['images'] else None
+        'image': track['›album']['images'][0]['url'] if track['album']['images'] else None
     }
     for track in top_tracks.get('items', [])
 ]

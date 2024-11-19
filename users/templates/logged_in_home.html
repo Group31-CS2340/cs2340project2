@@ -93,7 +93,7 @@
 </div>
 
 <!-- Transition slides -->
-<div id="transitionSlides" class="carousel slide mb-4" data-ride="carousel" style="background-color: #ffffff;">
+<div id="transitionSlides" class="carousel slide mb-4" data-ride="carousel" data-interval="3000" style="background-color: #ffffff;">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FF5733; color: white;">
@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #33FF57; color: white;">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #33FF57; color: black;">
                 <h3>Top Albums</h3>
                 <ul>
                     {% for album in data.1 %}
@@ -186,7 +186,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FFCCCC; color: white;">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FFCCCC; color: black;">
                 <h3>Followed Artists</h3>
                 <ul>
                     {% for artist in data.7 %}
