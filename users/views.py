@@ -213,7 +213,7 @@ def spotify_login(request):
         "client_id": client_id,
         "response_type": "code",
         "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
-        "scope": "user-top-read user-library-read"
+        "scope": "user-top-read user-library-read user-read-recently-played user-follow-read"
     }
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
     return redirect("spotify_data")
@@ -299,6 +299,12 @@ def fetch_data(request):
     try:
         top_artists = requests.get("https://api.spotify.com/v1/me/top/artists", headers=headers, params=params).json()
         saved_albums = requests.get("https://api.spotify.com/v1/me/albums", headers=headers, params=params).json()
+        saved_episodes = requests.get("https://api.spotify.com/v1/me/episodes", headers=headers,params=params).json()
+        playlists = requests.get("https://api.spotify.com/v1/me/playlists", headers=headers, params=params).json()
+        recent_tracks = requests.get("https://api.spotify.com/v1/me/player/recently-played", headers=headers, params=params).json()
+        audiobooks = requests.get("https://api.spotify.com/v1/me/audiobooks", headers=headers, params=params).json()
+        top_tracks = requests.get("https://api.spotify.com/v1/me/top/tracks", headers=headers, params=params).json()
+        followed_artists = requests.get("https://api.spotify.com/v1/me/following", headers=headers, params={"type": "artist"}).json()
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
     artists = [
@@ -316,7 +322,65 @@ def fetch_data(request):
         }
         for album in saved_albums.get('items', [])
     ]
-    data = [artists, albums]
+    episodes = [
+            {
+                'name': episode['episode']['name'],
+                'show': episode['episode']['show']['name'],
+                'added_at': episode['added_at']
+            }
+            for episode in saved_episodes.get('items', [])
+        ]
+    playlists = [
+            {
+                'name': playlist['name'],
+                'id': playlist['id'],
+                'tracks': playlist['tracks']['total'],
+                'image': playlist['images'][0]['url'] if playlist['images'] else None,
+                'owner': playlist['owner']['display_name']
+            }
+            for playlist in playlists.get('items', [])
+        ]
+    recent_tracks = [
+    {
+        'track_name': track['track']['name'],
+        'artist_name': ', '.join(artist['name'] for artist in track['track']['artists']),
+        'album_name': track['track']['album']['name'],
+        'played_at': track['played_at'],
+        'image': track['track']['album']['images'][0]['url'] if track['track']['album']['images'] else None
+    }
+    for track in recent_tracks.get('items', [])
+    ]
+    audiobooks = [
+    {
+        'title': audiobook['name'],
+        'authors': ', '.join(author['name'] for author in audiobook['authors']),
+        'narrator': audiobook.get('narrator', None),
+        'image': audiobook['images'][0]['url'] if audiobook['images'] else None
+    }
+    for audiobook in audiobooks.get('items', [])
+]
+    top_tracks = [
+    {
+        'name': track['name'],
+        'artist': ', '.join(artist['name'] for artist in track['artists']),
+        'album': track['album']['name'],
+        'duration_ms': track['duration_ms'],
+        'image': track['album']['images'][0]['url'] if track['album']['images'] else None
+    }
+    for track in top_tracks.get('items', [])
+]
+    followed_artists = [
+    {
+        'name': artist['name'],
+        'id': artist['id'],
+        'genres': artist.get('genres', []),
+        'image': artist['images'][0]['url'] if artist['images'] else None
+    }
+    for artist in followed_artists.get('artists', {}).get('items', [])
+]
+
+
+    data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists]
     return (data)
 
 

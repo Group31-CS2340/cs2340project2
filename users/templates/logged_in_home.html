@@ -96,7 +96,7 @@
 <div id="transitionSlides" class="carousel slide mb-4" data-ride="carousel" style="background-color: #ffffff;">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <div class="d-block w-100" style="height: 600px; background-color: #FF5733;">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FF5733; color: white;">
                 <h3>Top Artists</h3>
                 <ul>
                     {% for artist in data.0 %}
@@ -109,13 +109,90 @@
             </div>
         </div>
         <div class="carousel-item">
-            <div class="d-block w-100" style="height: 600px; background-color: #33FF57;">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #33FF57; color: white;">
                 <h3>Top Albums</h3>
                 <ul>
                     {% for album in data.1 %}
                     <li class="artist-item">
                         <img src="{{ album.image }}" class="artist-image" alt="{{ album.name }}">
                         <span>{{ album.name }} by {{ album.artists }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #3357FF; color: white;">
+                <h3>Top Episodes</h3>
+                <ul>
+                    {% for episode in data.2 %}
+                    <li class="artist-item">
+                        <span>{{ episode.name }} from {{ episode.show }} (Added on {{ episode.added_at }})</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FF33A1; color: white;">
+                <h3>Top Playlists</h3>
+                <ul>
+                    {% for playlist in data.3 %}
+                    <li class="artist-item">
+                        <img src="{{ playlist.image }}" class="artist-image" alt="{{ playlist.name }}">
+                        <span>{{ playlist.name }} by {{ playlist.owner }} ({{ playlist.tracks }} tracks)</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FFA533; color: white;">
+                <h3>Recent Tracks</h3>
+                <ul>
+                    {% for track in data.4 %}
+                    <li class="artist-item">
+                        <img src="{{ track.image }}" class="artist-image" alt="{{ track.track_name }}">
+                        <span>{{ track.track_name }} by {{ track.artist_name }} from {{ track.album_name }} (Played at {{ track.played_at }})</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #33A1FF; color: white;">
+                <h3>Top Audiobooks</h3>
+                <ul>
+                    {% for audiobook in data.5 %}
+                    <li class="artist-item">
+                        <img src="{{ audiobook.image }}" class="artist-image" alt="{{ audiobook.title }}">
+                        <span>{{ audiobook.title }} by {{ audiobook.authors }}{% if audiobook.narrator %}, narrated by {{ audiobook.narrator }}{% endif %}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #A133FF; color: white;">
+                <h3>Top Tracks</h3>
+                <ul>
+                    {% for track in data.6 %}
+                    <li class="artist-item">
+                        <img src="{{ track.image }}" class="artist-image" alt="{{ track.name }}">
+                        <span>{{ track.name }} by {{ track.artist }} from {{ track.album }} (Duration: {{ track.duration_ms }})</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FFCCCC; color: white;">
+                <h3>Followed Artists</h3>
+                <ul>
+                    {% for artist in data.7 %}
+                    <li class="artist-item">
+                        <img src="{{ artist.image }}" class="artist-image" alt="{{ artist.name }}">
+                        <span>{{ artist.name }}</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -134,6 +211,12 @@
     <ol class="carousel-indicators">
         <li data-target="#transitionSlides" data-slide-to="0" class="active"></li>
         <li data-target="#transitionSlides" data-slide-to="1"></li>
+        <li data-target="#transitionSlides" data-slide-to="2"></li>
+        <li data-target="#transitionSlides" data-slide-to="3"></li>
+        <li data-target="#transitionSlides" data-slide-to="4"></li>
+        <li data-target="#transitionSlides" data-slide-to="5"></li>
+        <li data-target="#transitionSlides" data-slide-to="6"></li>
+        <li data-target="#transitionSlides" data-slide-to="7"></li>
     </ol>
 </div>
 
