@@ -1,1 +1,73 @@
+{% extends "base_site_mobile.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Login - Spotify Wrapped Bootleg (Mobile View){% endblock %}
+{% block content %}
+<!-- Login Form for Mobile -->
+<section class="login-section">
+    <div class="container d-flex flex-column align-items-center justify-content-center" style="max-width: 400px; width: 100%;">
+        <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Login to Spotify Wrapped Bootleg" %}</h3>
+        <form method="post" class="w-100">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
 
+            <!-- Username Field -->
+            <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+                <label for="id_username">{% trans "Username" %}</label>
+                <input type="text" name="username" id="id_username" class="form-control" required>
+                {% for error in form.username.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group {% if form.password.errors %}has-error{% endif %}">
+                <label for="id_password">{% trans "Password" %}</label>
+                <input type="password" name="password" id="id_password" class="form-control" required>
+                {% for error in form.password.errors %}
+                    <small class="form-text text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">{% trans "Login" %}</button>
+        </form>
+        <p class="text-center mt-3">
+            {% trans "Don't have an account?" %} <a href="{% url 'register_mobile' %}">{% trans "Register here." %}</a>
+        </p>
+        <p class="text-center mt-2">
+            <a href="{% url 'password_reset' %}">{% trans "Forgot your password?" %}</a>
+        </p>
+    </div>
+</section>
+<!-- Custom CSS for Mobile View -->
+<style>
+    .login-section {
+        padding: 0 0 30px; /* Adjusted padding for spacing */
+        min-height: 50vh; /* Full height for centering */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-control {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .btn-primary {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 30px;
+    }
+</style>
+{% endblock %}
