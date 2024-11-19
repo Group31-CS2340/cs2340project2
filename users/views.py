@@ -198,7 +198,6 @@ def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
     data = fetch_data(request)
-    print(data)
     return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
 
 def explore(request):
