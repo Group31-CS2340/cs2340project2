@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-28 22:34-0400\n"
+"POT-Creation-Date: 2024-11-16 17:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,67 +18,201 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\users\templates\contact.html:26
-msgid "Spotify Wrapped Bootleg"
-msgstr ""
-
-#: .\users\templates\contact.html:33
-msgid "Contact the Developers"
-msgstr "联系开发者"
-
-#: .\users\templates\home.html:34 .\users\templates\login.html:36
-#: .\users\templates\login.html:67 .\users\templates\register.html:103
+#: .\users\templates\base_site.html:30
+#: .\users\templates\base_site_mobile.html:125 .\users\templates\login.html:37
+#: .\users\templates\login.html:68 .\users\templates\register.html:81
 msgid "Login"
 msgstr "登录"
 
-#: .\users\templates\home.html:37 .\users\templates\register.html:36
+#: .\users\templates\base_site.html:33
+#: .\users\templates\base_site_mobile.html:122
+#: .\users\templates\register.html:14
 msgid "Register"
 msgstr "注册"
 
-#: .\users\templates\home.html:40
+#: .\users\templates\base_site.html:36
 msgid "Contact"
 msgstr "联系"
 
-#: .\users\templates\login.html:47 .\users\templates\register.html:59
+#: .\users\templates\base_site.html:56
+msgid "Mobile"
+msgstr ""
+
+#: .\users\templates\base_site.html:57
+msgid "Desktop"
+msgstr ""
+
+#: .\users\templates\base_site_mobile.html:119
+msgid "Home"
+msgstr ""
+
+#: .\users\templates\contact.html:20
+msgid "Contact the Developers"
+msgstr "联系开发者"
+
+#: .\users\templates\contact.html:77
+msgid "Spotify Wrapped Bootleg"
+msgstr ""
+
+#: .\users\templates\contact.html:78
+msgid "Toggle navigation"
+msgstr ""
+
+#: .\users\templates\contact.html:86
+msgid "Meet the Team"
+msgstr "认识团队"
+
+#: .\users\templates\contact.html:90
+msgid "Jacob"
+msgstr ""
+
+#: .\users\templates\contact.html:92 .\users\templates\contact.html:98
+msgid "Backend"
+msgstr "后端"
+
+#: .\users\templates\contact.html:96
+msgid "Shrayes"
+msgstr ""
+
+#: .\users\templates\contact.html:102
+msgid "Katya"
+msgstr ""
+
+#: .\users\templates\contact.html:104 .\users\templates\contact.html:110
+msgid "Frontend"
+msgstr "前端"
+
+#: .\users\templates\contact.html:108
+msgid "Anderson"
+msgstr ""
+
+#: .\users\templates\contact.html:114
+msgid "Audrey"
+msgstr ""
+
+#: .\users\templates\contact.html:116
+msgid "Fullstack"
+msgstr "全栈"
+
+#: .\users\templates\contact.html:124
+msgid "We’d Love to Hear From You!"
+msgstr "我们期待您的来信"
+
+#: .\users\templates\contact.html:142
+msgid "Feedback"
+msgstr "反馈"
+
+#: .\users\templates\contact.html:150
+msgid "Submit"
+msgstr "提交"
+
+#: .\users\templates\login.html:48 .\users\templates\register.html:37
 msgid "Username"
 msgstr "帐号"
 
-#: .\users\templates\login.html:58 .\users\templates\register.html:81
+#: .\users\templates\login.html:59 .\users\templates\register.html:59
 msgid "Password"
 msgstr "密码"
 
-#: .\users\templates\login.html:70
+#: .\users\templates\login.html:71
 msgid "Don't have an account?"
 msgstr "没有帐号?"
 
-#: .\users\templates\login.html:70
+#: .\users\templates\login.html:71
 msgid "Register here."
 msgstr "在此注册"
 
-#: .\users\templates\login.html:73
+#: .\users\templates\login.html:74
 msgid "Forgot your password?"
 msgstr "忘记密码?"
 
-#: .\users\templates\register.html:47
+#: .\users\templates\password_change_done.html:7
+msgid "Your password has been changed successfully"
+msgstr "您的密码已更改成功"
+
+#: .\users\templates\password_reset.html:36
+#: .\users\templates\password_reset.html:50
+#, fuzzy
+#| msgid "Set Password"
+msgid "Reset Password"
+msgstr "设置密码"
+
+#: .\users\templates\password_reset.html:37
+msgid ""
+"Enter your email address, and we'll send you an email with instructions to "
+"reset your password."
+msgstr ""
+
+#: .\users\templates\password_reset.html:47 .\users\templates\register.html:48
+msgid "Email"
+msgstr "电子邮箱"
+
+#: .\users\templates\password_reset_complete.html:7
+msgid "Password Reset Complete"
+msgstr ""
+
+#: .\users\templates\password_reset_complete.html:8
+#, fuzzy
+#| msgid "Your password has been changed successfully"
+msgid "Your password has been reset successfully. You can now"
+msgstr "您的密码已更改成功您现在可以"
+
+#: .\users\templates\password_reset_complete.html:9
+msgid "log in"
+msgstr "登录"
+
+#: .\users\templates\password_reset_complete.html:10
+#, fuzzy
+#| msgid "Forgot your password?"
+msgid "with your new password."
+msgstr "使用新密码"
+
+#: .\users\templates\password_reset_confirm.html:37
+msgid "Set New Password"
+msgstr "设置新密码"
+
+#: .\users\templates\password_reset_confirm.html:48
+msgid "New Password"
+msgstr "新密码"
+
+#: .\users\templates\password_reset_confirm.html:59
+msgid "Confirm New Password"
+msgstr "确认新密码"
+
+#: .\users\templates\password_reset_confirm.html:68
+msgid "Set Password"
+msgstr "设置密码"
+
+#: .\users\templates\password_reset_confirm.html:71
+msgid "Back to Login"
+msgstr "返回登录"
+
+#: .\users\templates\password_reset_done.html:7
+msgid "Password Reset Sent"
+msgstr ""
+
+#: .\users\templates\password_reset_done.html:8
+msgid ""
+"An email has been sent to your email address with instructions to reset your "
+"password."
+msgstr ""
+
+#: .\users\templates\register.html:25
 msgid "First Name"
 msgstr "名字"
 
-#: .\users\templates\register.html:53
+#: .\users\templates\register.html:31
 msgid "Last Name"
 msgstr "姓"
 
 #: .\users\templates\register.html:70
-msgid "Email"
-msgstr "电子邮箱"
-
-#: .\users\templates\register.html:92
 msgid "Re-enter Password"
 msgstr "重新输入密码"
 
-#: .\users\templates\register.html:101
+#: .\users\templates\register.html:79
 msgid "Create Account"
 msgstr "创建帐号"
 
-#: .\users\templates\register.html:103
+#: .\users\templates\register.html:81
 msgid "Already have an account?"
 msgstr "已有帐户?"

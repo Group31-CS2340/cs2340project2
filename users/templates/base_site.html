@@ -53,8 +53,8 @@
                 </select>
             </form>
             <div class="view-toggle mt-2">
-                <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">Mobile</a>
-                <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">Desktop</a>
+                <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">{% trans "Mobile" %}</a>
+                <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">{% trans "Desktop" %}</a>
             </div>
         </div>
     </div>

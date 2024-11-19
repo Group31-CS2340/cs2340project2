@@ -5,124 +5,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Include Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-     <!-- Include FontAwesome for icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
- 
-     <!-- Include Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
- 
-     <!-- Include custom CSS -->
-     <link href="{% static 'users/style.css' %}" rel="stylesheet">
-    <title>Contact the Developers</title>
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Include custom CSS -->
+    <link href="{% static 'users/style.css' %}" rel="stylesheet">
+    <title>{% trans "Contact the Developers" %}</title>
     <style>
-       
-   .wrap{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-   }
-    .team-section {
-      text-align: center;
-      max-width: 1200px;
-      margin: 20px;
-      padding: 10px;
-    }
-    .team-header {
-      font-size: 2em;
-      color: white;
-      margin-bottom: 20px;
-    }
-    .team-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-    }
-    .team-member {
-      background-color: #282828;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      width: 200px;
-      text-align: center;
-      flex-shrink: 0
-    }
-    .member-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    .member-name {
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #B3B3B3;
-      margin: 10px 0 5px;
-    }
-    .member-title {
-      font-size: 0.9em;
-      color:#FFFFFF;
-    }
-      </style>
+       .wrap{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+       }
+        .team-section {
+          text-align: center;
+          max-width: 1200px;
+          margin: 20px;
+          padding: 10px;
+        }
+        .team-header {
+          font-size: 2em;
+          color: white;
+          margin-bottom: 20px;
+        }
+        .team-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          justify-content: center;
+        }
+        .team-member {
+          background-color: #282828;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          width: 200px;
+          text-align: center;
+          flex-shrink: 0
+        }
+        .member-photo {
+          width: 160px;
+          height: 160px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 10px;
+        }
+        .member-name {
+          font-size: 1.3em;
+          font-weight: bold;
+          color: #B3B3B3;
+          margin: 10px 0 5px;
+        }
+        .member-title {
+          font-size: 0.9em;
+          color: #FFFFFF;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="{% url 'home' %}">{% trans "Spotify Wrapped Bootleg" %}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
 
     <!-- Team Section -->
-    <div class="wrap" >
+    <div class="wrap">
       <div class="team-section">
-        <h2 class="team-header">Meet the Team</h2>
+        <h2 class="team-header">{% trans "Meet the Team" %}</h2>
         <div class="team-container">
           
           <div class="team-member">
-            <img src="{% static 'users/jacob3.jpg' %}" alt="Jacob" class="member-photo">
+            <img src="{% static 'users/jacob3.jpg' %}" alt="{% trans "Jacob" %}" class="member-photo">
             <div class="member-name">Jacob</div>
-            <div class="member-title">Backend</div>
+            <div class="member-title">{% trans "Backend" %}</div>
           </div>
           
           <div class="team-member">
-            <img src="{% static 'users/shrayes3.jpg' %}" alt="Shrayes" class="member-photo">
+            <img src="{% static 'users/shrayes3.jpg' %}" alt="{% trans "Shrayes" %}" class="member-photo">
             <div class="member-name">Shrayes</div>
-            <div class="member-title">Backend</div>
+            <div class="member-title">{% trans "Backend" %}</div>
           </div>
           
           <div class="team-member">
-            <img src="{% static 'users/katya2.jpg' %}" alt="Katya" class="member-photo">
+            <img src="{% static 'users/katya2.jpg' %}" alt="{% trans "Katya" %}" class="member-photo">
             <div class="member-name">Katya</div>
-            <div class="member-title">Frontend</div>
+            <div class="member-title">{% trans "Frontend" %}</div>
           </div>
           
           <div class="team-member">
-            <img src="{% static 'users/anderson2.jpg' %}" alt="Anderson" class="member-photo">
+            <img src="{% static 'users/anderson2.jpg' %}" alt="{% trans "Anderson" %}" class="member-photo">
             <div class="member-name">Anderson</div>
-            <div class="member-title">Frontend</div>
+            <div class="member-title">{% trans "Frontend" %}</div>
           </div>
           
           <div class="team-member">
-            <img src="{% static 'users/audrey2.jpg' %}" alt="Audrey" class="member-photo">
+            <img src="{% static 'users/audrey2.jpg' %}" alt="{% trans "Audrey" %}" class="member-photo">
             <div class="member-name">Audrey</div>
-            <div class="member-title">Fullstack</div>
-
+            <div class="member-title">{% trans "Fullstack" %}</div>
           </div>
-    </div >
-    <br><br>
+        </div>
+      </div>
+    </div>
 
-  <!-- Feedback Section -->
-  <h2>We’d Love to Hear From You!</h2>
-  <br>
-    <div class="wrap" >
+    <!-- Feedback Section -->
+    <br><br>
+    <h2 class="text-center">{% trans "We’d Love to Hear From You!" %}</h2>
+    <br>
+    <div class="wrap">
       <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;">
         <form method="POST" action="{% url 'contact' %}">
           {% csrf_token %}
@@ -130,7 +131,7 @@
           {% for message in messages %}
               <div class="alert alert-success">{{ message }}</div>
           {% endfor %}
-      {% endif %}
+          {% endif %}
           {% if form.non_field_errors %}
               <div class="alert alert-danger">
                   {{ form.non_field_errors }}
@@ -145,10 +146,9 @@
                       {{ form.message.errors }}
                   </div>
               {% endif %}
-                </div>
+          </div>
           <button type="submit" class="btn btn-primary btn-block">{% trans "Submit" %}</button>
-
-        
+        </form>
       </div>
     </div>
 
