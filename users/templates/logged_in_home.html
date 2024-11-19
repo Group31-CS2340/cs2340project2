@@ -393,7 +393,6 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert(`Wrap name saved as: ${data.wrap_title}`);
                     location.reload();
                 } else {
                     alert('Error: ' + data.error);
@@ -417,7 +416,6 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Wrap deleted successfully!');
                 location.reload();
             } else {
                 alert('Error: ' + data.error);
