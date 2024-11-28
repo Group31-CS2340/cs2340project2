@@ -195,10 +195,24 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def home_logged_in(request, username):
+    print("loading homepage\n")
+    user = get_object_or_404(User, username=username)
+    print("user\n")
+    wraps = Wrap.objects.filter(user=user)
+    print("wraps\n")
+    data = fetch_data(request)
+    print("data\n")
+    print(data)
+    data = fetch_data(request)
+    if isinstance(data, JsonResponse) and data.status_code == 400:
+        return redirect(home_logged_in_no_spotify, user)
+    return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
+
+@login_required(login_url='login')
+def home_logged_in_no_spotify(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
-    data = fetch_data(request)
-    return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
+    return render(request, 'logged_in_home_no_spotify.html')
 
 def explore(request):
     return render(request, 'explore.html')
@@ -215,7 +229,7 @@ def spotify_login(request):
         "scope": "user-top-read user-library-read user-read-recently-played user-follow-read"
     }
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
-    return redirect("spotify_data")
+    return redirect("home_logged_in")
 
 
 def spotify_callback(request):
@@ -380,7 +394,8 @@ def fetch_data(request):
 
 
     data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists]
-    return (data)
+    print("data fetched")
+    return data
 
 
 @csrf_exempt

@@ -85,6 +85,16 @@
     </style>
 {% endblock %}
 
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' username=user.username %}">{% trans "Profile" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'explore' %}">{% trans "Explore" %}</a>
+    </li>
+{% endblock %}
+
+
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
