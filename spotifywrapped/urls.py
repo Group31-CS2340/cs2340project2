@@ -52,6 +52,7 @@ urlpatterns = [
      path('wrap-detail/<int:wrap_id>/', user_views.wrap_detail, name='wrap_detail'),
      path('wrap-delete/<int:wrap_id>/', user_views.wrap_delete, name='wrap_delete'),
      path('delete-wrap/<int:wrap_id>/', user_views.wrap_delete, name='wrap_delete'),
+     path('wrap-update-public/<int:wrap_id>/', user_views.update_wrap_public, name='wrap-update-public'),
      path('mobile_login/', user_views.login_mobile, name='login_mobile'),
      path('mobile_register/', user_views.register_mobile, name='register_mobile'),
      path('mobile_homepage/', user_views.home_logged_in_mobile, name='logged_in_home_mobile'),

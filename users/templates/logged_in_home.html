@@ -46,7 +46,7 @@
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 5% auto; /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
             width: 80%; /* Could be more or less, depending on screen size */
@@ -82,6 +82,8 @@
             align-items: center;
             margin: 10px 0;
         }
+        
+        
     </style>
 {% endblock %}
 
@@ -231,20 +233,20 @@
 </div>
 
 <!-- Button to show the form for generating a new wrap -->
-<div>
+<div style="display: flex; justify-content: center;">
     <button id="generateWrapButton" class="btn btn-primary">Generate a New Wrap</button>
 </div>
 
 <!-- Form to specify timeframe and limit -->
-<div id="wrapFormContainer" class="mt-3" style="display: none;">
-    <form id="wrapForm" method="POST">
+<div id="wrapFormContainer" class="mt-3" style="display: none; margin: 100px">
+    <form id="wrapForm" method="POST" class="d-flex align-items-center justify-content-between">
         {% csrf_token %}
         <div>
             <label for="time_range">Time Range:</label>
-            <select name="time_range" id="time_range">
-                <option value="short_term">Short Term</option>
-                <option value="medium_term">Medium Term</option>
-                <option value="long_term">Long Term</option>
+            <select name="time_range" id="time_range" style="width: 150px;">
+                <option value="short_term">Last month</option>
+                <option value="medium_term">Last 6 months</option>
+                <option value="long_term">Last few years</option>
             </select>
         </div>
         <div>
@@ -254,6 +256,8 @@
         <button type="submit" class="btn btn-success mt-2">Generate</button>
     </form>
 </div>
+    
+
 
 <!-- Modal for displaying the wrap -->
 <div id="wrapModal" class="modal">
@@ -270,6 +274,10 @@
             <button id="saveWrapName" class="btn btn-success mt-2">Save</button>
             <button id="deleteWrap" class="btn btn-danger mt-2">Delete</button>
         </div>
+{#        <div class="mt-3">#}
+{#            <label for="wrapPublic">Make this wrap public:</label>#}
+{#            <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>#}
+{#        </div>#}
     </div>
 </div>
 
@@ -351,13 +359,17 @@
             li.textContent = track.name;
             tracksList.appendChild(li);
         });
+        
+        // Set the 'public' field state based on current value
+        {#const wrapPublicCheckbox = document.querySelector('#wrapPublic');#}
+        {#wrapPublicCheckbox.checked = isPublic;#}
 
         // Set up delete button
         document.querySelector('#deleteWrap').dataset.wrapId = wrapId;
 
         document.querySelector('#wrapModal').style.display = 'flex';
     }
-
+    
     // Fetch and show wrap details
     document.querySelectorAll('.gallery-item').forEach(item => {
         item.addEventListener('click', function (event) {
@@ -411,6 +423,33 @@
             .catch(error => console.error('Error:', error));
         }
     });
+    
+    // Handle 'public' toggle change
+    {#document.querySelector('#wrapPublic').addEventListener('change', function () {#}
+    {#    const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;#}
+    {#    const isPublic = this.checked;  // true if checked, false if unchecked#}
+    {##}
+    {#    fetch(`/wrap-update-public/${wrapId}/`, {#}
+    {#        method: 'POST',#}
+    {#        headers: {#}
+    {#            'X-Requested-With': 'XMLHttpRequest',#}
+    {#            'Content-Type': 'application/json',#}
+    {#            'X-CSRFToken': getCSRFToken(),#}
+    {#        },#}
+    {#        body: JSON.stringify({#}
+    {#            public: isPublic,#}
+    {#        }),#}
+    {#    })#}
+    {#    .then(response => response.json())#}
+    {#    .then(data => {#}
+    {#        if (data.success) {#}
+    {#            alert('Wrap visibility updated successfully');#}
+    {#        } else {#}
+    {#            alert('Error: ' + data.error);#}
+    {#        }#}
+    {#    })#}
+    {#    .catch(error => console.error('Error:', error));#}
+    {#});#}
 
     // Delete a wrap
     document.querySelector('#deleteWrap').addEventListener('click', function () {

@@ -478,6 +478,17 @@ def wrap_delete(request, wrap_id):
             return JsonResponse({'success': False, 'error': 'Wrap not found.'}, status=404)
     return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=405)
 
+@login_required
+def update_wrap_public(request, wrap_id):
+    if request.method == 'POST':
+        try:
+            wrap = get_object_or_404(Wrap, id=wrap_id)
+            data = json.loads(request.body)
+            wrap.public = data.get('public', wrap.public)
+            wrap.save()
+            return JsonResponse({'success': True})
+        except Wrap.DoesNotExist:
+            return JsonResponse({'error': 'Wrap not found'}, status=404)
 
 def spotify_logout(request):
     request.session.pop('spotify_token', None)

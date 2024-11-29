@@ -1,4 +1,5 @@
 {% extends 'base_site.html' %}
+{% load i18n %}
 {% block style %}
     <style>
         #title-container {
@@ -20,6 +21,15 @@
     </style>
 {% endblock %}
 
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' username=user.username %}">{% trans "Profile" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'explore' %}">{% trans "Explore" %}</a>
+    </li>
+{% endblock %}
+
 {% block content %}
     <div id="title-container">
         <div id="page-title">
@@ -34,4 +44,6 @@
         </div>
         <button type="button" class="btn btn-primary btn-lg" id="back-button" onclick="history.back()">Back</button>
     </div>
+    
+    
 {% endblock %}
