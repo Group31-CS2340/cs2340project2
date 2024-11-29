@@ -82,8 +82,8 @@
             align-items: center;
             margin: 10px 0;
         }
-        
-        
+
+
     </style>
 {% endblock %}
 
@@ -256,7 +256,7 @@
         <button type="submit" class="btn btn-success mt-2">Generate</button>
     </form>
 </div>
-    
+
 
 
 <!-- Modal for displaying the wrap -->
@@ -274,10 +274,10 @@
             <button id="saveWrapName" class="btn btn-success mt-2">Save</button>
             <button id="deleteWrap" class="btn btn-danger mt-2">Delete</button>
         </div>
-{#        <div class="mt-3">#}
-{#            <label for="wrapPublic">Make this wrap public:</label>#}
-{#            <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>#}
-{#        </div>#}
+        <div class="mt-3">
+            <label for="wrapPublic">Make this wrap public:</label>
+            <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
+        </div>
     </div>
 </div>
 
@@ -337,7 +337,7 @@
     });
 
     // Show wrap details in the modal
-    function showWrapDetails(wrapId, wrapTitle, topArtists, topTracks) {
+    function showWrapDetails(wrapId, wrapTitle, topArtists, topTracks, wrapPublic) {
         document.querySelector('#modalWrapTitle').textContent = wrapTitle;
 
         const artistsList = document.querySelector('#modalTopArtists');
@@ -359,17 +359,17 @@
             li.textContent = track.name;
             tracksList.appendChild(li);
         });
-        
+
         // Set the 'public' field state based on current value
-        {#const wrapPublicCheckbox = document.querySelector('#wrapPublic');#}
-        {#wrapPublicCheckbox.checked = isPublic;#}
+        const wrapPublicCheckbox = document.querySelector('#wrapPublic');
+        wrapPublicCheckbox.checked = wrapPublic;
 
         // Set up delete button
         document.querySelector('#deleteWrap').dataset.wrapId = wrapId;
 
         document.querySelector('#wrapModal').style.display = 'flex';
     }
-    
+
     // Fetch and show wrap details
     document.querySelectorAll('.gallery-item').forEach(item => {
         item.addEventListener('click', function (event) {
@@ -385,7 +385,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showWrapDetails(data.wrap_id, data.wrap_title, data.top_artists, data.top_tracks);
+                    showWrapDetails(data.wrap_id, data.wrap_title, data.top_artists, data.top_tracks, data.wrap_public);
                 } else {
                     alert('Error: ' + data.error);
                 }
@@ -398,7 +398,7 @@
     document.querySelector('#saveWrapName').addEventListener('click', function () {
         const customName = document.querySelector('#customWrapName').value;
         const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;
-
+        
         if (customName && wrapId) {
             fetch('/wrap-generate/', {
                 method: 'PUT',
@@ -423,33 +423,33 @@
             .catch(error => console.error('Error:', error));
         }
     });
-    
+
     // Handle 'public' toggle change
-    {#document.querySelector('#wrapPublic').addEventListener('change', function () {#}
-    {#    const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;#}
-    {#    const isPublic = this.checked;  // true if checked, false if unchecked#}
-    {##}
-    {#    fetch(`/wrap-update-public/${wrapId}/`, {#}
-    {#        method: 'POST',#}
-    {#        headers: {#}
-    {#            'X-Requested-With': 'XMLHttpRequest',#}
-    {#            'Content-Type': 'application/json',#}
-    {#            'X-CSRFToken': getCSRFToken(),#}
-    {#        },#}
-    {#        body: JSON.stringify({#}
-    {#            public: isPublic,#}
-    {#        }),#}
-    {#    })#}
-    {#    .then(response => response.json())#}
-    {#    .then(data => {#}
-    {#        if (data.success) {#}
-    {#            alert('Wrap visibility updated successfully');#}
-    {#        } else {#}
-    {#            alert('Error: ' + data.error);#}
-    {#        }#}
-    {#    })#}
-    {#    .catch(error => console.error('Error:', error));#}
-    {#});#}
+    document.querySelector('#wrapPublic').addEventListener('change', function () {
+        const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;
+        const isPublic = this.checked;  // true if checked, false if unchecked
+        
+        fetch(`/wrap-update-public/${wrapId}/`, {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCSRFToken(),
+            },
+            body: JSON.stringify({
+                public: isPublic,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Wrap visibility updated successfully');
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
 
     // Delete a wrap
     document.querySelector('#deleteWrap').addEventListener('click', function () {

@@ -195,13 +195,9 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def home_logged_in(request, username):
-    print("loading homepage\n")
     user = get_object_or_404(User, username=username)
-    print("user\n")
     wraps = Wrap.objects.filter(user=user)
-    print("wraps\n")
     data = fetch_data(request)
-    print("data\n")
     print(data)
     data = fetch_data(request)
     if isinstance(data, JsonResponse) and data.status_code == 400:
@@ -392,9 +388,13 @@ def fetch_data(request):
     for artist in followed_artists.get('artists', {}).get('items', [])
 ]
 
-
-    data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists]
-    print("data fetched")
+    genres_list = [
+        {
+            'genres': artist['genres'],
+        }
+        for artist in top_artists.get('items', [])
+    ]
+    data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists, genres_list]
     return data
 
 
@@ -461,6 +461,7 @@ def wrap_detail(request, wrap_id):
             'wrap_title': wrap.title,
             'top_artists': wrap.top_artists,
             'top_tracks': wrap.top_tracks,
+            'wrap_public': wrap.public,
         })
     except Wrap.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'Wrap not found.'}, status=404)
