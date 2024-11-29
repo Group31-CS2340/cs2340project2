@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Try again</title>
+    <title>{% trans "Try again" %}</title>
     <link href="{% static 'users/style.css' %}" rel="stylesheet">
 </head>
 <body>
     <div>
-        <h2>Try again</h2>
-        <p>Is your password at least 8 characters?shel
-        Is your password unique?
-        Is your password too common?
-        Do your passwords match?</p>
-        <a href="{% url 'register' %}">Register</a>
+        <h2>{% trans "Try again" %}</h2>
+        <p>
+            {% trans "Is your password at least 8 characters?" %}<br>
+            {% trans "Is your password unique?" %}<br>
+            {% trans "Is your password too common?" %}<br>
+            {% trans "Do your passwords match?" %}
+        </p>
+        <a href="{% url 'register' %}">{% trans "Register" %}</a>
     </div>
 </body>
 </html>

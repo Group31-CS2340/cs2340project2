@@ -16,7 +16,6 @@
             flex-direction: column;
             gap: 20px;
         }
-
     </style>
 {% endblock %}
 
@@ -27,11 +26,13 @@
                 {% if profile.user.first_name or profile.user.last_name %}
                     {{ profile.user.first_name }} {{ profile.user.last_name }}
                 {% else %}
-                    User
+                    {% trans "User" %}
                 {% endif %}
-                Wraps
+                {% trans "Wraps" %}
             </strong></h2>
         </div>
-        <button type="button" class="btn btn-primary btn-lg" id="back-button" onclick="history.back()">Back</button>
+        <button type="button" class="btn btn-primary btn-lg" id="back-button" onclick="history.back()">
+            {% trans "Back" %}
+        </button>
     </div>
 {% endblock %}

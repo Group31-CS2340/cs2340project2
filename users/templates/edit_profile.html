@@ -1,4 +1,6 @@
 {% extends 'base_site.html' %}
+{% load i18n %}
+
 {% block style %}
     <style>
         #title-container {
@@ -37,36 +39,37 @@
 
 {% block content %}
     <div id="title-container">
-        <h2><strong>Edit Profile</strong></h2>
+        <h2><strong>{% trans "Edit Profile" %}</strong></h2>
     </div>
     <div id="profile-details-container">
         <form method="POST" action="">
             {% csrf_token %}
             <div id="edit-details-container">
-            <div class="form-group">
-                <label for="first_name"><strong>First Name:</strong></label>
-                <input type="text" name="first_name" id="first_name" class="form-control" value="{{ form.first_name.value }}">
+                <div class="form-group">
+                    <label for="first_name"><strong>{% trans "First Name:" %}</strong></label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" value="{{ form.first_name.value }}">
+                </div>
+                <div class="form-group">
+                    <label for="last_name"><strong>{% trans "Last Name:" %}</strong></label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{ form.last_name.value }}">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="last_name"><strong>Last Name:</strong></label>
-                <input type="text" name="last_name" id="last_name" class="form-control" value="{{ form.last_name.value }}">
+            <div id="buttons">
+                <a href="{% url 'profile' request.user.username %}">
+                    <button type="button" class="btn btn-primary" id="cancel-button">{% trans "Cancel" %}</button>
+                </a>
+                <button type="submit" class="btn btn-primary" id="save-button">{% trans "Save changes" %}</button>
+                <!-- Button to delete account -->
+                <a href="{% url 'delete-account' %}" onclick="return confirmDelete()" class="btn btn-primary btn-lg">{% trans "Delete account" %}</a>
             </div>
-            </div>
-        <div id="buttons">
-            <a href="{% url 'profile' request.user.username %}">
-                <button type="button" class="btn btn-primary" id="cancel-button">Cancel</button>
-            </a>
-            <button type="submit" class="btn btn-primary" id="save-button">Save changes</button>
-            <!-- button to delete account -->
-            <a href="{% url 'delete-account' %}" onclick="return confirmDelete()" class="btn btn-primary btn-lg">Delete account</a>
-        </div>
         </form>
     </div>
     
     <!-- JavaScript for Delete Account Confirmation -->
     <script>
+        let deleteConfirmationMessage = "{% blocktrans %}Are you sure you want to delete your account?{% endblocktrans %}";
         function confirmDelete() {
-            return confirm("Are you sure you want to delete your account?");
+            return confirm(deleteConfirmationMessage);
         }
     </script>
 {% endblock %}

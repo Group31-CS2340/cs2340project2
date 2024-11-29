@@ -4,8 +4,8 @@
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
-        <h2 class="mb-4">Account Created!</h2>
-        <p>Welcome to Spotify Wrapped Bootleg.</p>
+        <h2 class="mb-4">{% trans "Account Created!" %}</h2>
+        <p>{% trans "Welcome to Spotify Wrapped Bootleg. %}</p>
         <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
     </div>
 </div>

@@ -1,5 +1,7 @@
 {% extends 'base_site.html' %}
+{% load i18n %}
 {% block style %}
+
     <style>
         #title-container {
             display: flex;
@@ -23,33 +25,33 @@
 {% block content %}
     <div id="title-container">
         <div id="page-title">
-            <h2><strong>Your Profile</strong></h2>
+            <h2><strong>{% trans "Your Profile" %}</strong></h2>
         </div>
         <a href="{% url 'edit-profile' request.user.username %}" id="edit-button">
-            <button type="button" class="btn btn-primary" id="edit-button">Edit</button>
+            <button type="button" class="btn btn-primary" id="edit-button">{% trans "Edit" %}</button>
         </a>
         <a href="{% url 'public_profile' request.user.username %}">
-            <button type="button" class="btn btn-primary btn-lg" id="public-profile-button">Public Profile</button>
+            <button type="button" class="btn btn-primary btn-lg" id="public-profile-button">{% trans "Public Profile" %}</button>
         </a>
         <a href="{% url 'logout' %}" onclick="return confirmLogout()">
-            <button type="button" class="btn btn-primary btn-lg" id="logout-button">Log Out</button>
+            <button type="button" class="btn btn-primary btn-lg" id="logout-button">{% trans "Log Out" %}</button>
         </a>
         <a href="{% url 'home' %}">
-            <button type="button" class="btn btn-primary btn-lg" id="home-button">Home</button>
+            <button type="button" class="btn btn-primary btn-lg" id="home-button">{% trans "Home" %}</button>
         </a>
     </div>
     <div class="container">
         <div class="profile-details" id="profile-details-container">
-            <p><strong>Username: </strong>{{ profile.user.username }}</p>
-            <p><strong>Display Name: </strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
-            <p><strong>Email: </strong> {{ profile.user.email }}</p>
+            <p><strong>{% trans "Username:" %}</strong> {{ profile.user.username }}</p>
+            <p><strong>{% trans "Display Name:" %}</strong> {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+            <p><strong>{% trans "Email:" %}</strong> {{ profile.user.email }}</p>
         </div>
     </div>
 
     <!-- JavaScript for Logout Confirmation -->
     <script>
         function confirmLogout() {
-            return confirm("Are you sure you want to log out?");
+            return confirm("{% trans 'Are you sure you want to log out?' %}");
         }
     </script>
 {% endblock %}

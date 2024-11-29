@@ -1,6 +1,6 @@
 <h2>{{ wrap.title }}</h2>
 
-<h2>Top Artists</h2>
+<h2>{% trans "Top Artists" %}</h2>
 <ul>
     {% for artist in wrap.top_artists %}
         <li>
@@ -10,18 +10,18 @@
     {% endfor %}
 </ul>
 
-<h2>Top Tracks</h2>
+<h2>{% trans "Top Tracks" %}</h2>
 <ul>
     {% for track in wrap.top_tracks %}
-        <li>{{ track.name }} by {{ track.artist }}</li>
+        <li>{{ track.name }} {% trans "by" %} {{ track.artist }}</li>
     {% endfor %}
 </ul>
 
 <form method="post" action="{% url 'wrap_delete' wrap.id %}">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Delete Wrap</button>
+    <button type="submit" class="btn btn-danger">{% trans "Delete Wrap" %}</button>
 </form>
 
 <a href="{% url 'home_logged_in' wrap.user %}">
-    <button type="button" class="btn btn-primary">Back</button>
+    <button type="button" class="btn btn-primary">{% trans "Back" %}</button>
 </a>
