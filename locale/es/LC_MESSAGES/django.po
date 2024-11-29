@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 17:06-0500\n"
+"POT-Creation-Date: 2024-11-29 17:50-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,45 +19,76 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
+#: .\users\templates\account_deleted.html:6
+#: .\users\templates\base_site_mobile.html:114
+#: .\users\templates\contact.html:78 .\users\templates\explore.html:5
+msgid "Toggle navigation"
+msgstr "Alternar navegación"
+
+#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:14
+#: .\users\templates\profile.html:40
+msgid "Home"
+msgstr "Inicio"
+
+#: .\users\templates\account_deleted.html:21
+msgid "Account Deleted"
+msgstr "Cuenta Eliminada"
+
+#: .\users\templates\account_deleted.html:22
+msgid "Thank you for using Spotify Wrapped Bootleg."
+msgstr "Gracias por usar Spotify Wrapped Bootleg."
+
+#: .\users\templates\account_deleted.html:23
+msgid "Send Feedback"
+msgstr "Comentarios"
+
 #: .\users\templates\base_site.html:30
-#: .\users\templates\base_site_mobile.html:125 .\users\templates\login.html:37
-#: .\users\templates\login.html:68 .\users\templates\register.html:81
+#: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:37
+#: .\users\templates\login.html:68 .\users\templates\login_mobile.html:36
+#: .\users\templates\register.html:81
 msgid "Login"
 msgstr "Iniciar sesión"
 
 #: .\users\templates\base_site.html:33
-#: .\users\templates\base_site_mobile.html:122
-#: .\users\templates\register.html:14
+#: .\users\templates\base_site_mobile.html:123
+#: .\users\templates\register.html:14 .\users\templates\register_mobile.html:54
+#: .\users\templates\try_again.html:18
 msgid "Register"
 msgstr "Regístrate"
 
-#: .\users\templates\base_site.html:36
+#: .\users\templates\base_site.html:36 .\users\templates\explore.html:17
+#: .\users\templates\songs.html:13
 msgid "Contact"
 msgstr "Contacto"
 
 #: .\users\templates\base_site.html:56
+#: .\users\templates\base_site_mobile.html:146
 msgid "Mobile"
 msgstr "Móvil"
 
 #: .\users\templates\base_site.html:57
+#: .\users\templates\base_site_mobile.html:147
 msgid "Desktop"
 msgstr "Escritorio"
 
-#: .\users\templates\base_site_mobile.html:119
-msgid "Home"
-msgstr "Inicio"
+#: .\users\templates\base_site_mobile.html:8
+msgid "Spotify Wrapped Bootleg (Mobile View)"
+msgstr "Spotify Wrapped Bootleg"
+
+#: .\users\templates\base_site_mobile.html:113
+#: .\users\templates\contact.html:77 .\users\templates\invalid_login.html:24
+#: .\users\templates\password_reset.html:27
+#: .\users\templates\password_reset_confirm.html:28
+msgid "Spotify Wrapped Bootleg"
+msgstr "Spotify Wrapped Bootleg"
+
+#: .\users\templates\base_site_mobile.html:120
+msgid "My Wraps"
+msgstr "Mis Resúmenes"
 
 #: .\users\templates\contact.html:20
 msgid "Contact the Developers"
 msgstr ""
-
-#: .\users\templates\contact.html:77
-msgid "Spotify Wrapped Bootleg"
-msgstr ""
-
-#: .\users\templates\contact.html:78
-msgid "Toggle navigation"
-msgstr "Alternar navegación"
 
 #: .\users\templates\contact.html:86
 msgid "Meet the Team"
@@ -107,27 +138,270 @@ msgstr "Comentarios"
 msgid "Submit"
 msgstr "Enviar"
 
-#: .\users\templates\login.html:48 .\users\templates\register.html:37
+#: .\users\templates\edit_profile.html:42
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+#: .\users\templates\edit_profile.html:49
+#, fuzzy
+#| msgid "First Name"
+msgid "First Name:"
+msgstr "Primer nombre"
+
+#: .\users\templates\edit_profile.html:53
+#, fuzzy
+#| msgid "Last Name"
+msgid "Last Name:"
+msgstr "Apellido"
+
+#: .\users\templates\edit_profile.html:59
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: .\users\templates\edit_profile.html:61
+msgid "Save changes"
+msgstr "Guardar cambios"
+
+#: .\users\templates\edit_profile.html:63
+#, fuzzy
+#| msgid "Create Account"
+msgid "Delete account"
+msgstr "Crea una cuenta"
+
+#: .\users\templates\edit_profile.html:70
+msgid "Are you sure you want to delete your account?"
+msgstr "¿Estás seguro de que quieres eliminar tu cuenta?"
+
+#: .\users\templates\explore.html:11 .\users\templates\songs.html:7
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\users\templates\home.html:5
+msgid "Home - Spotify Wrapped Bootleg"
+msgstr "Inicio - Spotify Wrapped Bootleg"
+
+#: .\users\templates\home.html:11 .\users\templates\home_mobile.html:9
+msgid "Spotify Wrapped Bootleg 2024"
+msgstr ""
+
+#: .\users\templates\home.html:12 .\users\templates\home_mobile.html:10
+msgid "Discover your personalized music journey."
+msgstr "Descubre tu viaje musical personalizado."
+
+#: .\users\templates\home.html:13 .\users\templates\home_mobile.html:11
+msgid "Get Started"
+msgstr "Comenzar"
+
+#: .\users\templates\home.html:20 .\users\templates\home_mobile.html:17
+msgid "Why use Spotify Wrapped Bootleg?"
+msgstr "¿Por qué usar Spotify Wrapped Bootleg?"
+
+#: .\users\templates\home.html:24 .\users\templates\home_mobile.html:22
+msgid "Released Early"
+msgstr "Liberado Anticipadamente"
+
+#: .\users\templates\home.html:25 .\users\templates\home_mobile.html:23
+msgid "Access your music insights before anyone else."
+msgstr "Accede a tus estadísticas musicales antes que nadie."
+
+#: .\users\templates\home.html:29 .\users\templates\home_mobile.html:27
+msgid "In-depth Analysis"
+msgstr "Análisis Detallado"
+
+#: .\users\templates\home.html:30 .\users\templates\home_mobile.html:28
+msgid "Get detailed stats on your listening habits."
+msgstr "Obtén estadísticas detalladas sobre tus hábitos de escucha."
+
+#: .\users\templates\home.html:34 .\users\templates\home_mobile.html:32
+msgid "Personalized Playlists"
+msgstr "Listas de Reproducción Personalizadas"
+
+#: .\users\templates\home.html:35 .\users\templates\home_mobile.html:33
+msgid "Enjoy playlists tailored just for you."
+msgstr "Disfruta de listas de reproducción hechas a tu medida."
+
+#: .\users\templates\home_mobile.html:4
+msgid "Home - Spotify Wrapped Bootleg (Mobile View)"
+msgstr "Inicio - Spotify Wrapped Bootleg (Vista Móvil)"
+
+#: .\users\templates\invalid_login.html:9
+msgid "Invalid Login - Spotify Wrapped Bootleg"
+msgstr "Inicio de Sesión Inválido - Spotify Wrapped Bootleg"
+
+#: .\users\templates\invalid_login.html:30
+msgid "Invalid Login"
+msgstr "Inicio de Sesión Inválido"
+
+#: .\users\templates\invalid_login.html:31
+msgid "The username or password you entered is incorrect."
+msgstr "El nombre de usuario o la contraseña que ingresaste son incorrectos."
+
+#: .\users\templates\invalid_login.html:32
+msgid "Try Logging In Again"
+msgstr "Intenta iniciar sesión de nuevo"
+
+#: .\users\templates\logged_in_home.html:91
+msgid "Welcome to your Spotify Wrapped!"
+msgstr "¡Bienvenido a tu Spotify Wrapped!"
+
+#: .\users\templates\logged_in_home.html:100 .\users\templates\new_wrap.html:1
+#: .\users\templates\wrap_detail.html:3
+msgid "Top Artists"
+msgstr "Artistas Principales"
+
+#: .\users\templates\logged_in_home.html:113
+msgid "Top Albums"
+msgstr "Álbumes Principales"
+
+#: .\users\templates\logged_in_home.html:118
+#: .\users\templates\logged_in_home.html:143
+#: .\users\templates\logged_in_home.html:156
+#: .\users\templates\logged_in_home.html:169
+#: .\users\templates\logged_in_home.html:182 .\users\templates\new_wrap.html:14
+#: .\users\templates\spotify_data_mobile.html:34
+#: .\users\templates\wrap_detail.html:16
+msgid "by"
+msgstr "por"
+
+#: .\users\templates\logged_in_home.html:126
+msgid "Top Episodes"
+msgstr "Episodios principales"
+
+#: .\users\templates\logged_in_home.html:130
+#: .\users\templates\logged_in_home.html:156
+#: .\users\templates\logged_in_home.html:182
+msgid "from"
+msgstr "de"
+
+#: .\users\templates\logged_in_home.html:13
+msgid "Top Playlists"
+msgstr "Listas de reproducción principales"
+
+#: .\users\templates\logged_in_home.html:151
+msgid "Recent Tracks"
+msgstr "Pistas recientes"
+
+#: .\users\templates\logged_in_home.html:164
+msgid "Top Audiobooks"
+msgstr "Audiolibros principales"
+
+#: .\users\templates\logged_in_home.html:169
+msgid "narrated by"
+msgstr "narrado por"
+
+#: .\users\templates\logged_in_home.html:177 .\users\templates\new_wrap.html:11
+#: .\users\templates\wrap_detail.html:13
+msgid "Top Tracks"
+msgstr "Canciones Principales"
+
+#: .\users\templates\logged_in_home.html:190
+msgid "Followed Artists"
+msgstr "Artistas seguidos"
+
+#: .\users\templates\logged_in_home.html:205
+msgid "Previous"
+msgstr "Anterior"
+
+#: .\users\templates\logged_in_home.html:209
+msgid "Next"
+msgstr "Siguiente"
+
+#: .\users\templates\logged_in_home.html:225
+msgid "Generate a New Wrap"
+msgstr "Generar un Nuevo Resumen"
+
+#: .\users\templates\logged_in_home.html:233
+msgid "Time Range:"
+msgstr "Título del Resumen:"
+
+#: .\users\templates\logged_in_home.html:235
+msgid "Short Term"
+msgstr "Corto Plazo"
+
+#: .\users\templates\logged_in_home.html:236
+msgid "Medium Term"
+msgstr "Mediano Plazo"
+
+#: .\users\templates\logged_in_home.html:237
+msgid "Long Term"
+msgstr "Largo Plazo"
+
+#: .\users\templates\logged_in_home.html:241
+msgid "Limit:"
+msgstr "Límite:"
+
+#: .\users\templates\logged_in_home.html:244
+msgid "Generate"
+msgstr "Géneros"
+
+#: .\users\templates\logged_in_home.html:253
+msgid "Top Artists:"
+msgstr "Artistas principales:"
+
+#: .\users\templates\logged_in_home.html:255
+msgid "Top Tracks:"
+msgstr "Canciones principales:"
+
+#: .\users\templates\logged_in_home.html:258
+msgid "Custom Wrap Name:"
+msgstr "Nombre personalizado del resumen:"
+
+#: .\users\templates\logged_in_home.html:260
+msgid "Save"
+msgstr "Guardar"
+
+#: .\users\templates\logged_in_home.html:261
+#, fuzzy
+#| msgid "Create Account"
+msgid "Delete"
+msgstr "Crea una cuenta"
+
+#: .\users\templates\logged_in_home.html:274
+msgid "No saved wraps yet. Generate a new wrap to see it here!"
+msgstr "Aún no hay resúmenes guardados. ¡Genera uno nuevo para verlo aquí!"
+
+#: .\users\templates\login.html:48 .\users\templates\login_mobile.html:20
+#: .\users\templates\register.html:37 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: .\users\templates\login.html:59 .\users\templates\register.html:59
+#: .\users\templates\login.html:59 .\users\templates\login_mobile.html:29
+#: .\users\templates\register.html:59 .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "Contraseña"
 
-#: .\users\templates\login.html:71
+#: .\users\templates\login.html:71 .\users\templates\login_mobile.html:39
 msgid "Don't have an account?"
 msgstr "¿No tienes una cuenta?"
 
-#: .\users\templates\login.html:71
+#: .\users\templates\login.html:71 .\users\templates\login_mobile.html:39
 msgid "Register here."
 msgstr "Regístrate aquí."
 
-#: .\users\templates\login.html:74
+#: .\users\templates\login.html:74 .\users\templates\login_mobile.html:42
 msgid "Forgot your password?"
 msgstr "¿Olvidó su contraseña?"
 
-#: .\users\templates\password_change_done.html:7
+#: .\users\templates\login_mobile.html:9
+msgid "Login to Spotify Wrapped Bootleg"
+msgstr "Iniciar sesión en Spotify Wrapped Bootleg"
+
+#: .\users\templates\new_wrap.html:20
+msgid "Wrap Title:"
+msgstr "Título del resumen:"
+
+#: .\users\templates\new_wrap.html:22
+msgid "Save Wrap"
+msgstr "Guardar resumen"
+
+#: .\users\templates\password_change.html:7
+#: .\users\templates\password_change.html:11
+#, fuzzy
+#| msgid "New Password"
+msgid "Change Password"
+msgstr "Nueva Contraseña"
+
+#: .\users\templates\password_change_done.html:8
 msgid "Your password has been changed successfully"
 msgstr "Tu contraseña ha sido cambiada exitosamente"
 
@@ -145,6 +419,7 @@ msgstr ""
 "instrucciones para restablecer tu contraseña."
 
 #: .\users\templates\password_reset.html:47 .\users\templates\register.html:48
+#: .\users\templates\register_mobile.html:29
 msgid "Email"
 msgstr "Correo electrónico"
 
@@ -196,6 +471,59 @@ msgstr ""
 "Se ha enviado un correo electrónico a tu dirección con instrucciones para "
 "restablecer tu contraseña."
 
+#: .\users\templates\profile.html:28
+msgid "Your Profile"
+msgstr "Tu perfil"
+
+#: .\users\templates\profile.html:31
+msgid "Edit"
+msgstr "Editar"
+
+#: .\users\templates\profile.html:34
+msgid "Public Profile"
+msgstr "Perfil público"
+
+#: .\users\templates\profile.html:37
+msgid "Log Out"
+msgstr "Cerrar sesión"
+
+#: .\users\templates\profile.html:45
+#, fuzzy
+#| msgid "Username"
+msgid "Username:"
+msgstr "Nombre de usuario"
+
+#: .\users\templates\profile.html:46
+#, fuzzy
+#| msgid "First Name"
+msgid "Display Name:"
+msgstr "Primer nombre"
+
+#: .\users\templates\profile.html:47
+#, fuzzy
+#| msgid "Email"
+msgid "Email:"
+msgstr "Correo electrónico"
+
+#: .\users\templates\profile.html:54
+msgid "Are you sure you want to log out?"
+msgstr "¿Estás seguro de que deseas cerrar sesión?"
+
+#: .\users\templates\public_profile.html:29
+#, fuzzy
+#| msgid "Username"
+msgid "User"
+msgstr "Nombre de usuario"
+
+#: .\users\templates\public_profile.html:31
+msgid "Wraps"
+msgstr "Resúmenes"
+
+#: .\users\templates\public_profile.html:35
+#: .\users\templates\wrap_detail.html:26
+msgid "Back"
+msgstr "Atrás"
+
 #: .\users\templates\register.html:25
 msgid "First Name"
 msgstr "Primer nombre"
@@ -212,6 +540,108 @@ msgstr "Reingresar Contraseña"
 msgid "Create Account"
 msgstr "Crea una cuenta"
 
-#: .\users\templates\register.html:81
+#: .\users\templates\register.html:81 .\users\templates\register_mobile.html:57
 msgid "Already have an account?"
 msgstr "¿Ya tienes una cuenta?"
+
+#: .\users\templates\register_mobile.html:9
+msgid "Register for Spotify Wrapped Bootleg"
+msgstr "Registrarse en Spotify Wrapped Bootleg"
+
+#: .\users\templates\register_mobile.html:47
+#, fuzzy
+#| msgid "Confirm New Password"
+msgid "Confirm Password"
+msgstr "Confirmar Nueva Contraseña"
+
+#: .\users\templates\register_mobile.html:57
+#, fuzzy
+#| msgid "Register here."
+msgid "Login here."
+msgstr "Regístrate aquí."
+
+#: .\users\templates\registration_successful.html:7
+msgid "Account Created!"
+msgstr "¡Cuenta creada!"
+
+#: .\users\templates\songs.html:10
+msgid "Explore"
+msgstr "Explorar"
+
+#: .\users\templates\songs.html:21
+msgid "Songs"
+msgstr "Canciones"
+
+#: .\users\templates\spotify_data_mobile.html:9
+msgid "Your Spotify Wrapped"
+msgstr "Tu Spotify Wrapped"
+
+#: .\users\templates\spotify_data_mobile.html:11
+msgid "Top Artists (Last Month)"
+msgstr "Artistas principales (último mes)"
+
+#: .\users\templates\spotify_data_mobile.html:18
+msgid "Genres"
+msgstr "Géneros"
+
+#: .\users\templates\spotify_data_mobile.html:19
+#: .\users\templates\spotify_data_mobile.html:40
+msgid "Popularity"
+msgstr "Popularidad"
+
+#: .\users\templates\spotify_data_mobile.html:24
+msgid "No top artists data available."
+msgstr "Artistas principales (último mes)"
+
+#: .\users\templates\spotify_data_mobile.html:27
+msgid "Top Tracks (Last Month)"
+msgstr "Canciones principales (último mes)"
+
+#: .\users\templates\spotify_data_mobile.html:39
+msgid "Album"
+msgstr "Álbum"
+
+#: .\users\templates\spotify_data_mobile.html:45
+msgid "No top tracks data available."
+msgstr "No hay datos de canciones principales disponibles"
+
+#: .\users\templates\spotify_data_mobile.html:50
+msgid "Logout from Spotify"
+msgstr "Cerrar sesión de Spotify"
+
+#: .\users\templates\try_again.html:6 .\users\templates\try_again.html:11
+msgid "Try again"
+msgstr "Inténtalo de nuevo"
+
+#: .\users\templates\try_again.html:13
+msgid "Is your password at least 8 characters?"
+msgstr "¿Tu contraseña tiene al menos 8 caracteres?"
+
+#: .\users\templates\try_again.html:14
+msgid "Is your password unique?"
+msgstr "Tu contraseña es única?"
+
+#: .\users\templates\try_again.html:15
+msgid "Is your password too common?"
+msgstr "¿Tu contraseña es demasiado común?"
+
+#: .\users\templates\try_again.html:16
+msgid "Do your passwords match?"
+msgstr "¿Coinciden tus contraseñas?"
+
+#: .\users\templates\user_doesnt_exist.html:5
+msgid "User Doesn't Exist"
+msgstr "El usuario no existe"
+
+#: .\users\templates\wrap_detail.html:22
+#, fuzzy
+#| msgid "Create Account"
+msgid "Delete Wrap"
+msgstr "Crea una cuenta"
+
+#: .\users\templates\wrap_setup.html:4
+msgid "Generate Wrap"
+msgstr "Álbum"
+
+#~ msgid "Enter a name for your wrap"
+#~ msgstr "Introduce un nombre para tu resumen"

@@ -1,13 +1,15 @@
 {% extends 'base_site.html' %}
+{% load i18n %}
+
 {% block title %}Account Deleted{% endblock %}
 {% block nav %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"     aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav"> 
+    <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a>
             </li>
         </ul>
     </div>
@@ -16,9 +18,9 @@
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
-        <h2 class="mb-4">Account Deleted</h2>
-        <p>Thank you for using Spotify Wrapped Bootleg.</p>
-        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Send Feedback</a>
+        <h2 class="mb-4">{% trans "Account Deleted" %}</h2>
+        <p>{% trans "Thank you for using Spotify Wrapped Bootleg." %}</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">{% trans "Send Feedback" %}</a>
     </div>
 </div>
 {% endblock %}
