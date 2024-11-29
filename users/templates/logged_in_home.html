@@ -234,7 +234,7 @@
 
 <!-- Button to show the form for generating a new wrap -->
 <div style="display: flex; justify-content: center;">
-    <button id="generateWrapButton" class="btn btn-primary">Generate a New Wrap</button>
+    <button id="generateWrapButton" class="btn btn-primary">{% trans "Generate a New Wrap" %}</button>
 </div>
 
 <!-- Form to specify timeframe and limit -->
@@ -242,11 +242,11 @@
     <form id="wrapForm" method="POST" class="d-flex align-items-center justify-content-between">
         {% csrf_token %}
         <div>
-            <label for="time_range">Time Range:</label>
+            <label for="time_range">{% trans "Time Range:" %}</label>
             <select name="time_range" id="time_range" style="width: 150px;">
-                <option value="short_term">Last month</option>
-                <option value="medium_term">Last 6 months</option>
-                <option value="long_term">Last few years</option>
+                <option value="short_term">{% trans "Last month" %}</option>
+                <option value="medium_term">{% trans "Last 6 months" %}</option>
+                <option value="long_term">{% trans "Last few years" %}</option>
             </select>
         </div>
         <div>
@@ -275,7 +275,7 @@
             <button id="deleteWrap" class="btn btn-danger mt-2">{% trans "Delete" %}</button>
         </div>
         <div class="mt-3">
-            <label for="wrapPublic">Make this wrap public:</label>
+            <label for="wrapPublic">{% trans "Make this wrap public:" %}</label>
             <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
         </div>
     </div>
