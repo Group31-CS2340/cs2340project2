@@ -2,9 +2,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Wrap
+from django.utils.translation import gettext_lazy as _
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    email = forms.EmailField(label=_("Email"))
     class Meta:
         model = User
         fields = ['first_name','last_name','username','email','password1', 'password2']
@@ -17,6 +19,8 @@ class ProfileEditForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(required=True)
     password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(label=_("Username"))
+    password = forms.CharField(label=_("Password"))
     class Meta:
         model = User
         fields = ['username', 'password']

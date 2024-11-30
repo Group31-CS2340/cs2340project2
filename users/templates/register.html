@@ -14,11 +14,24 @@
         <h2 class="text-center mb-4">{% trans "Register" %}</h2>
         <form method="POST" action="{% url 'register' %}">
             {% csrf_token %}
+
+            <!-- Display all errors at the top -->
             {% if form.errors %}
                 <div class="alert alert-danger">
-                    {{ form.errors }}
+                    <ul>
+                        {% for field in form %}
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <li>
+                                        <strong>{% blocktrans with label=field.label %}{{ label }}{% endblocktrans %}:</strong> {{ error }}
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 </div>
             {% endif %}
+            
 
             <!-- First Name -->
             <div class="form-group">
@@ -33,48 +46,28 @@
             </div>
 
             <!-- Username -->
-<div class="form-group">
-    <label for="username">{% trans "Username" %}</label>
-    <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
-    {% if form.username.errors %}
-        <div class="alert alert-danger">
-            {{ form.username.errors }}
-        </div>
-    {% endif %}
-</div>
+            <div class="form-group">
+                <label for="username">{% trans "Username" %}</label>
+                <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
+            </div>
 
-<!-- Email -->
-<div class="form-group">
-    <label for="email">{% trans "Email" %}</label>
-    <input type="email" id="email" name="email" class="form-control" value="{{ form.email.value|default_if_none:'' }}">
-    {% if form.email.errors %}
-        <div class="alert alert-danger">
-            {{ form.email.errors }}
-        </div>
-    {% endif %}
-</div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">{% trans "Email" %}</label>
+                <input type="email" id="email" name="email" class="form-control" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
 
-<!-- Password1 -->
-<div class="form-group">
-    <label for="password1">{% trans "Password" %}</label>
-    <input type="password" id="password1" name="password1" class="form-control">
-    {% if form.password1.errors %}
-        <div class="alert alert-danger">
-            {{ form.password1.errors }}
-        </div>
-    {% endif %}
-</div>
+            <!-- Password1 -->
+            <div class="form-group">
+                <label for="password1">{% trans "Password" %}</label>
+                <input type="password" id="password1" name="password1" class="form-control">
+            </div>
 
-<!-- Password2 -->
-<div class="form-group">
-    <label for="password2">{% trans "Re-enter Password" %}</label>
-    <input type="password" id="password2" name="password2" class="form-control">
-    {% if form.password2.errors %}
-        <div class="alert alert-danger">
-            {{ form.password2.errors }}
-        </div>
-    {% endif %}
-</div>
+            <!-- Password2 -->
+            <div class="form-group">
+                <label for="password2">{% trans "Re-enter Password" %}</label>
+                <input type="password" id="password2" name="password2" class="form-control">
+            </div>
 
             <button type="submit" class="btn btn-primary btn-block">{% trans "Create Account" %}</button>
         </form>

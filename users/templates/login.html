@@ -7,7 +7,7 @@
     <!-- Meta tags and title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Spotify Wrapped Bootleg</title>
+    <title>{% trans "Login - Spotify Wrapped Bootleg" %}</title>
 
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -34,12 +34,28 @@
 <!-- Login Section -->
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;"> <!-- Match registration width -->
-        <h2 class="text-center mb-4"> {% trans "Login" %} </h2>
+        <h2 class="text-center mb-4">{% trans "Login" %}</h2>
+
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
-            {% if form.non_field_errors %}
+
+            <!-- Display all errors at the top -->
+            {% if form.errors %}
                 <div class="alert alert-danger">
-                    {{ form.non_field_errors }}
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>
+                                    <strong>{% blocktrans with label=field.label %}{{ label }}{% endblocktrans %}:</strong> {{ error }}
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
                 </div>
             {% endif %}
 
@@ -47,26 +63,17 @@
             <div class="form-group">
                 <label for="username">{% trans "Username" %}</label>
                 <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
-                {% if form.username.errors %}
-                    <div class="alert alert-danger">
-                        {{ form.username.errors }}
-                    </div>
-                {% endif %}
             </div>
 
             <!-- Password Field -->
             <div class="form-group">
                 <label for="password">{% trans "Password" %}</label>
                 <input type="password" id="password" name="password" class="form-control">
-                {% if form.password.errors %}
-                    <div class="alert alert-danger">
-                        {{ form.password.errors }}
-                    </div>
-                {% endif %}
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">{% trans "Login" %}</button>
         </form>
+
         <p class="text-center mt-3">
             {% trans "Don't have an account?" %} <a href="{% url 'register' %}">{% trans "Register here." %}</a>
         </p>

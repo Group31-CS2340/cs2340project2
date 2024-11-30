@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 19:08-0500\n"
+"POT-Creation-Date: 2024-11-30 16:29-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: .\users\forms.py:9 .\users\templates\password_reset.html:64
+#: .\users\templates\register.html:56 .\users\templates\register_mobile.html:29
+msgid "Email"
+msgstr "电子邮箱"
+
 #: .\users\templates\account_deleted.html:6
 #: .\users\templates\base_site_mobile.html:114
 #: .\users\templates\contact.html:78 .\users\templates\explore.html:5
@@ -25,7 +30,7 @@ msgid "Toggle navigation"
 msgstr ""
 
 #: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:14
-#: .\users\templates\profile.html:40
+#: .\users\templates\profile.html:50
 msgid "Home"
 msgstr ""
 
@@ -45,8 +50,8 @@ msgstr "反馈"
 
 #: .\users\templates\base_site.html:30
 #: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:37
-#: .\users\templates\login.html:68 .\users\templates\login_mobile.html:36
-#: .\users\templates\register.html:81
+#: .\users\templates\login.html:74 .\users\templates\login_mobile.html:36
+#: .\users\templates\register.html:74
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
 msgstr "登录"
@@ -140,42 +145,54 @@ msgstr "反馈"
 msgid "Submit"
 msgstr "提交"
 
-#: .\users\templates\edit_profile.html:42
+#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:11
+#: .\users\templates\logged_in_home.html:92
+#: .\users\templates\logged_in_home_no_spotify.html:6
+#: .\users\templates\profile.html:28 .\users\templates\public_profile.html:25
+#: .\users\templates\songs.html:7
+msgid "Profile"
+msgstr ""
+
+#: .\users\templates\edit_profile.html:46
+#: .\users\templates\logged_in_home.html:95
+#: .\users\templates\logged_in_home_no_spotify.html:9
+#: .\users\templates\profile.html:31 .\users\templates\public_profile.html:28
+#: .\users\templates\songs.html:10
+msgid "Explore"
+msgstr ""
+
+#: .\users\templates\edit_profile.html:52
 msgid "Edit Profile"
 msgstr ""
 
-#: .\users\templates\edit_profile.html:49
+#: .\users\templates\edit_profile.html:59
 #, fuzzy
 #| msgid "First Name"
 msgid "First Name:"
 msgstr "名字"
 
-#: .\users\templates\edit_profile.html:53
+#: .\users\templates\edit_profile.html:63
 #, fuzzy
 #| msgid "Last Name"
 msgid "Last Name:"
 msgstr "姓"
 
-#: .\users\templates\edit_profile.html:59
+#: .\users\templates\edit_profile.html:69
 msgid "Cancel"
 msgstr ""
 
-#: .\users\templates\edit_profile.html:61
+#: .\users\templates\edit_profile.html:71
 msgid "Save changes"
 msgstr ""
 
-#: .\users\templates\edit_profile.html:63
+#: .\users\templates\edit_profile.html:73
 #, fuzzy
 #| msgid "Create Account"
 msgid "Delete account"
 msgstr "创建帐号"
 
-#: .\users\templates\edit_profile.html:70
+#: .\users\templates\edit_profile.html:80
 msgid "Are you sure you want to delete your account?"
-msgstr ""
-
-#: .\users\templates\explore.html:11 .\users\templates\songs.html:7
-msgid "Profile"
 msgstr ""
 
 #: .\users\templates\home.html:5
@@ -242,165 +259,182 @@ msgstr ""
 msgid "Try Logging In Again"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:91
+#: .\users\templates\logged_in_home.html:103
 msgid "Welcome to your Spotify Wrapped!"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:100 .\users\templates\new_wrap.html:1
+#: .\users\templates\logged_in_home.html:112 .\users\templates\new_wrap.html:1
 #: .\users\templates\wrap_detail.html:3
 msgid "Top Artists"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:113
+#: .\users\templates\logged_in_home.html:125
 msgid "Top Albums"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:118
-#: .\users\templates\logged_in_home.html:143
-#: .\users\templates\logged_in_home.html:156
-#: .\users\templates\logged_in_home.html:169
-#: .\users\templates\logged_in_home.html:182 .\users\templates\new_wrap.html:14
+#: .\users\templates\logged_in_home.html:130
+#: .\users\templates\logged_in_home.html:155
+#: .\users\templates\logged_in_home.html:168
+#: .\users\templates\logged_in_home.html:181
+#: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
 #: .\users\templates\wrap_detail.html:16
 msgid "by"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:126
+#: .\users\templates\logged_in_home.html:138
 msgid "Top Episodes"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:130
-#: .\users\templates\logged_in_home.html:156
-#: .\users\templates\logged_in_home.html:182
+#: .\users\templates\logged_in_home.html:142
+#: .\users\templates\logged_in_home.html:168
+#: .\users\templates\logged_in_home.html:194
 msgid "from"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:130
+#: .\users\templates\logged_in_home.html:142
 msgid "Added on"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:138
+#: .\users\templates\logged_in_home.html:150
 msgid "Top Playlists"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:143
+#: .\users\templates\logged_in_home.html:155
 msgid "track(s)"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:151
+#: .\users\templates\logged_in_home.html:163
 msgid "Recent Tracks"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:156
+#: .\users\templates\logged_in_home.html:168
 msgid "Played at"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:164
+#: .\users\templates\logged_in_home.html:176
 msgid "Top Audiobooks"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:169
+#: .\users\templates\logged_in_home.html:181
 msgid "narrated by"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:177 .\users\templates\new_wrap.html:11
+#: .\users\templates\logged_in_home.html:189 .\users\templates\new_wrap.html:11
 #: .\users\templates\wrap_detail.html:13
 msgid "Top Tracks"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:182
+#: .\users\templates\logged_in_home.html:194
 msgid "Duration:"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:190
+#: .\users\templates\logged_in_home.html:202
 msgid "Followed Artists"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:205
+#: .\users\templates\logged_in_home.html:217
 msgid "Previous"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:209
+#: .\users\templates\logged_in_home.html:221
 msgid "Next"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:225
+#: .\users\templates\logged_in_home.html:237
 msgid "Generate a New Wrap"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:233
+#: .\users\templates\logged_in_home.html:245
 msgid "Time Range:"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:235
+#: .\users\templates\logged_in_home.html:247
 #, fuzzy
 #| msgid "Last Name"
 msgid "Last month"
 msgstr "姓"
 
-#: .\users\templates\logged_in_home.html:236
+#: .\users\templates\logged_in_home.html:248
 #, fuzzy
 #| msgid "Last Name"
 msgid "Last 6 months"
 msgstr "姓"
 
-#: .\users\templates\logged_in_home.html:237
+#: .\users\templates\logged_in_home.html:249
 msgid "Last few years"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:241
+#: .\users\templates\logged_in_home.html:253
 msgid "Limit:"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:244
+#: .\users\templates\logged_in_home.html:256
 msgid "Generate"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:253
+#: .\users\templates\logged_in_home.html:267
 msgid "Top Artists:"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:255
+#: .\users\templates\logged_in_home.html:269
 msgid "Top Tracks:"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:258
+#: .\users\templates\logged_in_home.html:272
 msgid "Custom Wrap Name:"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:260
+#: .\users\templates\logged_in_home.html:273
+msgid "Enter a name for your wrap"
+msgstr ""
+
+#: .\users\templates\logged_in_home.html:274
 msgid "Save"
 msgstr ""
 
-#: .\users\templates\logged_in_home.html:261
+#: .\users\templates\logged_in_home.html:275
 #, fuzzy
 #| msgid "Create Account"
 msgid "Delete"
 msgstr "创建帐号"
 
-#: .\users\templates\logged_in_home.html:274
+#: .\users\templates\logged_in_home.html:278
+msgid "Make this wrap public:"
+msgstr ""
+
+#: .\users\templates\logged_in_home.html:292
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
 msgstr ""
 
-#: .\users\templates\login.html:48 .\users\templates\login_mobile.html:20
-#: .\users\templates\register.html:37 .\users\templates\register_mobile.html:20
+#: .\users\templates\login.html:10
+msgid "Login - Spotify Wrapped Bootleg"
+msgstr ""
+
+#: .\users\templates\login.html:49 .\users\templates\register.html:26
+#, python-format
+msgid "%(label)s"
+msgstr ""
+
+#: .\users\templates\login.html:64 .\users\templates\login_mobile.html:20
+#: .\users\templates\register.html:50 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "帐号"
 
-#: .\users\templates\login.html:59 .\users\templates\login_mobile.html:29
-#: .\users\templates\register.html:59 .\users\templates\register_mobile.html:38
+#: .\users\templates\login.html:70 .\users\templates\login_mobile.html:29
+#: .\users\templates\register.html:62 .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "密码"
 
-#: .\users\templates\login.html:71 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
 msgid "Don't have an account?"
 msgstr "没有帐号?"
 
-#: .\users\templates\login.html:71 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
 msgid "Register here."
 msgstr "在此注册"
 
-#: .\users\templates\login.html:74 .\users\templates\login_mobile.html:42
+#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:42
 msgid "Forgot your password?"
 msgstr "忘记密码?"
 
@@ -427,8 +461,12 @@ msgstr "新密码"
 msgid "Your password has been changed successfully"
 msgstr "您的密码已更改成功"
 
+#: .\users\templates\password_reset.html:9
+msgid "Reset Password - Spotify Wrapped Bootleg"
+msgstr ""
+
 #: .\users\templates\password_reset.html:36
-#: .\users\templates\password_reset.html:50
+#: .\users\templates\password_reset.html:68
 #, fuzzy
 #| msgid "Set Password"
 msgid "Reset Password"
@@ -439,11 +477,6 @@ msgid ""
 "Enter your email address, and we'll send you an email with instructions to "
 "reset your password."
 msgstr ""
-
-#: .\users\templates\password_reset.html:47 .\users\templates\register.html:48
-#: .\users\templates\register_mobile.html:29
-msgid "Email"
-msgstr "电子邮箱"
 
 #: .\users\templates\password_reset_complete.html:7
 msgid "Password Reset Complete"
@@ -495,78 +528,78 @@ msgid ""
 "password."
 msgstr ""
 
-#: .\users\templates\profile.html:28
+#: .\users\templates\profile.html:38
 msgid "Your Profile"
 msgstr ""
 
-#: .\users\templates\profile.html:31
+#: .\users\templates\profile.html:41
 msgid "Edit"
 msgstr ""
 
-#: .\users\templates\profile.html:34
+#: .\users\templates\profile.html:44
 msgid "Public Profile"
 msgstr ""
 
-#: .\users\templates\profile.html:37
+#: .\users\templates\profile.html:47
 msgid "Log Out"
 msgstr ""
 
-#: .\users\templates\profile.html:45
+#: .\users\templates\profile.html:55
 #, fuzzy
 #| msgid "Username"
 msgid "Username:"
 msgstr "帐号"
 
-#: .\users\templates\profile.html:46
+#: .\users\templates\profile.html:56
 #, fuzzy
 #| msgid "First Name"
 msgid "Display Name:"
 msgstr "名字"
 
-#: .\users\templates\profile.html:47
+#: .\users\templates\profile.html:57
 #, fuzzy
 #| msgid "Email"
 msgid "Email:"
 msgstr "电子邮箱"
 
-#: .\users\templates\profile.html:54
+#: .\users\templates\profile.html:64
 msgid "Are you sure you want to log out?"
 msgstr ""
 
-#: .\users\templates\public_profile.html:29
+#: .\users\templates\public_profile.html:39
 #, fuzzy
 #| msgid "Username"
 msgid "User"
 msgstr "帐号"
 
-#: .\users\templates\public_profile.html:31
+#: .\users\templates\public_profile.html:41
 msgid "Wraps"
 msgstr ""
 
-#: .\users\templates\public_profile.html:35
+#: .\users\templates\public_profile.html:45
 #: .\users\templates\wrap_detail.html:26
 #, fuzzy
 #| msgid "Backend"
 msgid "Back"
 msgstr "后端"
 
-#: .\users\templates\register.html:25
+#: .\users\templates\register.html:38
 msgid "First Name"
 msgstr "名字"
 
-#: .\users\templates\register.html:31
+#: .\users\templates\register.html:44
 msgid "Last Name"
 msgstr "姓"
 
-#: .\users\templates\register.html:70
+#: .\users\templates\register.html:68
 msgid "Re-enter Password"
 msgstr "重新输入密码"
 
-#: .\users\templates\register.html:79
+#: .\users\templates\register.html:72
 msgid "Create Account"
 msgstr "创建帐号"
 
-#: .\users\templates\register.html:81 .\users\templates\register_mobile.html:57
+#: .\users\templates\register.html:74 .\users\templates\register_mobile.html:57
 msgid "Already have an account?"
 msgstr "已有帐户?"
 
@@ -592,10 +625,6 @@ msgstr ""
 
 #: .\users\templates\registration_successful.html:9
 msgid "Welcome to Spotify Wrapped Bootleg."
-msgstr ""
-
-#: .\users\templates\songs.html:10
-msgid "Explore"
 msgstr ""
 
 #: .\users\templates\songs.html:21
