@@ -127,7 +127,7 @@
                 <ul>
                     {% for episode in data.2 %}
                     <li class="artist-item">
-                        <span>{{ episode.name }} {% trans "from" %}{{ episode.show }} (Added on {{ episode.added_at }})</span>
+                        <span>{{ episode.name }} {% trans "from" %}{{ episode.show }} ({% trans "Added on" %} {{ episode.added_at }})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -140,7 +140,7 @@
                     {% for playlist in data.3 %}
                     <li class="artist-item">
                         <img src="{{ playlist.image }}" class="artist-image" alt="{{ playlist.name }}">
-                        <span>{{ playlist.name }} {% trans "by" %} {{ playlist.owner }} ({{ playlist.tracks }} tracks)</span>
+                        <span>{{ playlist.name }} {% trans "by" %} {{ playlist.owner }} ({{ playlist.tracks }} {% trans "track(s)" %})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -153,7 +153,7 @@
                     {% for track in data.4 %}
                     <li class="artist-item">
                         <img src="{{ track.image }}" class="artist-image" alt="{{ track.track_name }}">
-                        <span>{{ track.track_name }} {% trans "by" %} {{ track.artist_name }} {% trans "from" %} {{ track.album_name }} (Played at {{ track.played_at }})</span>
+                        <span>{{ track.track_name }} {% trans "by" %} {{ track.artist_name }} {% trans "from" %} {{ track.album_name }} ({% trans "Played at" %} {{ track.played_at }})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -179,7 +179,7 @@
                     {% for track in data.6 %}
                     <li class="artist-item">
                         <img src="{{ track.image }}" class="artist-image" alt="{{ track.name }}">
-                        <span>{{ track.name }} {% trans "by" %} {{ track.artist }} {% trans "from" %} {{ track.album }} (Duration: {{ track.duration_ms }})</span>
+                        <span>{{ track.name }} {% trans "by" %} {{ track.artist }} {% trans "from" %} {{ track.album }} ({% trans "Duration:" %} {{ track.duration_ms }})</span>
                     </li>
                     {% endfor %}
                 </ul>

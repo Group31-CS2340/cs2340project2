@@ -1,12 +1,13 @@
 {% extends "base_site.html" %}
 {% block title %}Account Created - Spotify Wrapped Bootleg{% endblock %}
+{% load i18n %}
 
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
         <h2 class="mb-4">{% trans "Account Created!" %}</h2>
-        <p>{% trans "Welcome to Spotify Wrapped Bootleg. %}</p>
-        <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
+        <p>{% trans "Welcome to Spotify Wrapped Bootleg." %}</p>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg">{% trans "Login" %}</a>
     </div>
 </div>
 {% endblock %}

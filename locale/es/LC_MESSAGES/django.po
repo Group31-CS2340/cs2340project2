@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 17:50-0500\n"
+"POT-Creation-Date: 2024-11-29 19:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,6 +46,7 @@ msgstr "Comentarios"
 #: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:37
 #: .\users\templates\login.html:68 .\users\templates\login_mobile.html:36
 #: .\users\templates\register.html:81
+#: .\users\templates\registration_successful.html:10
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -273,13 +274,27 @@ msgstr "Episodios principales"
 msgid "from"
 msgstr "de"
 
-#: .\users\templates\logged_in_home.html:13
+#: .\users\templates\logged_in_home.html:130
+msgid "Added on"
+msgstr ""
+
+#: .\users\templates\logged_in_home.html:138
 msgid "Top Playlists"
 msgstr "Listas de reproducción principales"
+
+#: .\users\templates\logged_in_home.html:143
+msgid "track(s)"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:151
 msgid "Recent Tracks"
 msgstr "Pistas recientes"
+
+#: .\users\templates\logged_in_home.html:156
+#, fuzzy
+#| msgid "played at"
+msgid "Played at"
+msgstr "reproducido a"
 
 #: .\users\templates\logged_in_home.html:164
 msgid "Top Audiobooks"
@@ -293,6 +308,10 @@ msgstr "narrado por"
 #: .\users\templates\wrap_detail.html:13
 msgid "Top Tracks"
 msgstr "Canciones Principales"
+
+#: .\users\templates\logged_in_home.html:182
+msgid "Duration:"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:190
 msgid "Followed Artists"
@@ -560,9 +579,13 @@ msgstr "Confirmar Nueva Contraseña"
 msgid "Login here."
 msgstr "Regístrate aquí."
 
-#: .\users\templates\registration_successful.html:7
+#: .\users\templates\registration_successful.html:8
 msgid "Account Created!"
 msgstr "¡Cuenta creada!"
+
+#: .\users\templates\registration_successful.html:9
+msgid "Welcome to Spotify Wrapped Bootleg."
+msgstr "¡Bienvenido a Spotify Wrapped Bootleg"
 
 #: .\users\templates\songs.html:10
 msgid "Explore"
@@ -642,6 +665,11 @@ msgstr "Crea una cuenta"
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
 msgstr "Álbum"
+
+#, fuzzy
+#~| msgid "Last Name"
+#~ msgid "Last month"
+#~ msgstr "Apellido"
 
 #~ msgid "Enter a name for your wrap"
 #~ msgstr "Introduce un nombre para tu resumen"
