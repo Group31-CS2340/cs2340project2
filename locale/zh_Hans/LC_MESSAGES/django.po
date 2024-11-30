@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 19:05-0500\n"
+"POT-Creation-Date: 2024-11-29 19:08-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -333,15 +333,19 @@ msgid "Time Range:"
 msgstr ""
 
 #: .\users\templates\logged_in_home.html:235
-msgid "Short Term"
-msgstr ""
+#, fuzzy
+#| msgid "Last Name"
+msgid "Last month"
+msgstr "姓"
 
 #: .\users\templates\logged_in_home.html:236
-msgid "Medium Term"
-msgstr ""
+#, fuzzy
+#| msgid "Last Name"
+msgid "Last 6 months"
+msgstr "姓"
 
 #: .\users\templates\logged_in_home.html:237
-msgid "Long Term"
+msgid "Last few years"
 msgstr ""
 
 #: .\users\templates\logged_in_home.html:241
@@ -674,8 +678,3 @@ msgstr "创建帐号"
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Last Name"
-#~ msgid "Last month"
-#~ msgstr "姓"

@@ -231,10 +231,10 @@
         {% csrf_token %}
         <div>
             <label for="time_range">{% trans "Time Range:" %}</label>
-            <select name="time_range" id="time_range">
-                <option value="short_term">{% trans "Short Term" %}</option>
-                <option value="medium_term">{% trans "Medium Term" %}</option>
-                <option value="long_term">{% trans "Long Term" %}</option>
+            <select name="time_range" id="time_range" style="width: 150px;">
+                <option value="short_term">{% trans "Last month" %}</option>
+                <option value="medium_term">{% trans "Last 6 months" %}</option>
+                <option value="long_term">{% trans "Last few years" %}</option>
             </select>
         </div>
         <div>
