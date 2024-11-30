@@ -1,14 +1,14 @@
 {% extends "base_site_mobile.html" %}
 {% load static %}
 {% load i18n %}
-{% block title %}Your Spotify Wrapped - Mobile View{% endblock %}
+{% block title %}{% trans "Your Spotify Wrapped" %} - {% trans "(Mobile View)" %}{% endblock %}
 {% block content %}
 <!-- Spotify Wrapped Page for Mobile -->
 <section class="spotify-wrapped-section">
     <div class="container d-flex flex-column align-items-center justify-content-center" style="max-width: 400px; width: 100%;">
         <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Your Spotify Wrapped" %}</h3>
 
-        <h4 class="mt-4 text-center" style="font-size: 1.5em;">{% trans "Top Artists (Last Month)" %}</h4>
+        <h4 class="mt-4 text-center" style="font-size: 1.5em;">Top Artists {% trans "(Last Month)" %}</h4>
         {% if top_artists.items %}
             <ul class="list-unstyled w-100">
                 {% for artist in top_artists.items %}
@@ -24,7 +24,7 @@
             <p class="text-center">{% trans "No top artists data available." %}</p>
         {% endif %}
 
-        <h4 class="mt-4 text-center" style="font-size: 1.5em;">{% trans "Top Tracks (Last Month)" %}</h4>
+        <h4 class="mt-4 text-center" style="font-size: 1.5em;">Top Tracks {% trans "(Last Month)" %}</h4>
         {% if top_tracks.items %}
             <ul class="list-unstyled w-100">
                 {% for track in top_tracks.items %}

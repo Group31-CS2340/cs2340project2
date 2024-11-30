@@ -1,12 +1,12 @@
 {% extends "base_site_mobile.html" %}
 {% load static %}
 {% load i18n %}
-{% block title %}{% trans "Home - Spotify Wrapped Bootleg (Mobile View)" %}{% endblock %}
+{% block title %} {% trans "Home" %} - Spotify Wrapped Bootleg {% trans "(Mobile View)" %}{% endblock %}
 {% block content %}
 <!-- Hero Section for Mobile -->
 <section class="hero-section">
     <div class="hero-content text-center">
-        <h1 style="font-size: 2.0em;">{% trans "Spotify Wrapped Bootleg 2024" %}</h1>
+        <h1 style="font-size: 2.0em;">Spotify Wrapped Bootleg 2024</h1>
         <p class="lead" style="font-size: 1.1em;">{% trans "Discover your personalized music journey." %}</p>
         <a href="{% url 'register' %}" class="btn btn-primary btn-lg" style="font-size: 1em; padding: 10px 20px;">{% trans "Get Started" %}</a>
     </div>
