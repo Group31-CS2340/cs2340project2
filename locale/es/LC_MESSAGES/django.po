@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 17:50-0500\n"
+"POT-Creation-Date: 2024-11-29 19:08-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,6 +46,7 @@ msgstr "Comentarios"
 #: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:37
 #: .\users\templates\login.html:68 .\users\templates\login_mobile.html:36
 #: .\users\templates\register.html:81
+#: .\users\templates\registration_successful.html:10
 msgid "Login"
 msgstr "Iniciar sesión"
 
@@ -143,16 +144,12 @@ msgid "Edit Profile"
 msgstr "Editar Perfil"
 
 #: .\users\templates\edit_profile.html:49
-#, fuzzy
-#| msgid "First Name"
 msgid "First Name:"
-msgstr "Primer nombre"
+msgstr "Primer nombre:"
 
 #: .\users\templates\edit_profile.html:53
-#, fuzzy
-#| msgid "Last Name"
 msgid "Last Name:"
-msgstr "Apellido"
+msgstr "Apellido:"
 
 #: .\users\templates\edit_profile.html:59
 msgid "Cancel"
@@ -273,13 +270,25 @@ msgstr "Episodios principales"
 msgid "from"
 msgstr "de"
 
-#: .\users\templates\logged_in_home.html:13
+#: .\users\templates\logged_in_home.html:130
+msgid "Added on"
+msgstr "Añadido el"
+
+#: .\users\templates\logged_in_home.html:138
 msgid "Top Playlists"
 msgstr "Listas de reproducción principales"
+
+#: .\users\templates\logged_in_home.html:143
+msgid "track(s)"
+msgstr "pista(s)"
 
 #: .\users\templates\logged_in_home.html:151
 msgid "Recent Tracks"
 msgstr "Pistas recientes"
+
+#: .\users\templates\logged_in_home.html:156
+msgid "Played at"
+msgstr "Reproducido a"
 
 #: .\users\templates\logged_in_home.html:164
 msgid "Top Audiobooks"
@@ -293,6 +302,10 @@ msgstr "narrado por"
 #: .\users\templates\wrap_detail.html:13
 msgid "Top Tracks"
 msgstr "Canciones Principales"
+
+#: .\users\templates\logged_in_home.html:182
+msgid "Duration:"
+msgstr "Duración:"
 
 #: .\users\templates\logged_in_home.html:190
 msgid "Followed Artists"
@@ -315,16 +328,16 @@ msgid "Time Range:"
 msgstr "Título del Resumen:"
 
 #: .\users\templates\logged_in_home.html:235
-msgid "Short Term"
-msgstr "Corto Plazo"
+msgid "Last month"
+msgstr "El mes pasado"
 
 #: .\users\templates\logged_in_home.html:236
-msgid "Medium Term"
-msgstr "Mediano Plazo"
+msgid "Last 6 months"
+msgstr "Los últimos seis meses"
 
 #: .\users\templates\logged_in_home.html:237
-msgid "Long Term"
-msgstr "Largo Plazo"
+msgid "Last few years"
+msgstr "Los últimos años"
 
 #: .\users\templates\logged_in_home.html:241
 msgid "Limit:"
@@ -560,9 +573,13 @@ msgstr "Confirmar Nueva Contraseña"
 msgid "Login here."
 msgstr "Regístrate aquí."
 
-#: .\users\templates\registration_successful.html:7
+#: .\users\templates\registration_successful.html:8
 msgid "Account Created!"
 msgstr "¡Cuenta creada!"
+
+#: .\users\templates\registration_successful.html:9
+msgid "Welcome to Spotify Wrapped Bootleg."
+msgstr "¡Bienvenido a Spotify Wrapped Bootleg"
 
 #: .\users\templates\songs.html:10
 msgid "Explore"
@@ -634,14 +651,21 @@ msgid "User Doesn't Exist"
 msgstr "El usuario no existe"
 
 #: .\users\templates\wrap_detail.html:22
-#, fuzzy
-#| msgid "Create Account"
 msgid "Delete Wrap"
-msgstr "Crea una cuenta"
+msgstr "Eliminar Resumen" 
 
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
 msgstr "Álbum"
+
+#~ msgid "Short Term"
+#~ msgstr "Corto Plazo"
+
+#~ msgid "Medium Term"
+#~ msgstr "Mediano Plazo"
+
+#~ msgid "Long Term"
+#~ msgstr "Largo Plazo"
 
 #~ msgid "Enter a name for your wrap"
 #~ msgstr "Introduce un nombre para tu resumen"
