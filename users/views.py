@@ -151,8 +151,9 @@ def edit_profile(request, username):
 
 def public_profile(request, username):
     user = request.user
-    profile = request.user.profile
-    return render(request, 'public_profile.html', {'user': user, 'profile': profile})
+    user_profile = request.user.profile
+    wraps = Wrap.objects.filter(user=user, public=True)
+    return render(request, 'public_profile.html', {'user': user, 'profile': user_profile, 'wraps': wraps})
 
 
 def password_reset(request):
@@ -570,15 +571,23 @@ def wrap_delete(request, wrap_id):
 
 @login_required
 def wrap_update_public(request, wrap_id):
+    csrf_token = request.headers.get('X-CSRFToken', None)
+    print(f"Received CSRF token: {csrf_token}")
     if request.method == 'POST':
+
         try:
-            wrap = get_object_or_404(Wrap, id=wrap_id)
+            wrap = get_object_or_404(Wrap, id=wrap_id, user=request.user)
             data = json.loads(request.body)
-            wrap.public = data.get('public', wrap.public)
-            wrap.save()
-            return JsonResponse({'success': True})
+            if "public" in data:
+                wrap.public = data["public"]
+                wrap.save()
+                return JsonResponse({'success': True})
+            # wrap.public = data.get('public', wrap.public)
+            # wrap.save()
+            return JsonResponse({'error':'Invalid data'}, status=400)
         except Wrap.DoesNotExist:
             return JsonResponse({'error': 'Wrap not found'}, status=404)
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 def spotify_logout(request):
     request.session.pop('spotify_token', None)

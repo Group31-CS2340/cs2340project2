@@ -36,15 +36,26 @@
                 {% if profile.user.first_name or profile.user.last_name %}
                     {{ profile.user.first_name }} {{ profile.user.last_name }}
                 {% else %}
-                    {% trans "User" %}
+                    {{ profile.user.username }}
                 {% endif %}
                 {% trans "Wraps" %}
             </strong></h2>
         </div>
+    
+    <div id="wraps" class="mt-4">
+    <div class="gallery-container">
+        {% for wrap in wraps %}
+            <a href="{% url 'wrap_detail_view' wrap.id %}" class="gallery-item" data-wrap-id="{{ wrap.id }}">
+                    {{ wrap.title }}
+                </a>
+        {% empty %}
+            <p>{% trans "No shared wraps." %}</p>
+        {% endfor %}
+    </div>
+</div>
         <button type="button" class="btn btn-primary btn-lg" id="back-button" onclick="history.back()">
             {% trans "Back" %}
         </button>
     </div>
-    
     
 {% endblock %}
