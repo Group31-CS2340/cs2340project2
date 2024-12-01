@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     email = forms.EmailField(label=_("Email"))
+    
     class Meta:
         model = User
         fields = ['first_name','last_name','username','email','password1', 'password2']

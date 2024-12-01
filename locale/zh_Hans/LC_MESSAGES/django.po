@@ -292,7 +292,7 @@ msgstr "顶级有声书"
 
 #: .\users\templates\logged_in_home.html:181
 msgid "narrated by"
-msgstr "由"
+msgstr "旁白:"
 
 #: .\users\templates\logged_in_home.html:189
 #: .\users\templates\logged_in_home.html:269 .\users\templates\new_wrap.html:11

@@ -12,6 +12,7 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;">
         <h2 class="text-center mb-4">{% trans "Register" %}</h2>
+        
         <form method="POST" action="{% url 'register' %}">
             {% csrf_token %}
 
@@ -28,10 +29,14 @@
                                 {% endfor %}
                             {% endif %}
                         {% endfor %}
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endif %}
                     </ul>
                 </div>
             {% endif %}
-            
 
             <!-- First Name -->
             <div class="form-group">
