@@ -273,7 +273,7 @@ def explore(request):
 
 
 def spotify_login(request):
-    request.session.flush()
+    del request.session["spotify_token"]
     cleanup()
     client_id = settings.SPOTIFY_CLIENT_ID
     auth_headers = {
@@ -283,7 +283,7 @@ def spotify_login(request):
         "scope": "user-top-read user-library-read user-read-recently-played user-follow-read"
     }
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
-    return redirect("home_logged_in", request.user)
+    return redirect("home_logged_in")
 
 
 def spotify_callback(request):
