@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 21:33-0500\n"
+"POT-Creation-Date: 2024-11-30 23:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,6 +259,7 @@ msgstr "顶级专辑"
 #: .\users\templates\logged_in_home.html:181
 #: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
+#: .\users\templates\wrap_detail.html:135
 msgid "by"
 msgstr "由"
 
@@ -366,10 +367,23 @@ msgid "Delete"
 msgstr "删除"
 
 #: .\users\templates\logged_in_home.html:278
+#: .\users\templates\logged_in_home.html:291
 msgid "Make this wrap public"
 msgstr "将此回顾设置为公开"
 
-#: .\users\templates\logged_in_home.html:292
+#: .\users\templates\logged_in_home.html:284
+msgid "Share your Wrap"
+msgstr "分享你的年度回顾"
+
+#: .\users\templates\logged_in_home.html:285
+msgid "Share on Twitter"
+msgstr "在推特上分享"
+
+#: .\users\templates\logged_in_home.html:286
+msgid "Download Image"
+msgstr "下载图片"
+
+#: .\users\templates\logged_in_home.html:305
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
 msgstr "尚无保存的回顾。生成一个新的回顾来查看它！"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 21:33-0500\n"
+"POT-Creation-Date: 2024-11-30 23:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,6 +260,7 @@ msgstr "Álbumes Principales"
 #: .\users\templates\logged_in_home.html:181
 #: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
+#: .\users\templates\wrap_detail.html:135
 msgid "by"
 msgstr "por"
 
@@ -367,10 +368,23 @@ msgid "Delete"
 msgstr "Eliminar"
 
 #: .\users\templates\logged_in_home.html:278
+#: .\users\templates\logged_in_home.html:291
 msgid "Make this wrap public"
 msgstr "Hacer público este wrap"
 
-#: .\users\templates\logged_in_home.html:292
+#: .\users\templates\logged_in_home.html:284
+msgid "Share your Wrapped"
+msgstr "Comparte tu resumen"
+
+#: .\users\templates\logged_in_home.html:285
+msgid "Share on Twitter"
+msgstr "Compartir en Twitter"
+
+#: .\users\templates\logged_in_home.html:286
+msgid "Download Image"
+msgstr "Descargar imagen"
+
+#: .\users\templates\logged_in_home.html:305
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
 msgstr "Aún no hay resúmenes guardados. ¡Genera uno nuevo para verlo aquí!"
 

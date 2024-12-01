@@ -281,14 +281,14 @@
         
         <!-- Add Share Button Section -->
         <div class="mt-3">
-            <h5>Share your Wrapped:</h5>
-            <button id="shareTwitter" class="btn btn-info">Share on Twitter</button>
-            <button id="downloadImage" class="btn btn-warning">Download Image</button>
+            <h5>{% trans "Share your Wrap" %}:</h5>
+            <button id="shareTwitter" class="btn btn-info">{% trans "Share on Twitter" %}</button>
+            <button id="downloadImage" class="btn btn-warning">{% trans "Download Image" %}</button>
         </div>
         <canvas id="wrappedCanvas" style="display: none;"></canvas>
 
         <div class="mt-3">
-            <label for="wrapPublic">Make this wrap public:</label>
+            <label for="wrapPublic">{% trans "Make this wrap public" %}:</label>
             <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
         </div>
     </div>
