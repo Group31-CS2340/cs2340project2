@@ -25,7 +25,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.utils.translation import gettext as _
 
-from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm
+from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm, LoginFormMobile
 from .models import Profile, Feedback, Wrap
 from django.conf import settings
 
