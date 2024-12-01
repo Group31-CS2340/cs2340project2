@@ -322,6 +322,7 @@
             method: 'POST',
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': getCSRFToken(),
             },
             body: formData,
         })
@@ -398,7 +399,7 @@
     document.querySelector('#saveWrapName').addEventListener('click', function () {
         const customName = document.querySelector('#customWrapName').value;
         const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;
-        
+
         if (customName && wrapId) {
             fetch('/wrap-generate/', {
                 method: 'PUT',
@@ -428,7 +429,7 @@
     document.querySelector('#wrapPublic').addEventListener('change', function () {
         const wrapId = document.querySelector('#deleteWrap').dataset.wrapId;
         const isPublic = this.checked;  // true if checked, false if unchecked
-        
+
         fetch(`/wrap-update-public/${wrapId}/`, {
             method: 'POST',
             headers: {

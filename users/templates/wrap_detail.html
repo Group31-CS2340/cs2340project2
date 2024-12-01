@@ -1,27 +1,150 @@
-<h2>{{ wrap.title }}</h2>
+{% extends 'base_site.html' %}
+{% load i18n %}
 
-<h2>Top Artists</h2>
-<ul>
-    {% for artist in wrap.top_artists %}
-        <li>
-            <img src="{{ artist.image }}" alt="{{ artist.name }}" width="100">
-            {{ artist.name }}
-        </li>
-    {% endfor %}
-</ul>
+{% block style %}
+    <style>
+    #title-block {
+        background-color: #03C03C;
+    }
 
-<h2>Top Tracks</h2>
-<ul>
-    {% for track in wrap.top_tracks %}
-        <li>{{ track.name }} by {{ track.artist }}</li>
-    {% endfor %}
-</ul>
 
-<form method="post" action="{% url 'wrap_delete' wrap.id %}">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Delete Wrap</button>
-</form>
+    .gallery-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        top: 100px;
+    }
 
-<a href="{% url 'home_logged_in' wrap.user %}">
-    <button type="button" class="btn btn-primary">Back</button>
-</a>
+    .gallery-item {
+        text-align: center;
+        position: absolute;
+    }
+
+    .gallery-item img {
+        width: 250px;  /* Adjust size of images */
+        height: 250px;
+        border-radius: 50%;  /* To make images round */
+        object-fit: cover;   /* Ensure images are properly cropped */
+    }
+
+    .gallery-item p {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #e0e0e0;  /* Text color */
+    }
+
+    .gallery-item.left {
+        left: 250px;
+        margin-top: 200px;
+    }
+
+    .gallery-item.right {
+        right: 250px;
+        margin-top: 250px;
+    }
+    
+    #tracks-container {
+        margin-left:20px;
+        margin-top:400px;
+        height: fit-content;
+    }
+    
+
+    #track_list {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        white-space: nowrap;
+        padding: 10px;
+        gap: 20px;
+        scroll-behavior: smooth;
+        margin-top: -100px;
+        margin-left: 20px;
+    }
+
+    #track {
+        display: flex;
+        width: auto;
+    }
+
+    #track-name {
+        margin: 20px;
+    }
+
+    #track-artists {
+        display:flex;
+        flex-direction:column;
+        margin-left: 50px;
+        margin-top: -20px;
+    }
+    </style>
+{% endblock %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' username=user.username %}">{% trans "Profile" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home_logged_in' username=user.username %}">{% trans "Home" %}</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div id="title-block">
+        <div id="title" style="margin-left:20px">
+            <h1><strong>{{ wrap.title }}</strong></h1>
+        </div>
+        <div style="margin-left: 120px"><p>{% trans "By" %}: {% if wrap.user.first_name or wrap.user.last_name %}
+            {{ wrap.user.first_name }} {{ wrap.user.last_name }}
+        {% else %}
+            {{ wrap.user.username }}
+        {% endif %}</p></div>
+    </div>
+    <div id="artists" style="margin:20px">
+        <h2>Top Artists:</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="{{ wrap.top_artists.0.image }}" alt="{{ wrap.top_artists.0.name }}">
+                <p>{{ wrap.top_artists.0.name }}</p>
+            </div>
+            <div class="gallery-item left">
+                <img src="{{ wrap.top_artists.1.image }}" alt="{{ wrap.top_artists.1.name }}">
+                <p>{{ wrap.top_artists.1.name }}</p>
+            </div>
+            <div class="gallery-item right">
+                <img src="{{ wrap.top_artists.2.image }}" alt="{{ wrap.top_artists.2.name }}">
+                <p>{{ wrap.top_artists.2.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="tracks-container">
+    <h2>Top Songs:</h2>
+    <div id="track_list" class="gallery-container">
+        {% for song in wrap.top_tracks %}
+            <div id="track">
+            <div id="track_image">
+                <img src="{{ song.image }}" alt="{{ song.album }}" style="width:200px">
+            </div>
+            <div id="track-details" style="display:flex; flex-direction:column">
+            <div id="track-name" style="display:flex">
+                <h3>{{ song.name }}</h3>
+                <p style="margin-top:10px; margin-left:10px"> by
+                {% for artist in song.artists %}
+                    {{ artist }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            </div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+    <div id="back-button">
+        <a href="{% url 'explore' %}">{% trans "Back to Explore" %}</a>
+
+    </div>
+{% endblock %}
