@@ -50,6 +50,7 @@ urlpatterns = [
      path('i18n/', include('django.conf.urls.i18n')),
      path('wrap-generate/', user_views.wrap_generate, name='wrap_generate'),
      path('wrap-detail/<int:wrap_id>/', user_views.wrap_detail, name='wrap_detail'),
+     path('wrap-detail-view/<int:wrap_id>/', user_views.wrap_detail_view, name='wrap_detail_view'),
      path('wrap-delete/<int:wrap_id>/', user_views.wrap_delete, name='wrap_delete'),
      path('delete-wrap/<int:wrap_id>/', user_views.wrap_delete, name='wrap_delete'),
      path('wrap-update-public/<int:wrap_id>/', user_views.update_wrap_public, name='wrap-update-public'),
