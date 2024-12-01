@@ -284,7 +284,7 @@ def spotify_login(request):
         "scope": "user-top-read user-library-read user-read-recently-played user-follow-read"
     }
     webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
-    return redirect("home_logged_in")
+    return redirect("home_logged_in", request.user)
 
 
 def spotify_callback(request):
