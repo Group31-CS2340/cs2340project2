@@ -148,10 +148,16 @@
             {% endfor %}
         </select>
     </form>
-    <div>
-        <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">Mobile</a>
-        <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">Desktop</a>
-    </div>
+   <div>
+    <a href="{% if user.is_authenticated %}{% url 'home_logged_in' user.username %}{% else %}{% url 'home' %}{% endif %}" 
+       class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">
+       Desktop
+    </a>
+    <a href="{% if user.is_authenticated %}{% url 'home_logged_in_mobile' user.username %}{% else %}{% url 'home-mobile' %}{% endif %}" 
+       class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">
+       Mobile
+    </a>
+</div>
 </div>
 
 {% block content %}{% endblock %}
