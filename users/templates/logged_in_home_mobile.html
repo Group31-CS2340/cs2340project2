@@ -18,8 +18,10 @@
                     <ul>
                         {% for artist in data.0 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ artist.image }}" class="artist-image" alt="{{ artist.name }}">
                         <span>{{ artist.name }}</span>
+                        </div>
                     </li>
                     {% endfor %}
                     </ul>
@@ -31,8 +33,10 @@
                     <ul>
                         {% for album in data.1 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ album.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ album.name }}">
                             <span>{{ album.name }} by {{ album.artists }}</span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -44,7 +48,9 @@
                     <ul>
                         {% for episode in data.2 %}
                         <li class="artist-item">
-                            <span>{{ episode.name }} from {{ episode.show }} (Added on {{ episode.added_at|date:"M d, Y" }})</span>
+                        <div class="artist-info">
+                            <span>{{ episode.name|truncatechars:50  }} from {{ episode.show|truncatechars:30 }} (Added on {{ episode.added_at|date:"M d, Y" }})</span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -56,8 +62,10 @@
                     <ul>
                         {% for playlist in data.3 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ playlist.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ playlist.name }}">
                             <span>{{ playlist.name }} by {{ playlist.owner }} ({{ playlist.tracks }} tracks)</span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -69,8 +77,10 @@
                     <ul>
                         {% for track in data.4 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ track.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ track.track_name }}">
                             <span>{{ track.track_name }} by {{ track.artist_name }} from {{ track.album_name }} (Played at {{ track.played_at|date:"M d, Y H:i" }})</span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -82,8 +92,10 @@
                     <ul>
                         {% for audiobook in data.5 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ audiobook.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ audiobook.title }}">
                             <span>{{ audiobook.title }} by {{ audiobook.authors }}{% if audiobook.narrator %}, narrated by {{ audiobook.narrator }}{% endif %}</span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -95,8 +107,10 @@
                     <ul>
                         {% for track in data.6 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ track.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ track.name }}">
                             <span>{{ track.name }} by {{ track.artist }} from {{ track.album }} </span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -108,8 +122,10 @@
                     <ul>
                         {% for artist in data.7 %}
                         <li class="artist-item">
+                        <div class="artist-info">
                             <img src="{{ artist.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ artist.name }}">
                             <span>{{ artist.name }}</span>
+                        </div>
                         </li>
                         {% endfor %}
                     </ul>
@@ -298,6 +314,19 @@
         });
     });
 
+    window.addEventListener('load', function () {
+    var carouselItems = document.querySelectorAll('.carousel-item');
+    var maxHeight = 0;
+
+    carouselItems.forEach(function (item) {
+        if (item.offsetHeight > maxHeight) {
+            maxHeight = item.offsetHeight;
+        }
+    });
+
+    document.querySelector('.carousel-inner').style.height = maxHeight + 'px';
+});
+
     // Save the custom wrap name
     document.querySelector('#saveWrapName').addEventListener('click', function () {
         const customName = document.querySelector('#customWrapName').value;
@@ -361,62 +390,92 @@
 </script>
 
 <style>
+
+.logged-in-section {
+    margin-bottom: 10px;
+}
+
+.carousel {
+    width: 400px;      /* Fixed width */
+    margin: 0 auto;    /* Center horizontally */
+    overflow: hidden;      /* Hide overflow content */
+    border-radius: 8px;    /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+    margin-top: 10px;
+}
+
+.carousel-inner {
+    width: 100%;           /* Ensure inner content scales with the container */
+    display: flex;         /* Flex layout for smooth alignment */
+    flex-direction: column; /* Stack items vertically */
+    height: 300px;
+    transition: height 0.3s ease-in-out;
+}
+
+.carousel-item ul {
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+    max-width: 90%;        /* Prevent list items from exceeding container width */
+    height: 90%;
+}
     .carousel-inner h3 {
-        font-size: 1.5rem;
+        font-size: 1rem;
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
     }
 
     .carousel-item ul {
-        padding: 100px;
+        padding: 0;
         margin: 0;
-        list-style: circle;
+        list-style: none;
+        min-height: inherit;
     }
 
     .carousel-item li {
         margin-bottom: 5px;
     }
 
-    .artist-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .artist-item {              /* Enable flexbox */
+    align-items: center;          /* Vertically center image and text */
+    justify-content: center;      /* Horizontally center content */
+    flex-direction: column;       /* Stack image and text vertically */
+    text-align: center;           /* Center-align text */
+    margin: 0.5rem auto;               /* Center the entire item */
+    padding: 1rem 0;              /* Add space between items */
+}
 
-    .artist-image {
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
+.artist-image {
+    width: 50px;                  /* Set consistent image size */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;           /* Make image circular */
+    margin-bottom: 0.5rem;        /* Add space below image */
+    margin-right: 1rem;
+}
 
-    @media (max-width: 768px) {
-        .carousel-item {
-            padding: 1rem;
-        }
-
-        .carousel-item h3 {
-            font-size: 1.25rem;
-        }
-
-        .artist-image {
-            width: 40px;
-            height: 40px;
-        }
-    }
+.artist-item span {
+    font-size: 0.9rem;            /* Adjust text size for readability */
+    max-width: 100%;              /* Ensure text doesn’t overflow */
+    min-width: 90%;
+    white-space: nowrap;          /* Prevent wrapping */
+    overflow: hidden;             /* Hide overflow text */
+    text-overflow: inherit;      /* Add ellipsis to truncated text */
+}
 
     /* Gallery styles */
     .gallery-container {
         display: flex;
-        overflow-x: auto;
-        white-space: nowrap;
-        padding: 10px;
-        gap: 10px;
+        justify-content: center; /* Center horizontally */
+        align-items: center;     /* Center vertically */
+        height: 100%;            /* Take full container height */
+        margin: 0;               /* Reset default margin */
+        text-align: center;
     }
 
     .gallery-item {
-        min-width: 150px;
+        min-width: 100px;
         height: 100px;
         background-color: #e0e0e0;
         border-radius: 8px;
@@ -424,7 +483,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: transform 0.2s;
+        max-width: 50px
     }
 
     .gallery-item:hover {
@@ -448,7 +507,7 @@
         background-color: #fefefe;
         margin: 10% auto; /* 10% from the top and centered */
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px solid dimgrey;
         width: 90%; /* Could be more or less, depending on screen size */
         max-height: 80%; /* Limit height */
         overflow-y: auto; /* Enable vertical scrolling */
