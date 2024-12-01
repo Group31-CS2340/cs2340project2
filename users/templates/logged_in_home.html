@@ -100,7 +100,7 @@
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
-        <h2 class="mb-4">Welcome to your Spotify Wrapped!</h2>
+        <h2 class="mb-4">{% trans "Welcome to your Spotify Wrapped!" %}</h2>
     </div>
 </div>
 
@@ -109,7 +109,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FF5733; color: white;">
-                <h3>Top Artists</h3>
+                <h3>{% trans "Top Artists" %}</h3>
                 <ul>
                     {% for artist in data.0 %}
                     <li class="artist-item">
@@ -122,12 +122,12 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #33FF57; color: black;">
-                <h3>Top Albums</h3>
+                <h3>{% trans "Top Albums" %}</h3>
                 <ul>
                     {% for album in data.1 %}
                     <li class="artist-item">
                         <img src="{{ album.image }}" class="artist-image" alt="{{ album.name }}">
-                        <span>{{ album.name }} by {{ album.artists }}</span>
+                        <span>{{ album.name }} {% trans "by" %} {{ album.artists }}</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -135,11 +135,11 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #3357FF; color: white;">
-                <h3>Top Episodes</h3>
+                <h3>{% trans "Top Episodes" %}</h3>
                 <ul>
                     {% for episode in data.2 %}
                     <li class="artist-item">
-                        <span>{{ episode.name }} from {{ episode.show }} (Added on {{ episode.added_at }})</span>
+                        <span>{{ episode.name }} {% trans "from" %}{{ episode.show }} ({% trans "Added on" %} {{ episode.added_at }})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -147,12 +147,12 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FF33A1; color: white;">
-                <h3>Top Playlists</h3>
+                <h3>{% trans "Top Playlists" %}</h3>
                 <ul>
                     {% for playlist in data.3 %}
                     <li class="artist-item">
                         <img src="{{ playlist.image }}" class="artist-image" alt="{{ playlist.name }}">
-                        <span>{{ playlist.name }} by {{ playlist.owner }} ({{ playlist.tracks }} tracks)</span>
+                        <span>{{ playlist.name }} {% trans "by" %} {{ playlist.owner }} ({{ playlist.tracks }} {% trans "track(s)" %})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -160,12 +160,12 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FFA533; color: white;">
-                <h3>Recent Tracks</h3>
+                <h3>{% trans "Recent Tracks" %}</h3>
                 <ul>
                     {% for track in data.4 %}
                     <li class="artist-item">
                         <img src="{{ track.image }}" class="artist-image" alt="{{ track.track_name }}">
-                        <span>{{ track.track_name }} by {{ track.artist_name }} from {{ track.album_name }} (Played at {{ track.played_at }})</span>
+                        <span>{{ track.track_name }} {% trans "by" %} {{ track.artist_name }} {% trans "from" %} {{ track.album_name }} ({% trans "Played at" %} {{ track.played_at }})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -173,12 +173,12 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #33A1FF; color: white;">
-                <h3>Top Audiobooks</h3>
+                <h3>{% trans "Top Audiobooks" %}</h3>
                 <ul>
                     {% for audiobook in data.5 %}
                     <li class="artist-item">
                         <img src="{{ audiobook.image }}" class="artist-image" alt="{{ audiobook.title }}">
-                        <span>{{ audiobook.title }} by {{ audiobook.authors }}{% if audiobook.narrator %}, narrated by {{ audiobook.narrator }}{% endif %}</span>
+                        <span>{{ audiobook.title }} {% trans "by" %} {{ audiobook.authors }}{% if audiobook.narrator %}, {% trans "narrated by" %} {{ audiobook.narrator }}{% endif %}</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -186,12 +186,12 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #A133FF; color: white;">
-                <h3>Top Tracks</h3>
+                <h3>{% trans "Top Tracks" %}</h3>
                 <ul>
                     {% for track in data.6 %}
                     <li class="artist-item">
                         <img src="{{ track.image }}" class="artist-image" alt="{{ track.name }}">
-                        <span>{{ track.name }} by {{ track.artist }} from {{ track.album }} (Duration: {{ track.duration_ms }})</span>
+                        <span>{{ track.name }} {% trans "by" %} {{ track.artist }} {% trans "from" %} {{ track.album }} ({% trans "Duration:" %} {{ track.duration_ms }})</span>
                     </li>
                     {% endfor %}
                 </ul>
@@ -199,7 +199,7 @@
         </div>
         <div class="carousel-item">
             <div class="d-block w-100" style="height: 600px; width: 80%; background-color: #FFCCCC; color: black;">
-                <h3>Followed Artists</h3>
+                <h3>{% trans "Followed Artists" %}</h3>
                 <ul>
                     {% for artist in data.7 %}
                     <li class="artist-item">
@@ -214,11 +214,11 @@
     </div>
     <a class="carousel-control-prev" href="#transitionSlides" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">{% trans "Previous" %}</span>
     </a>
     <a class="carousel-control-next" href="#transitionSlides" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">{% trans "Next" %}</span>
     </a>
     <ol class="carousel-indicators">
         <li data-target="#transitionSlides" data-slide-to="0" class="active"></li>
@@ -234,7 +234,7 @@
 
 <!-- Button to show the form for generating a new wrap -->
 <div style="display: flex; justify-content: center;">
-    <button id="generateWrapButton" class="btn btn-primary">Generate a New Wrap</button>
+    <button id="generateWrapButton" class="btn btn-primary">{% trans "Generate a New Wrap" %}</button>
 </div>
 
 <!-- Form to specify timeframe and limit -->
@@ -242,18 +242,18 @@
     <form id="wrapForm" method="POST" class="d-flex align-items-center justify-content-between">
         {% csrf_token %}
         <div>
-            <label for="time_range">Time Range:</label>
+            <label for="time_range">{% trans "Time Range" %}:</label>
             <select name="time_range" id="time_range" style="width: 150px;">
-                <option value="short_term">Last month</option>
-                <option value="medium_term">Last 6 months</option>
-                <option value="long_term">Last few years</option>
+                <option value="short_term">{% trans "Last month" %}</option>
+                <option value="medium_term">{% trans "Last 6 months" %}</option>
+                <option value="long_term">{% trans "Last few years" %}</option>
             </select>
         </div>
         <div>
-            <label for="limit">Limit:</label>
+            <label for="limit">{% trans "Limit:" %}</label>
             <input type="number" name="limit" id="limit" min="1" max="50" value="10">
         </div>
-        <button type="submit" class="btn btn-success mt-2">Generate</button>
+        <button type="submit" class="btn btn-success mt-2">{% trans "Generate" %}</button>
     </form>
 </div>
 
@@ -264,16 +264,29 @@
     <div class="modal-content">
         <span class="close-modal" id="closeModal">&times;</span>
         <h3 id="modalWrapTitle"></h3>
-        <h4>Top Artists:</h4>
+        <h4>{% trans "Top Artists" %}:</h4>
         <ul id="modalTopArtists"></ul>
-        <h4>Top Tracks:</h4>
+        <h4>{% trans "Top Tracks" %}:</h4>
         <ul id="modalTopTracks"></ul>
         <div class="mt-3">
-            <label for="customWrapName">Custom Wrap Name:</label>
-            <input type="text" id="customWrapName" placeholder="Enter a name for your wrap">
-            <button id="saveWrapName" class="btn btn-success mt-2">Save</button>
-            <button id="deleteWrap" class="btn btn-danger mt-2">Delete</button>
+            <label for="customWrapName">{% trans "Custom Wrap Name" %}:</label>
+            <input type="text" id="customWrapName" placeholder="{% trans 'Enter a name for your wrap' %}">
+            <button id="saveWrapName" class="btn btn-success mt-2">{% trans "Save" %}</button>
+            <button id="deleteWrap" class="btn btn-danger mt-2">{% trans "Delete" %}</button>
         </div>
+        <div class="mt-3">
+            <label for="wrapPublic">{% trans "Make this wrap public" %}:</label>
+            <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
+        </div>
+        
+        <!-- Add Share Button Section -->
+        <div class="mt-3">
+            <h5>Share your Wrapped:</h5>
+            <button id="shareTwitter" class="btn btn-info">Share on Twitter</button>
+            <button id="downloadImage" class="btn btn-warning">Download Image</button>
+        </div>
+        <canvas id="wrappedCanvas" style="display: none;"></canvas>
+
         <div class="mt-3">
             <label for="wrapPublic">Make this wrap public:</label>
             <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
@@ -289,7 +302,7 @@
                 {{ wrap.title }}
             </div>
         {% empty %}
-            <p>No saved wraps yet. Generate a new wrap to see it here!</p>
+            <p>{% trans "No saved wraps yet. Generate a new wrap to see it here!" %}</p>
         {% endfor %}
     </div>
 </div>
@@ -306,7 +319,107 @@
             }
         }
         return null;
+    } // Function to render the wrapped details into a canvas with dynamic height
+    function renderWrappedToCanvas(wrapTitle, topArtists, topTracks) {
+        const canvas = document.querySelector('#wrappedCanvas');
+        const context = canvas.getContext('2d');
+    
+        // Constants for layout
+        const titleHeight = 50; // Space for the title
+        const headerHeight = 40; // Space for headers
+        const lineHeight = 40; // Space between rows
+        const margin = 20; // Margin around the canvas
+    
+        // Calculate the required height based on the content
+        const maxRows = Math.max(topArtists.length, topTracks.length);
+        const contentHeight = maxRows * lineHeight;
+        const totalHeight = titleHeight + headerHeight + contentHeight + margin * 2;
+    
+        // Set canvas size dynamically
+        canvas.width = 800;
+        canvas.height = totalHeight;
+    
+        // Background
+        context.fillStyle = '#f5f5f5'; // Light gray background
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    
+        // Title
+        context.fillStyle = '#333';
+        context.font = 'bold 30px Arial';
+        context.fillText(`Spotify Wrapped: ${wrapTitle}`, margin, margin + titleHeight);
+    
+        // Headers
+        const startY = margin + titleHeight + headerHeight; // Start below the title
+        context.font = '24px Arial';
+        context.fillText('Top Artists:', margin, startY);
+        context.fillText('Top Tracks:', canvas.width / 2 + margin, startY);
+    
+        // Content for Top Artists (Left Column)
+        context.font = '18px Arial';
+        topArtists.forEach((artist, index) => {
+            const yPosition = startY + lineHeight * (index + 1);
+            context.fillText(`${index + 1}. ${artist.name}`, margin, yPosition);
+        });
+    
+        // Content for Top Tracks (Right Column)
+        topTracks.forEach((track, index) => {
+            const yPosition = startY + lineHeight * (index + 1);
+            context.fillText(`${index + 1}. ${track.name}`, canvas.width / 2 + margin, yPosition);
+        });
+    
+        return canvas;
     }
+    
+    // Function to download the canvas as an image
+    document.querySelector('#downloadImage').addEventListener('click', function () {
+        const wrapTitle = document.querySelector('#modalWrapTitle').textContent;
+        const topArtists = Array.from(document.querySelectorAll('#modalTopArtists li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+        const topTracks = Array.from(document.querySelectorAll('#modalTopTracks li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+    
+        const canvas = renderWrappedToCanvas(wrapTitle, topArtists, topTracks);
+        canvas.toBlob(function (blob) {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `Spotify_Wrapped_${wrapTitle}.png`;
+            link.click();
+        });
+    });
+    
+    // Function to share top 5 artists and tracks on Twitter with proper formatting
+    function shareTextOnTwitter(wrapTitle, topArtists, topTracks) {
+        const topArtistsText = topArtists
+            .slice(0, 5)
+            .map((artist, index) => `${index + 1}. ${artist.name}`)
+            .join(' | ');
+    
+        const topTracksText = topTracks
+            .slice(0, 5)
+            .map((track, index) => `${index + 1}. ${track.name}`)
+            .join(' | ');
+    
+        const text = `This is my Spotify Wrapped: ${wrapTitle}\n\nTop Artists: ${topArtistsText}\nTop Tracks: ${topTracksText}`;
+    
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        window.open(twitterUrl, '_blank');
+    }
+    
+    // Event Listener for Twitter Sharing
+    document.querySelector('#shareTwitter').addEventListener('click', function () {
+        const wrapTitle = document.querySelector('#modalWrapTitle').textContent;
+        const topArtists = Array.from(document.querySelectorAll('#modalTopArtists li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+        const topTracks = Array.from(document.querySelectorAll('#modalTopTracks li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+    
+        shareTextOnTwitter(wrapTitle, topArtists, topTracks);
+    });
+    
 
     // Show the form for generating a new wrap
     document.querySelector('#generateWrapButton').addEventListener('click', function () {

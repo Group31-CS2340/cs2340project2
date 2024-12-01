@@ -2,37 +2,37 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Home - Spotify Wrapped Bootleg{% endblock %}
+{% block title %}{% trans "Home" %} - Spotify Wrapped Bootleg{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="hero-content text-center">
         <h1>Spotify Wrapped Bootleg 2024</h1>
-        <p class="lead">Discover your personalized music journey.</p>
-        <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Get Started</a>
+        <p class="lead">{% trans "Discover your personalized music journey." %}</p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg">{% trans "Get Started" %}</a>
     </div>
 </section>
 
 <!-- Features Section -->
 <section class="features-section">
     <div class="container text-center">
-        <h3>Why use Spotify Wrapped Bootleg?</h3>
+        <h3>{% trans "Why use Spotify Wrapped Bootleg?" %}</h3>
         <div class="row">
             <div class="col-lg-4">
                 <i class="fas fa-calendar-alt fa-3x"></i>
-                <h4>Released Early</h4>
-                <p>Access your music insights before anyone else.</p>
+                <h4>{% trans "Released Early" %}</h4>
+                <p>{% trans "Access your music insights before anyone else." %}</p>
             </div>
             <div class="col-lg-4">
                 <i class="fas fa-chart-line fa-3x"></i>
-                <h4>In-depth Analysis</h4>
-                <p>Get detailed stats on your listening habits.</p>
+                <h4>{% trans "In-depth Analysis" %}</h4>
+                <p>{% trans "Get detailed stats on your listening habits." %}</p>
             </div>
             <div class="col-lg-4">
                 <i class="fas fa-music fa-3x"></i>
-                <h4>Personalized Playlists</h4>
-                <p>Enjoy playlists tailored just for you.</p>
+                <h4>{% trans "Personalized Playlists" %}</h4>
+                <p>{% trans "Enjoy playlists tailored just for you." %}</p>
             </div>
         </div>
     </div>

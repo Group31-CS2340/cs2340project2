@@ -1,0 +1,42 @@
+{% extends "base_site_mobile.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Invalid Login - Spotify Wrapped Bootleg (Mobile View){% endblock %}
+{% block content %}
+<!-- Invalid Login Section for Mobile -->
+<section class="invalid-login-section">
+    <div class="container d-flex flex-column align-items-center justify-content-center" style="max-width: 400px; width: 100%;">
+        <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Invalid Login" %}</h3>
+        <p class="text-danger mb-4" style="font-size: 1em;">{% trans "The username or password you entered is incorrect." %}</p>
+        <a href="{% url 'login_mobile' %}" class="btn btn-primary btn-block" style="font-size: 1em;">{% trans "Try Logging In Again" %}</a>
+        <p class="text-center mt-3">
+            {% trans "Don't have an account?" %} <a href="{% url 'register_mobile' %}">{% trans "Register here." %}</a>
+        </p>
+        <p class="text-center mt-2">
+            <a href="{% url 'password_reset' %}">{% trans "Forgot your password?" %}</a>
+        </p>
+    </div>
+</section>
+<!-- Custom CSS for Mobile View -->
+<style>
+    .invalid-login-section {
+        padding: 0 0 30px; /* Adjusted padding for spacing */
+        min-height: 50vh; /* Full height for centering */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    .btn-primary {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 30px;
+    }
+    p {
+        font-size: 1em;
+    }
+</style>
+{% endblock %}

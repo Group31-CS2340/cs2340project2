@@ -43,9 +43,9 @@
       <p>No top tracks data available.</p>
     {% endif %}
 
-    <form action="{% url 'users:spotify_logout' %}" method="post">
+    <form action="{% url 'home_logged_in' user.username %}" method="post">
       {% csrf_token %}
-      <button type="submit">Logout from Spotify</button>
+      <button type="submit" style="margin: 15 auto">Home</button>
     </form>
 </body>
 {% endblock %}

@@ -111,21 +111,27 @@
 
 <!-- Mobile Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="{% url 'logged_in_home_mobile' %}">Spotify Wrapped Bootleg</a>
+    <a class="navbar-brand" href="{% url 'home-mobile' %}">Spotify Wrapped Bootleg</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavMobile" aria-controls="navbarNavMobile" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavMobile">
         <ul class="navbar-nav mx-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'logged_in_home_mobile' %}">{% trans "My Wraps" %}</a>
+                <a class="nav-link" href="{% url 'home_logged_in_mobile' user.username %}">{% trans "My Wraps" %}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout_view_mobile' %}">{% trans "Logout" %}</a>
+            </li>
+            {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'register_mobile' %}">{% trans "Register" %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login_mobile' %}">{% trans "Login" %}</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
@@ -142,10 +148,16 @@
             {% endfor %}
         </select>
     </form>
-    <div>
-        <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">Mobile</a>
-        <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">Desktop</a>
-    </div>
+   <div>
+    <a href="{% if user.is_authenticated %}{% url 'home_logged_in' user.username %}{% else %}{% url 'home' %}{% endif %}" 
+       class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">
+       Desktop
+    </a>
+    <a href="{% if user.is_authenticated %}{% url 'home_logged_in_mobile' user.username %}{% else %}{% url 'home-mobile' %}{% endif %}" 
+       class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">
+       Mobile
+    </a>
+</div>
 </div>
 
 {% block content %}{% endblock %}
