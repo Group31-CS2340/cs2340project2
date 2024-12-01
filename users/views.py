@@ -283,7 +283,7 @@ def spotify_login(request):
         "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
         "scope": "user-top-read user-library-read user-read-recently-played user-follow-read"
     }
-    webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
+    return webbrowser.open("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
     return redirect("home_logged_in", request.user)
 
 
