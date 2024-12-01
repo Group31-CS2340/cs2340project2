@@ -600,15 +600,7 @@ def home(request):
     view_mode = request.GET.get('view', 'desktop')
     if view_mode == 'mobile':
         return render(request, 'home_mobile.html')
-    return render(request, 'home.html')
-
-
-def login_mobile(request):
-    return render(request, 'login_mobile.html')
-
-
-def register_mobile(request):
-    return render(request, 'register_mobile.html')
+    return render(request, 'home.html')s
 
 
 @login_required
