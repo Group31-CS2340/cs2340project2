@@ -273,7 +273,8 @@ def explore(request):
 
 
 def spotify_login(request):
-    del request.session["spotify_token"]
+    if "spotify_token" in request.session:
+        del request.session["spotify_token"]
     cleanup()
     client_id = settings.SPOTIFY_CLIENT_ID
     auth_headers = {
