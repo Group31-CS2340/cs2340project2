@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': 'spotifywrapped-cs2340',
         'USER': os.getenv("POSTGRES_USER"),
         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
-        'HOST': os.getenv("db.cctzoiblaekanfklinnn.supabase.co"),
+        'HOST': "db.cctzoiblaekanfklinnn.supabase.co",
         'PORT': '5432',
     }
 }
