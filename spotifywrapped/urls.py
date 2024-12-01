@@ -45,6 +45,7 @@ urlpatterns = [
      path('logout_mobile/', user_views.logout_view_mobile, name='logout-mobile'),
      path('contact/', user_views.contact_view, name='contact'),
      path('homepage/<str:username>/', user_views.home_logged_in, name='home_logged_in'),
+     path('home/<str:username>/', user_views.home_logged_in_no_spotify, name='home_logged_in_no_spotify'),
      path('explore/', user_views.explore, name='explore'),
      path('public-profile/<str:username>/', user_views.public_profile, name='public_profile'),
      path('i18n/', include('django.conf.urls.i18n')),
