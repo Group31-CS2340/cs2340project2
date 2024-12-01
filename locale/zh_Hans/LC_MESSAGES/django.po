@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 17:55-0500\n"
+"POT-Creation-Date: 2024-12-01 18:17-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,7 +198,7 @@ msgstr "暂无分享回顾。成为第一个分享的人！"
 msgid "Discover your personalized music journey."
 msgstr "探索您的个性化音乐之旅。"
 
-#: .\users\templates\home.html:13
+#: .\users\templates\home.html:13 .\users\templates\home_mobile.html:11
 msgid "Get Started"
 msgstr "开始体验"
 

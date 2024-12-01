@@ -79,7 +79,7 @@
                         <li class="artist-item">
                         <div class="artist-info">
                             <img src="{{ track.image|default:'https://via.placeholder.com/50' }}" class="artist-image" alt="{{ track.track_name }}">
-                            <span>{{ track.track_name }} {% trans "by" %} {{ track.artist_name }} {% trans "from" %} {{ track.album_name }} ({% trans "Played at" %} {{ track.played_at|{% trans "date" %}:"M d, Y H:i" }})</span>
+                            <span>{{ track.track_name }} {% trans "by" %} {{ track.artist_name }} {% trans "from" %} {{ track.album_name }} ({% trans "Played at" %} {{ track.played_at|date:"M d, Y H:i" }})</span>
                         </div>
                         </li>
                         {% endfor %}
