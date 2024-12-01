@@ -45,6 +45,21 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+def register_mobile(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            profile = user.profile
+            profile.save()
+            return redirect('success')
+        else:
+            return render(request, 'register_mobile.html', {'form': form})
+    else:
+        form = RegistrationForm()
+    return render(request, 'register_mobile.html', {'form': form})
+
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -64,8 +79,31 @@ def login_view(request):
     return render(request, 'login.html', {'form': form})
 
 
+def login_view_mobile(request):
+    if request.method == 'POST':
+        form = LoginFormMobile(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home_logged_in_mobile', user)
+            else:
+                return redirect('invalid_login_mobile')
+        else:
+            return render(request, 'login_mobile.html', {'form': form})
+    else:
+        form = LoginForm()
+    return render(request, 'login_mobile.html', {'form': form})
+
+
 def invalid_login(request):
     return render(request, 'invalid_login.html')
+
+
+def invalid_login_mobile(request):
+    return render(request, 'invalid_login_mobile.html')
 
 
 def song_view(request):
@@ -76,7 +114,7 @@ def song_view(request):
 
 def registration_successful(request):
     return render(request, 'registration_successful.html')
-
+    
 
 @login_required(login_url='login')
 def favorites(request):
@@ -196,6 +234,12 @@ def logout_view(request):
     return redirect('home')
 
 
+@login_required(login_url='login_mobile')
+def logout_view_mobile(request):
+    logout(request)
+    return redirect('home-mobile')
+
+
 @login_required(login_url='login')
 def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
@@ -207,11 +251,21 @@ def home_logged_in(request, username):
         return redirect(home_logged_in_no_spotify, user)
     return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
 
+
+@login_required(login_url='login_mobile')
+def home_logged_in_mobile(request, username):
+    user = get_object_or_404(User, username=username)
+    wraps = Wrap.objects.filter(user=user)
+    data = fetch_data(request)
+    return render(request, 'logged_in_home_mobile.html', {'data': data, 'wraps': wraps})
+
+
 @login_required(login_url='login')
 def home_logged_in_no_spotify(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
     return render(request, 'logged_in_home_no_spotify.html')
+
 
 def explore(request):
     wraps = Wrap.objects.filter(public=True)
@@ -557,6 +611,6 @@ def register_mobile(request):
     return render(request, 'register_mobile.html')
 
 
-@login_required(login_url='login_mobile')
-def home_logged_in_mobile(request):
-    return render(request, 'logged_in_home_mobile.html')
+@login_required
+def home_mobile(request):
+    return render(request, 'home_mobile.html', {'user': request.user})
