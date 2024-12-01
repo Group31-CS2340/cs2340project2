@@ -42,6 +42,7 @@ class Wrap(models.Model):
     title = models.CharField(max_length=100)
     top_artists = models.JSONField(default=list)
     top_tracks = models.JSONField(default=list)
+    top_genres = models.JSONField(default=list)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     public = models.BooleanField(default=False)
 

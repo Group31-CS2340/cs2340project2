@@ -2,6 +2,8 @@ import time
 import json
 import webbrowser
 import base64
+from collections import Counter
+
 import requests
 import os
 from urllib.parse import urlencode
@@ -21,6 +23,7 @@ from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.utils.translation import gettext as _
 
 from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm
 from .models import Profile, Feedback, Wrap
@@ -211,7 +214,8 @@ def home_logged_in_no_spotify(request, username):
     return render(request, 'logged_in_home_no_spotify.html')
 
 def explore(request):
-    return render(request, 'explore.html')
+    wraps = Wrap.objects.filter(public=True)
+    return render(request, 'explore.html', {'wraps': wraps})
 
 
 def spotify_login(request):
@@ -394,8 +398,18 @@ def fetch_data(request):
         }
         for artist in top_artists.get('items', [])
     ]
-    data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists, genres_list]
+    genres = sort_genres(genres_list)
+    data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists, genres]
     return data
+
+
+def sort_genres(genres):
+    all_genres = []
+    for genre_list in genres:
+        all_genres.extend(genre_list['genres'])
+    genre_counts = Counter(all_genres)
+    top_genres = [genre for genre, count in genre_counts.most_common()]
+    return top_genres
 
 
 @csrf_exempt
@@ -421,12 +435,27 @@ def wrap_generate(request):
             }
             for artist in top_artists.get('items', [])
         ]
-        tracks = [{'name': track['name']} for track in top_tracks.get('items', [])]
+        tracks = [
+            {
+                'name': track['name'],
+                'artists': [artist['name'] for artist in track['artists']],
+                'album': track['album']['name'],
+                'image': track['album']['images'][0]['url'],
+            }
+            for track in top_tracks.get('items', [])]
+        genres_list = [
+            {
+                'genres': artist['genres'],
+            }
+            for artist in top_artists.get('items', [])
+        ]
+        genres = sort_genres(genres_list)
         wrap = Wrap.objects.create(
             user=request.user,
             title=f"{time_range.capitalize()} Wrap",
             top_artists=artists,
             top_tracks=tracks,
+            top_genres=genres,
         )
         return JsonResponse({
             'success': True,
@@ -434,6 +463,7 @@ def wrap_generate(request):
             'wrap_title': wrap.title,
             'top_artists': artists,
             'top_tracks': tracks,
+            'top_genres': genres,
         })
     elif request.method == 'PUT':
         try:
@@ -465,6 +495,11 @@ def wrap_detail(request, wrap_id):
         })
     except Wrap.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'Wrap not found.'}, status=404)
+
+@login_required
+def wrap_detail_view(request, wrap_id):
+    wrap = Wrap.objects.get(id=wrap_id)
+    return render(request, 'wrap_detail.html', {'wrap': wrap})
 
 
 @csrf_exempt
