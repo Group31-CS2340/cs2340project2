@@ -278,6 +278,19 @@
             <label for="wrapPublic">Make this wrap public:</label>
             <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
         </div>
+        
+        <!-- Add Share Button Section -->
+        <div class="mt-3">
+            <h5>Share your Wrapped:</h5>
+            <button id="shareTwitter" class="btn btn-info">Share on Twitter</button>
+            <button id="downloadImage" class="btn btn-warning">Download Image</button>
+        </div>
+        <canvas id="wrappedCanvas" style="display: none;"></canvas>
+
+        <div class="mt-3">
+            <label for="wrapPublic">Make this wrap public:</label>
+            <input type="checkbox" id="wrapPublic" class="ml-2" {% if wrap.public %}checked{% endif %}>
+        </div>
     </div>
 </div>
 
@@ -306,7 +319,107 @@
             }
         }
         return null;
+    } // Function to render the wrapped details into a canvas with dynamic height
+    function renderWrappedToCanvas(wrapTitle, topArtists, topTracks) {
+        const canvas = document.querySelector('#wrappedCanvas');
+        const context = canvas.getContext('2d');
+    
+        // Constants for layout
+        const titleHeight = 50; // Space for the title
+        const headerHeight = 40; // Space for headers
+        const lineHeight = 40; // Space between rows
+        const margin = 20; // Margin around the canvas
+    
+        // Calculate the required height based on the content
+        const maxRows = Math.max(topArtists.length, topTracks.length);
+        const contentHeight = maxRows * lineHeight;
+        const totalHeight = titleHeight + headerHeight + contentHeight + margin * 2;
+    
+        // Set canvas size dynamically
+        canvas.width = 800;
+        canvas.height = totalHeight;
+    
+        // Background
+        context.fillStyle = '#f5f5f5'; // Light gray background
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    
+        // Title
+        context.fillStyle = '#333';
+        context.font = 'bold 30px Arial';
+        context.fillText(`Spotify Wrapped: ${wrapTitle}`, margin, margin + titleHeight);
+    
+        // Headers
+        const startY = margin + titleHeight + headerHeight; // Start below the title
+        context.font = '24px Arial';
+        context.fillText('Top Artists:', margin, startY);
+        context.fillText('Top Tracks:', canvas.width / 2 + margin, startY);
+    
+        // Content for Top Artists (Left Column)
+        context.font = '18px Arial';
+        topArtists.forEach((artist, index) => {
+            const yPosition = startY + lineHeight * (index + 1);
+            context.fillText(`${index + 1}. ${artist.name}`, margin, yPosition);
+        });
+    
+        // Content for Top Tracks (Right Column)
+        topTracks.forEach((track, index) => {
+            const yPosition = startY + lineHeight * (index + 1);
+            context.fillText(`${index + 1}. ${track.name}`, canvas.width / 2 + margin, yPosition);
+        });
+    
+        return canvas;
     }
+    
+    // Function to download the canvas as an image
+    document.querySelector('#downloadImage').addEventListener('click', function () {
+        const wrapTitle = document.querySelector('#modalWrapTitle').textContent;
+        const topArtists = Array.from(document.querySelectorAll('#modalTopArtists li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+        const topTracks = Array.from(document.querySelectorAll('#modalTopTracks li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+    
+        const canvas = renderWrappedToCanvas(wrapTitle, topArtists, topTracks);
+        canvas.toBlob(function (blob) {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `Spotify_Wrapped_${wrapTitle}.png`;
+            link.click();
+        });
+    });
+    
+    // Function to share top 5 artists and tracks on Twitter with proper formatting
+    function shareTextOnTwitter(wrapTitle, topArtists, topTracks) {
+        const topArtistsText = topArtists
+            .slice(0, 5)
+            .map((artist, index) => `${index + 1}. ${artist.name}`)
+            .join(' | ');
+    
+        const topTracksText = topTracks
+            .slice(0, 5)
+            .map((track, index) => `${index + 1}. ${track.name}`)
+            .join(' | ');
+    
+        const text = `This is my Spotify Wrapped: ${wrapTitle}\n\nTop Artists: ${topArtistsText}\nTop Tracks: ${topTracksText}`;
+    
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+        window.open(twitterUrl, '_blank');
+    }
+    
+    // Event Listener for Twitter Sharing
+    document.querySelector('#shareTwitter').addEventListener('click', function () {
+        const wrapTitle = document.querySelector('#modalWrapTitle').textContent;
+        const topArtists = Array.from(document.querySelectorAll('#modalTopArtists li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+        const topTracks = Array.from(document.querySelectorAll('#modalTopTracks li')).map(li => ({
+            name: li.textContent.trim(),
+        }));
+    
+        shareTextOnTwitter(wrapTitle, topArtists, topTracks);
+    });
+    
 
     // Show the form for generating a new wrap
     document.querySelector('#generateWrapButton').addEventListener('click', function () {
