@@ -43,7 +43,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # settings.py
 SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
-SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8000/users/callback"
+SPOTIFY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI') + "/users/callback"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
