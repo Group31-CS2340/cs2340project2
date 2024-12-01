@@ -7,17 +7,15 @@
         background-color: #03C03C;
     }
 
-
-    .gallery-container {
+    #artist-container.gallery-container{
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 20px;
         position: relative;
-        top: 100px;
+        top: -150px;
     }
 
-    .gallery-item {
+    #artist-one.gallery-item {
         text-align: center;
         position: absolute;
     }
@@ -37,21 +35,19 @@
     }
 
     .gallery-item.left {
-        left: 250px;
+        margin-right: 250px;
         margin-top: 200px;
     }
 
     .gallery-item.right {
-        right: 250px;
-        margin-top: 250px;
+        margin-top: 275px;
     }
-    
+
     #tracks-container {
         margin-left:20px;
-        margin-top:400px;
         height: fit-content;
     }
-    
+
 
     #track_list {
         display: flex;
@@ -61,7 +57,6 @@
         padding: 10px;
         gap: 20px;
         scroll-behavior: smooth;
-        margin-top: -100px;
         margin-left: 20px;
     }
 
@@ -74,11 +69,67 @@
         margin: 20px;
     }
 
-    #track-artists {
-        display:flex;
-        flex-direction:column;
-        margin-left: 50px;
-        margin-top: -20px;
+    #genres {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        gap: 10px;
+        padding: 10px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #genres::-webkit-scrollbar {
+        display: none; /* Hides the scrollbar in WebKit browsers (Chrome, Safari, etc.) */
+    }
+
+    .genre-item {
+        position: relative;
+        width: 150px;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        background-color: lightgray; /* Fallback color */
+    }
+
+    .genre-item:hover::after {
+        content: attr(data-description);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        color: white;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .genre-color {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        z-index: 0;
+    }
+
+    .genre-name {
+        position: absolute;
+        z-index: 1;
+        color: white;
+        font-weight: bold;
+    }
+
+    #back-button {
+        margin-top: 20px;
+        text-align: center;
     }
     </style>
 {% endblock %}
@@ -104,9 +155,9 @@
         {% endif %}</p></div>
     </div>
     <div id="artists" style="margin:20px">
-        <h2>{% trans "Top Artists" %}:</h2>
-        <div class="gallery-container">
-            <div class="gallery-item">
+        <h2>Top Artists:</h2>
+        <div id="artist-container" class="gallery-container">
+            <div id="artist-one" class="gallery-item">
                 <img src="{{ wrap.top_artists.0.image }}" alt="{{ wrap.top_artists.0.name }}">
                 <p>{{ wrap.top_artists.0.name }}</p>
             </div>
@@ -122,7 +173,7 @@
     </div>
 
     <div id="tracks-container">
-    <h2>{% trans "Top Songs" %}:</h2>
+    <h2>Top Songs:</h2>
     <div id="track_list" class="gallery-container">
         {% for song in wrap.top_tracks %}
             <div id="track">
@@ -143,8 +194,93 @@
         {% endfor %}
     </div>
     </div>
-    <div id="back-button">
+
+    <div id="genre-container">
+    <div id="genres-title" style="margin-left:20px">
+        <h2>Top Genres Palette:</h2>
+    </div>
+    <div id="genres">
+        {% for genre in wrap.top_genres %}
+        <div class="genre-item" data-genre="{{ genre }}">
+            <div class="genre-color" style="width: 150px; height: 100px;"></div>
+            <span class="genre-name">{{ genre }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <div id="back-button" style="">
         <a href="{% url 'explore' %}">{% trans "Back to Explore" %}</a>
 
     </div>
+
+    <script>
+
+        const genreColors = [
+    {"name":"pop", "color":"#FF10F0", "description":"vibrant and catchy, with universal appeal"},
+    {"name":"rap", "color":"#000000", "description":"rhythmic and expressive, storytelling through beats"},
+    {"name":"rock", "color":"#8B0000", "description":"raw and energetic, fueled by electric guitars and passion"},
+    {"name":"urbano latino", "color":"#FF4500", "description":"dynamic and urban, with rhythmic Latin influences"},
+    {"name":"hip hop", "color":"#4B0082", "description":"bold and rhythmic, rooted in culture and self-expression"},
+    {"name":"trap latino", "color":"#FFD700", "description":"intense and rhythmic, blending Latin beats with trap vibes"},
+    {"name":"reggaeton", "color":"#FF6347", "description":"danceable and vibrant, with infectious rhythms"},
+    {"name":"dance pop", "color":"#FF69B4", "description":"upbeat and energetic, designed for the dancefloor"},
+    {"name":"pop rap", "color":"#FF1493", "description":"catchy and rhythmic, a fusion of pop hooks and rap flows"},
+    {"name":"modern rock", "color":"#2E8B57", "description":"fresh and dynamic, with contemporary rock elements"},
+    {"name":"indie", "color":"#7CFC00", "description":"quirky and artistic, celebrating creativity and individuality"},
+    {"name":"musica mexicana", "color":"#FFDAB9", "description":"warm and traditional, rooted in Mexican culture"},
+    {"name":"latin pop", "color":"#FFA07A", "description":"uplifting and melodic, blending Latin beats with pop melodies"},
+    {"name":"classic rock", "color":"#B22222", "description":"timeless and powerful, anthems that defined generations"},
+    {"name":"filmi", "color":"#FF8C00", "description":"dramatic and vibrant, with cinematic storytelling"},
+    {"name":"permanent wave", "color":"#4682B4", "description":"smooth and steady, a blend of rock and pop influences"},
+    {"name":"trap", "color":"#FF4500", "description":"moody and hard-hitting, driven by bass-heavy beats"},
+    {"name":"alternative metal", "color":"#556B2F", "description":"dark and intense, blending metal with alternative influences"},
+    {"name":"k-pop", "color":"#FFB6C1", "description":"polished and upbeat, a global sensation of catchy hits"},
+    {"name":"r&b", "color":"#800080", "description":"soulful and smooth, with emotional depth and groove"},
+    {"name":"corrido", "color":"#CD5C5C", "description":"narrative and traditional, telling stories through music"},
+    {"name":"canadian pop", "color":"#ADD8E6", "description":"melodic and heartfelt, often introspective"},
+    {"name":"nortneno", "color":"#D2B48C", "description":"energetic and festive, rooted in Mexican folk traditions"},
+    {"name":"sierreno", "color":"#8FBC8F", "description":"acoustic and raw, highlighting regional Mexican influences"},
+    {"name":"album rock", "color":"#6A5ACD", "description":"cohesive and artistic, emphasizing full-album experiences"},
+    {"name":"soft rock", "color":"#B0C4DE", "description":"mellow and soothing, perfect for relaxing"},
+    {"name":"pop dance", "color":"#FF69B4", "description":"upbeat and vibrant, merging pop with dance rhythms"},
+    {"name":"sad sierreno", "color":"#708090", "description":"emotional and reflective, with heartfelt lyrics"},
+    {"name":"edm", "color":"#00CED1", "description":"high-energy and electronic, designed to make you move"},
+    {"name":"hard rock", "color":"#A52A2A", "description":"powerful and edgy, packed with strong riffs and vocals"},
+    {"name":"contemporary country", "color":"#F4A460", "description":"modern and relatable, blending country roots with pop elements"},
+    {"name":"mellow gold", "color":"#FFD700", "description":"smooth and easy-going, perfect for a relaxed vibe"},
+    {"name":"uk pop", "color":"#1E90FF", "description":"stylish and trendsetting, influenced by British culture"},
+    {"name":"melodic rap", "color":"#9400D3", "description":"harmonious and lyrical, blending rap with melodic tunes"},
+    {"name":"modern bollywood", "color":"#FF4500", "description":"glamorous and dynamic, featuring Bollywood’s modern beats"},
+    {"name":"alternative rock", "color":"#778899", "description":"diverse and experimental, pushing the boundaries of rock"},
+    {"name":"banda", "color":"#DEB887", "description":"brassy and lively, a staple of Mexican regional music"},
+    {"name":"post-grunge", "color":"#4682B4", "description":"emotional and raw, a modern evolution of grunge"},
+    {"name":"corridos tumbados", "color":"#FF6347", "description":"innovative and bold, blending traditional corridos with trap"},
+    {"name":"sertanejo universitario", "color":"#8B4513", "description":"catchy and contemporary, popular in Brazilian country music"},
+    {"name":"nu metal", "color":"#696969", "description":"heavy and edgy, fusing metal with rap and other genres"},
+    {"name":"country", "color":"#DAA520", "description":"warm and storytelling, rooted in tradition and modern life"},
+    {"name":"art pop", "color":"#FF69B4", "description":"avant-garde and creative, merging pop with artistic flair"},
+    {"name":"atl hip hop", "color":"#8B0000", "description":"gritty and influential, defining Southern hip-hop culture"},
+    {"name":"urban contemporary", "color":"#6A5ACD", "description":"modern and smooth, blending hip-hop and R&B influences"},
+    {"name":"sertanejo", "color":"#CD853F", "description":"uplifting and rhythmic, with roots in Brazilian traditions"},
+    {"name":"southern hip hop", "color":"#8B4513", "description":"grounded and soulful, deeply tied to Southern culture"},
+    {"name":"singer-songwriter", "color":"#FFE4B5", "description":"personal and heartfelt, with a focus on lyrical storytelling"},
+    {"name":"reggaeton colombiano", "color":"#FF6347", "description":"vibrant and danceable, bringing Colombian flair to reggaeton"},
+    {"name":"arrocha", "color":"#FF4500", "description":"relaxed and rhythmic, a tropical vibe from Panama"}
+];
+
+
+        document.querySelectorAll('.genre-item').forEach(item => {
+    const genreName = item.dataset.genre.toLowerCase();
+    const genreData = genreColors.find(genre => genre.name.toLowerCase() === genreName);
+
+    if (genreData) {
+        const colorDiv = item.querySelector('.genre-color');
+        colorDiv.style.backgroundColor = genreData.color;
+        item.setAttribute('data-description', genreData.description);
+    }
+});
+
+    </script>
 {% endblock %}
+
