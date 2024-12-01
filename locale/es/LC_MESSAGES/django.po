@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 18:01-0500\n"
+"POT-Creation-Date: 2024-11-30 21:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,19 @@ msgstr ""
 "1 : 2;\n"
 
 #: .\users\forms.py:9 .\users\templates\password_reset.html:64
-#: .\users\templates\profile.html:57 .\users\templates\register.html:56
+#: .\users\templates\profile.html:57 .\users\templates\register.html:61
 #: .\users\templates\register_mobile.html:29
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: .\users\forms.py:22 .\users\templates\login.html:64
+#: .\users\forms.py:23 .\users\templates\login.html:64
 #: .\users\templates\login_mobile.html:20 .\users\templates\profile.html:55
-#: .\users\templates\register.html:50 .\users\templates\register_mobile.html:20
+#: .\users\templates\register.html:55 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: .\users\forms.py:23 .\users\templates\login.html:70
-#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:62
+#: .\users\forms.py:24 .\users\templates\login.html:70
+#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:67
 #: .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "Contraseña"
@@ -44,13 +44,13 @@ msgstr "Cuenta Eliminada"
 
 #: .\users\templates\account_deleted.html:6
 #: .\users\templates\base_site_mobile.html:114
-#: .\users\templates\contact.html:78 .\users\templates\explore.html:5
+#: .\users\templates\contact.html:78
 msgid "Toggle navigation"
 msgstr "Alternar navegación"
 
-#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:14
+#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:80
 #: .\users\templates\home.html:5 .\users\templates\home_mobile.html:4
-#: .\users\templates\profile.html:50
+#: .\users\templates\profile.html:50 .\users\templates\wrap_detail.html:91
 msgid "Home"
 msgstr "Inicio"
 
@@ -66,7 +66,7 @@ msgstr "Comentarios"
 #: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:10
 #: .\users\templates\login.html:37 .\users\templates\login.html:74
 #: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
-#: .\users\templates\register.html:74
+#: .\users\templates\register.html:79
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
 msgstr "Iniciar sesión"
@@ -79,8 +79,7 @@ msgstr "Iniciar sesión"
 msgid "Register"
 msgstr "Regístrate"
 
-#: .\users\templates\base_site.html:36 .\users\templates\explore.html:17
-#: .\users\templates\songs.html:13
+#: .\users\templates\base_site.html:36 .\users\templates\songs.html:13
 msgid "Contact"
 msgstr "Contacto"
 
@@ -140,11 +139,11 @@ msgstr "Comentarios"
 msgid "Submit"
 msgstr "Enviar"
 
-#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:11
+#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:77
 #: .\users\templates\logged_in_home.html:92
 #: .\users\templates\logged_in_home_no_spotify.html:6
 #: .\users\templates\profile.html:28 .\users\templates\public_profile.html:25
-#: .\users\templates\songs.html:7
+#: .\users\templates\songs.html:7 .\users\templates\wrap_detail.html:88
 msgid "Profile"
 msgstr "Perfil"
 
@@ -160,11 +159,11 @@ msgstr "Explorar"
 msgid "Edit Profile"
 msgstr "Editar Perfil"
 
-#: .\users\templates\edit_profile.html:59 .\users\templates\register.html:38
+#: .\users\templates\edit_profile.html:59 .\users\templates\register.html:43
 msgid "First Name"
 msgstr "Primer nombre"
 
-#: .\users\templates\edit_profile.html:63 .\users\templates\register.html:44
+#: .\users\templates\edit_profile.html:63 .\users\templates\register.html:49
 msgid "Last Name"
 msgstr "Apellido"
 
@@ -183,6 +182,14 @@ msgstr "Eliminar cuenta"
 #: .\users\templates\edit_profile.html:80
 msgid "Are you sure you want to delete your account?"
 msgstr "¿Estás seguro de que quieres eliminar tu cuenta?"
+
+#: .\users\templates\explore.html:85
+msgid "Explore Public Wraps"
+msgstr "Explora resúmenes públicos"
+
+#: .\users\templates\explore.html:93
+msgid "No shared wraps. Be the first!"
+msgstr "No hay resúmenes compartidos. ¡Sé el primero!"
 
 #: .\users\templates\home.html:12 .\users\templates\home_mobile.html:10
 msgid "Discover your personalized music journey."
@@ -239,7 +246,7 @@ msgstr "¡Bienvenido a tu Spotify Wrapped!"
 
 #: .\users\templates\logged_in_home.html:112
 #: .\users\templates\logged_in_home.html:267 .\users\templates\new_wrap.html:1
-#: .\users\templates\wrap_detail.html:3
+#: .\users\templates\wrap_detail.html:107
 msgid "Top Artists"
 msgstr "Artistas Principales"
 
@@ -253,7 +260,6 @@ msgstr "Álbumes Principales"
 #: .\users\templates\logged_in_home.html:181
 #: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
-#: .\users\templates\wrap_detail.html:16
 msgid "by"
 msgstr "por"
 
@@ -297,7 +303,6 @@ msgstr "narrado por"
 
 #: .\users\templates\logged_in_home.html:189
 #: .\users\templates\logged_in_home.html:269 .\users\templates\new_wrap.html:11
-#: .\users\templates\wrap_detail.html:13
 msgid "Top Tracks"
 msgstr "Canciones Principales"
 
@@ -381,7 +386,9 @@ msgstr "para generar y compartir tus propios wraps!"
 msgid "Link Account"
 msgstr "Conectar cuenta"
 
-#: .\users\templates\login.html:49 .\users\templates\register.html:26
+#: .\users\templates\login.html:49
+#: .\users\templates\password_reset_confirm.html:49
+#: .\users\templates\register.html:27
 #, python-format
 msgid "%(label)s"
 msgstr ""
@@ -414,6 +421,10 @@ msgstr "Guardar resumen"
 #: .\users\templates\password_change.html:11
 msgid "Change Password"
 msgstr "Cambiar Contraseña"
+
+#: .\users\templates\password_change_done.html:7
+msgid "Password Changed"
+msgstr "Contraseña cambiada"
 
 #: .\users\templates\password_change_done.html:8
 msgid "Your password has been changed successfully"
@@ -454,19 +465,19 @@ msgstr "¿Olvidó su contraseña?"
 msgid "Set New Password"
 msgstr "Reingresar Contraseña"
 
-#: .\users\templates\password_reset_confirm.html:48
+#: .\users\templates\password_reset_confirm.html:64
 msgid "New Password"
 msgstr "Nueva Contraseña"
 
-#: .\users\templates\password_reset_confirm.html:59
+#: .\users\templates\password_reset_confirm.html:70
 msgid "Confirm New Password"
 msgstr "Confirmar Nueva Contraseña"
 
-#: .\users\templates\password_reset_confirm.html:68
+#: .\users\templates\password_reset_confirm.html:74
 msgid "Set Password"
 msgstr "Establecer Contraseña"
 
-#: .\users\templates\password_reset_confirm.html:71
+#: .\users\templates\password_reset_confirm.html:78
 msgid "Back to Login"
 msgstr "Volver a Iniciar Sesión"
 
@@ -515,19 +526,18 @@ msgid "Wraps"
 msgstr "Resúmenes"
 
 #: .\users\templates\public_profile.html:45
-#: .\users\templates\wrap_detail.html:26
 msgid "Back"
 msgstr "Atrás"
 
-#: .\users\templates\register.html:68
+#: .\users\templates\register.html:73
 msgid "Re-enter Password"
 msgstr "Reingresar Contraseña"
 
-#: .\users\templates\register.html:72
+#: .\users\templates\register.html:77
 msgid "Create Account"
 msgstr "Crea una cuenta"
 
-#: .\users\templates\register.html:74 .\users\templates\register_mobile.html:57
+#: .\users\templates\register.html:79 .\users\templates\register_mobile.html:57
 msgid "Already have an account?"
 msgstr "¿Ya tienes una cuenta?"
 
@@ -618,13 +628,26 @@ msgstr "¿Coinciden tus contraseñas?"
 msgid "User Doesn't Exist"
 msgstr "El usuario no existe"
 
-#: .\users\templates\wrap_detail.html:22
-msgid "Delete Wrap"
-msgstr "Eliminar Resumen"
+#: .\users\templates\wrap_detail.html:100
+msgid "By"
+msgstr "Por"
+
+#: .\users\templates\wrap_detail.html:125
+#, fuzzy
+#| msgid "Songs"
+msgid "Top Songs"
+msgstr "Canciones"
+
+#: .\users\templates\wrap_detail.html:147
+msgid "Back to Explore"
+msgstr "Volver a Explorar"
 
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
 msgstr "Álbum"
+
+#~ msgid "Delete Wrap"
+#~ msgstr "Eliminar Resumen"
 
 #~ msgid "Top Artists (Last Month)"
 #~ msgstr "Artistas principales (último mes)"

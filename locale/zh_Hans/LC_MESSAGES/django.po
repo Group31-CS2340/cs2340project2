@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 18:01-0500\n"
+"POT-Creation-Date: 2024-11-30 21:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: .\users\forms.py:9 .\users\templates\password_reset.html:64
-#: .\users\templates\profile.html:57 .\users\templates\register.html:56
+#: .\users\templates\profile.html:57 .\users\templates\register.html:61
 #: .\users\templates\register_mobile.html:29
 msgid "Email"
 msgstr "电子邮箱"
 
-#: .\users\forms.py:22 .\users\templates\login.html:64
+#: .\users\forms.py:23 .\users\templates\login.html:64
 #: .\users\templates\login_mobile.html:20 .\users\templates\profile.html:55
-#: .\users\templates\register.html:50 .\users\templates\register_mobile.html:20
+#: .\users\templates\register.html:55 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "帐号"
 
-#: .\users\forms.py:23 .\users\templates\login.html:70
-#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:62
+#: .\users\forms.py:24 .\users\templates\login.html:70
+#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:67
 #: .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "密码"
@@ -43,13 +43,13 @@ msgstr "帐号已删除"
 
 #: .\users\templates\account_deleted.html:6
 #: .\users\templates\base_site_mobile.html:114
-#: .\users\templates\contact.html:78 .\users\templates\explore.html:5
+#: .\users\templates\contact.html:78
 msgid "Toggle navigation"
 msgstr "切换导航"
 
-#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:14
+#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:80
 #: .\users\templates\home.html:5 .\users\templates\home_mobile.html:4
-#: .\users\templates\profile.html:50
+#: .\users\templates\profile.html:50 .\users\templates\wrap_detail.html:91
 msgid "Home"
 msgstr "首页"
 
@@ -65,7 +65,7 @@ msgstr "提交反馈"
 #: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:10
 #: .\users\templates\login.html:37 .\users\templates\login.html:74
 #: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
-#: .\users\templates\register.html:74
+#: .\users\templates\register.html:79
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
 msgstr "登录"
@@ -78,8 +78,7 @@ msgstr "登录"
 msgid "Register"
 msgstr "注册"
 
-#: .\users\templates\base_site.html:36 .\users\templates\explore.html:17
-#: .\users\templates\songs.html:13
+#: .\users\templates\base_site.html:36 .\users\templates\songs.html:13
 msgid "Contact"
 msgstr "联系"
 
@@ -139,11 +138,11 @@ msgstr "反馈"
 msgid "Submit"
 msgstr "提交"
 
-#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:11
+#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:77
 #: .\users\templates\logged_in_home.html:92
 #: .\users\templates\logged_in_home_no_spotify.html:6
 #: .\users\templates\profile.html:28 .\users\templates\public_profile.html:25
-#: .\users\templates\songs.html:7
+#: .\users\templates\songs.html:7 .\users\templates\wrap_detail.html:88
 msgid "Profile"
 msgstr "个人资料"
 
@@ -159,11 +158,11 @@ msgstr "探索"
 msgid "Edit Profile"
 msgstr "编辑资料"
 
-#: .\users\templates\edit_profile.html:59 .\users\templates\register.html:38
+#: .\users\templates\edit_profile.html:59 .\users\templates\register.html:43
 msgid "First Name"
 msgstr "名字"
 
-#: .\users\templates\edit_profile.html:63 .\users\templates\register.html:44
+#: .\users\templates\edit_profile.html:63 .\users\templates\register.html:49
 msgid "Last Name"
 msgstr "姓"
 
@@ -182,6 +181,14 @@ msgstr "创建帐号"
 #: .\users\templates\edit_profile.html:80
 msgid "Are you sure you want to delete your account?"
 msgstr "您确定要删除您的帐号吗？"
+
+#: .\users\templates\explore.html:85
+msgid "Explore Public Wraps"
+msgstr "探索公开汇总"
+
+#: .\users\templates\explore.html:93
+msgid "No shared wraps. Be the first!"
+msgstr "暂无分享汇总。成为第一个分享的人！"
 
 #: .\users\templates\home.html:12 .\users\templates\home_mobile.html:10
 msgid "Discover your personalized music journey."
@@ -238,7 +245,7 @@ msgstr "欢迎来到您的 Spotify Wrapped！"
 
 #: .\users\templates\logged_in_home.html:112
 #: .\users\templates\logged_in_home.html:267 .\users\templates\new_wrap.html:1
-#: .\users\templates\wrap_detail.html:3
+#: .\users\templates\wrap_detail.html:107
 msgid "Top Artists"
 msgstr "顶级艺术家"
 
@@ -252,7 +259,6 @@ msgstr "顶级专辑"
 #: .\users\templates\logged_in_home.html:181
 #: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
-#: .\users\templates\wrap_detail.html:16
 msgid "by"
 msgstr "由"
 
@@ -296,7 +302,6 @@ msgstr "旁白:"
 
 #: .\users\templates\logged_in_home.html:189
 #: .\users\templates\logged_in_home.html:269 .\users\templates\new_wrap.html:11
-#: .\users\templates\wrap_detail.html:13
 msgid "Top Tracks"
 msgstr "顶级曲目"
 
@@ -374,13 +379,15 @@ msgstr "连接您的 Spotify 帐号"
 
 #: .\users\templates\logged_in_home_no_spotify.html:17
 msgid "to generate and share your own wraps!"
-msgstr "生成并分享您自己的 Wrap！"
+msgstr "生成并分享您自己的汇总！"
 
 #: .\users\templates\logged_in_home_no_spotify.html:22
 msgid "Link Account"
 msgstr "连接帐号"
 
-#: .\users\templates\login.html:49 .\users\templates\register.html:26
+#: .\users\templates\login.html:49
+#: .\users\templates\password_reset_confirm.html:49
+#: .\users\templates\register.html:27
 #, python-format
 msgid "%(label)s"
 msgstr ""
@@ -403,16 +410,20 @@ msgstr "登录到"
 
 #: .\users\templates\new_wrap.html:20
 msgid "Wrap Title:"
-msgstr "Wrap 标题："
+msgstr "汇总标题："
 
 #: .\users\templates\new_wrap.html:22
 msgid "Save Wrap"
-msgstr "保存 Wrap"
+msgstr "保存汇总"
 
 #: .\users\templates\password_change.html:7
 #: .\users\templates\password_change.html:11
 msgid "Change Password"
 msgstr "更改密码"
+
+#: .\users\templates\password_change_done.html:7
+msgid "Password Changed"
+msgstr "密码已更改"
 
 #: .\users\templates\password_change_done.html:8
 msgid "Your password has been changed successfully"
@@ -451,19 +462,19 @@ msgstr "使用您的新密码。"
 msgid "Set New Password"
 msgstr "设置新密码"
 
-#: .\users\templates\password_reset_confirm.html:48
+#: .\users\templates\password_reset_confirm.html:64
 msgid "New Password"
 msgstr "新密码"
 
-#: .\users\templates\password_reset_confirm.html:59
+#: .\users\templates\password_reset_confirm.html:70
 msgid "Confirm New Password"
 msgstr "确认新密码"
 
-#: .\users\templates\password_reset_confirm.html:68
+#: .\users\templates\password_reset_confirm.html:74
 msgid "Set Password"
 msgstr "设置密码"
 
-#: .\users\templates\password_reset_confirm.html:71
+#: .\users\templates\password_reset_confirm.html:78
 msgid "Back to Login"
 msgstr "返回登录"
 
@@ -510,19 +521,18 @@ msgid "Wraps"
 msgstr "汇总"
 
 #: .\users\templates\public_profile.html:45
-#: .\users\templates\wrap_detail.html:26
 msgid "Back"
 msgstr "返回"
 
-#: .\users\templates\register.html:68
+#: .\users\templates\register.html:73
 msgid "Re-enter Password"
 msgstr "重新输入密码"
 
-#: .\users\templates\register.html:72
+#: .\users\templates\register.html:77
 msgid "Create Account"
 msgstr "创建帐号"
 
-#: .\users\templates\register.html:74 .\users\templates\register_mobile.html:57
+#: .\users\templates\register.html:79 .\users\templates\register_mobile.html:57
 msgid "Already have an account?"
 msgstr "已有帐号?"
 
@@ -561,7 +571,6 @@ msgstr "您的 Spotify Wrapped"
 
 #: .\users\templates\spotify_data_mobile.html:11
 #: .\users\templates\spotify_data_mobile.html:27
-
 msgid "(Last Month)"
 msgstr "（上个月）"
 
@@ -614,11 +623,23 @@ msgstr "您的密码是否一致？"
 msgid "User Doesn't Exist"
 msgstr "用户不存在"
 
-#: .\users\templates\wrap_detail.html:22
-msgid "Delete Wrap"
-msgstr "删除汇总"
+#: .\users\templates\wrap_detail.html:100
+msgid "By"
+msgstr "由"
+
+#: .\users\templates\wrap_detail.html:125
+#, fuzzy
+#| msgid "Songs"
+msgid "Top Songs"
+msgstr "歌曲"
+
+#: .\users\templates\wrap_detail.html:147
+msgid "Back to Explore"
+msgstr "返回探索"
 
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
 msgstr "生成汇总"
 
+#~ msgid "Delete Wrap"
+#~ msgstr "删除汇总"
