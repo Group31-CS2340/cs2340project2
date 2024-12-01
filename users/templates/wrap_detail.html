@@ -132,7 +132,7 @@
             <div id="track-details" style="display:flex; flex-direction:column">
             <div id="track-name" style="display:flex">
                 <h3>{{ song.name }}</h3>
-                <p style="margin-top:10px; margin-left:10px"> by
+                <p style="margin-top:10px; margin-left:10px"> {% trans "by" %}
                 {% for artist in song.artists %}
                     {{ artist }}{% if not forloop.last %}, {% endif %}
                 {% endfor %}
