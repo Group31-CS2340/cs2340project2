@@ -6,7 +6,7 @@
 <!-- Login Form for Mobile -->
 <section class="login-section">
     <div class="container d-flex flex-column align-items-center justify-content-center" style="max-width: 400px; width: 100%;">
-        <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Login to Spotify Wrapped Bootleg" %}</h3>
+        <h3 class="mb-4 text-center" style="font-size: 1.8em;">{% trans "Login to" %} Spotify Wrapped Bootleg</h3>
         <form method="post" class="w-100">
             {% csrf_token %}
             {% if form.non_field_errors %}
@@ -39,7 +39,7 @@
             {% trans "Don't have an account?" %} <a href="{% url 'register_mobile' %}">{% trans "Register here." %}</a>
         </p>
         <p class="text-center mt-2">
-            <a href="{% url 'password_reset' %}">{% trans "Forgot your password?" %}</a>
+            <a href="{% url 'password_reset_mobile' %}">{% trans "Forgot your password?" %}</a>
         </p>
     </div>
 </section>

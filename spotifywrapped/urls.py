@@ -15,7 +15,7 @@ Including another URLconf
      2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
 from users import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -34,11 +34,16 @@ urlpatterns = [
      path('profile/<str:username>/', user_views.profile, name='profile'),
      path('edit-profile/<str:username>/', user_views.edit_profile, name='edit-profile'),
      path('password-reset/', auth_views.PasswordResetView.as_view(template_name='password_reset.html'), name='password_reset'),
+     path('password-reset-mobile/', auth_views.PasswordResetView.as_view(
+          template_name='password_reset_mobile.html',
+          success_url=reverse_lazy('password_reset_done_mobile')
+     ), name='password_reset_mobile'),
      path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
-     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
-     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
-     path('password-change/', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='password_change'),
-     path('password-change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'), name='password_change_done'),
+     path('password-reset-mobile/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done_mobile.html'), name='password_reset_done_mobile'),
+     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm_mobile.html'), name='password_reset_confirm'),
+     path('password-reset-complete-mobile/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete_mobile.html'), name='password_reset_complete_mobile'),
+     path('password-change-mobile/', auth_views.PasswordChangeView.as_view(template_name='password_change_mobile.html'), name='password_change_mobile'),
+     path('password-change-mobile/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done_mobile.html'), name='password_change_done_mobile'),
      path('delete-account/', user_views.delete_account, name='delete-account'),
      path('deleted/', user_views.account_deleted, name='deleted'),
      path('logout/', user_views.logout_view, name='logout'),

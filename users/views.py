@@ -16,6 +16,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.sessions.models import Session
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -151,8 +152,9 @@ def edit_profile(request, username):
 
 def public_profile(request, username):
     user = request.user
-    profile = request.user.profile
-    return render(request, 'public_profile.html', {'user': user, 'profile': profile})
+    user_profile = request.user.profile
+    wraps = Wrap.objects.filter(user=user, public=True)
+    return render(request, 'public_profile.html', {'user': user, 'profile': user_profile, 'wraps': wraps})
 
 
 def password_reset(request):
@@ -182,6 +184,33 @@ def password_reset(request):
             form = PasswordResetForm()
         return render(request, 'password_reset.html', {'form': form})
 
+def password_reset_mobile(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            user = User.objects.filter(email=email)
+            if user.exists():
+                token = PasswordResetTokenGenerator
+                uid = urlsafe_base64_encode(force_bytes(user[0].pk))
+                reset_link = request.build_absolute_uri(f'/reset/{uid}/{token}/')
+                message = render_to_string('password_reset_email.html', {
+                    'user': user,
+                    'reset_link': reset_link,
+                })
+                send_mail(
+                    "Password Reset Request",
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [user[0].email],
+                )
+                return redirect(reverse_lazy('password_reset_done_mobile'))  # explicit redirect
+            else:
+                return redirect('user_doesnt_exist')
+    else:
+        form = PasswordResetForm()
+    return render(request, 'password_reset_mobile.html', {'form': form})
+
 
 def password_reset_done(request):
     return render(request, 'password_reset_done.html')
@@ -193,6 +222,15 @@ def password_reset_confirm(request, uidb64, token):
 
 def password_reset_complete(request):
     return render(request, 'password_reset_complete.html')
+
+def password_reset_done_mobile(request):
+    return render(request, 'password_reset_done_mobile.html')
+
+def password_reset_confirm_mobile(request, uidb64, token):
+    return render(request, 'password_reset_confirm_mobile.html')
+
+def password_reset_complete_mobile(request):
+    return render(request, 'password_reset_complete_mobile.html')
 
 
 def user_doesnt_exist(request):
@@ -234,9 +272,9 @@ def logout_view(request):
     return redirect('home')
 
 
-@login_required(login_url='login_mobile')
 def logout_view_mobile(request):
-    logout(request)
+    logout(request)  # log out the user
+    messages.success(request, "You have been logged out.")
     return redirect('home-mobile')
 
 
@@ -244,8 +282,6 @@ def logout_view_mobile(request):
 def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
-    data = fetch_data(request)
-    print(data)
     data = fetch_data(request)
     if isinstance(data, JsonResponse) and data.status_code == 400:
         return redirect(home_logged_in_no_spotify, user)
@@ -570,15 +606,22 @@ def wrap_delete(request, wrap_id):
 
 @login_required
 def wrap_update_public(request, wrap_id):
+    csrf_token = request.headers.get('X-CSRFToken', None)
     if request.method == 'POST':
+
         try:
-            wrap = get_object_or_404(Wrap, id=wrap_id)
+            wrap = get_object_or_404(Wrap, id=wrap_id, user=request.user)
             data = json.loads(request.body)
-            wrap.public = data.get('public', wrap.public)
-            wrap.save()
-            return JsonResponse({'success': True})
+            if "public" in data:
+                wrap.public = data["public"]
+                wrap.save()
+                return JsonResponse({'success': True})
+            # wrap.public = data.get('public', wrap.public)
+            # wrap.save()
+            return JsonResponse({'error':'Invalid data'}, status=400)
         except Wrap.DoesNotExist:
             return JsonResponse({'error': 'Wrap not found'}, status=404)
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 def spotify_logout(request):
     request.session.pop('spotify_token', None)

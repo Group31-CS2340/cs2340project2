@@ -132,14 +132,12 @@
                 </div>
             </div>
             <!-- Carousel Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#transitionSlides" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">{% trans "Previous" %}</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#transitionSlides" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">{% trans "Next" %}</span>
-            </button>
+            <button class="carousel-control-prev custom-carousel-btn" type="button" data-bs-target="#transitionSlides" data-bs-slide="prev">
+    <span class="custom-prev-icon" aria-hidden="true">&#x25C0;</span> <!-- Left Arrow -->
+</button>
+<button class="carousel-control-next custom-carousel-btn" type="button" data-bs-target="#transitionSlides" data-bs-slide="next">
+    <span class="custom-next-icon" aria-hidden="true">&#x25B6;</span> <!-- Right Arrow -->
+</button>
             <!-- Carousel Indicators -->
             <ol class="carousel-indicators">
                 {% for i in "01234567" %}
@@ -520,5 +518,33 @@
         border: none;
         font-size: 1.5rem;
     }
+    
+    .custom-carousel-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.custom-carousel-btn:hover {
+    color: #ff6f61; /* Highlight color on hover */
+}
+
+.custom-prev-icon {
+    position: relative;
+    left: -20px; /* Adjust positioning */
+}
+
+.custom-next-icon {
+    position: relative;
+    right: -20px; /* Adjust positioning */
+}
 </style>
 {% endblock %}

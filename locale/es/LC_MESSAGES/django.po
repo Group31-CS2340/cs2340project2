@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 18:17-0500\n"
+"POT-Creation-Date: 2024-12-01 18:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,20 @@ msgstr ""
 "1 : 2;\n"
 
 #: .\users\forms.py:9 .\users\templates\password_reset.html:64
-#: .\users\templates\profile.html:57 .\users\templates\register.html:61
+#: .\users\templates\password_reset_mobile.html:36
+#: .\users\templates\profile.html:57 .\users\templates\register.html:85
 #: .\users\templates\register_mobile.html:29
 msgid "Email"
 msgstr "Correo electrónico"
 
 #: .\users\forms.py:23 .\users\templates\login.html:64
 #: .\users\templates\login_mobile.html:20 .\users\templates\profile.html:55
-#: .\users\templates\register.html:55 .\users\templates\register_mobile.html:20
+#: .\users\templates\register.html:79 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "Nombre de usuario"
 
 #: .\users\forms.py:24 .\users\templates\login.html:70
-#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:67
+#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:91
 #: .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "Contraseña"
@@ -42,7 +43,7 @@ msgstr "Contraseña"
 msgid "Account Deleted"
 msgstr "Cuenta Eliminada"
 
-#: .\users\templates\account_deleted.html:6 .\users\templates\contact.html:78
+#: .\users\templates\account_deleted.html:6
 msgid "Toggle navigation"
 msgstr "Alternar navegación"
 
@@ -64,14 +65,15 @@ msgstr "Comentarios"
 #: .\users\templates\base_site_mobile.html:132 .\users\templates\login.html:10
 #: .\users\templates\login.html:37 .\users\templates\login.html:74
 #: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
-#: .\users\templates\register.html:79
+#: .\users\templates\register.html:103
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
 msgstr "Iniciar sesión"
 
 #: .\users\templates\base_site.html:33
 #: .\users\templates\base_site_mobile.html:129
-#: .\users\templates\register.html:7 .\users\templates\register.html:14
+#: .\users\templates\register.html:10 .\users\templates\register.html:38
+#: .\users\templates\register_mobile.html:4
 #: .\users\templates\register_mobile.html:54
 #: .\users\templates\try_again.html:18
 msgid "Register"
@@ -95,6 +97,13 @@ msgstr "Escritorio"
 #: .\users\templates\home_mobile.html:4
 #: .\users\templates\invalid_login_mobile.html:4
 #: .\users\templates\login_mobile.html:4
+#: .\users\templates\password_change_done_mobile.html:3
+#: .\users\templates\password_change_mobile.html:3
+#: .\users\templates\password_reset_complete_mobile.html:3
+#: .\users\templates\password_reset_confirm_mobile.html:4
+#: .\users\templates\password_reset_done_mobile.html:4
+#: .\users\templates\password_reset_mobile.html:4
+#: .\users\templates\register_mobile.html:4
 #: .\users\templates\spotify_data_mobile.html:4
 msgid "(Mobile View)"
 msgstr " (Vista móvil)"
@@ -146,7 +155,7 @@ msgstr "Enviar"
 #: .\users\templates\edit_profile.html:42 .\users\templates\explore.html:77
 #: .\users\templates\logged_in_home.html:92
 #: .\users\templates\logged_in_home_no_spotify.html:6
-#: .\users\templates\profile.html:28 .\users\templates\public_profile.html:25
+#: .\users\templates\profile.html:28 .\users\templates\public_profile.html:59
 #: .\users\templates\songs.html:7 .\users\templates\wrap_detail.html:139
 msgid "Profile"
 msgstr "Perfil"
@@ -154,7 +163,7 @@ msgstr "Perfil"
 #: .\users\templates\edit_profile.html:45
 #: .\users\templates\logged_in_home.html:95
 #: .\users\templates\logged_in_home_no_spotify.html:9
-#: .\users\templates\profile.html:31 .\users\templates\public_profile.html:28
+#: .\users\templates\profile.html:31 .\users\templates\public_profile.html:62
 #: .\users\templates\songs.html:10
 msgid "Explore"
 msgstr "Explorar"
@@ -163,11 +172,11 @@ msgstr "Explorar"
 msgid "Edit Profile"
 msgstr "Editar Perfil"
 
-#: .\users\templates\edit_profile.html:58 .\users\templates\register.html:43
+#: .\users\templates\edit_profile.html:58 .\users\templates\register.html:67
 msgid "First Name"
 msgstr "Primer nombre"
 
-#: .\users\templates\edit_profile.html:62 .\users\templates\register.html:49
+#: .\users\templates\edit_profile.html:62 .\users\templates\register.html:73
 msgid "Last Name"
 msgstr "Apellido"
 
@@ -271,7 +280,7 @@ msgstr "¡Bienvenido a tu Spotify Wrapped!"
 #: .\users\templates\logged_in_home.html:112
 #: .\users\templates\logged_in_home.html:267
 #: .\users\templates\logged_in_home_mobile.html:17
-#: .\users\templates\logged_in_home_mobile.html:201
+#: .\users\templates\logged_in_home_mobile.html:199
 #: .\users\templates\new_wrap.html:2 .\users\templates\wrap_detail.html:158
 msgid "Top Artists"
 msgstr "Artistas Principales"
@@ -348,7 +357,7 @@ msgstr "narrado por"
 #: .\users\templates\logged_in_home.html:189
 #: .\users\templates\logged_in_home.html:269
 #: .\users\templates\logged_in_home_mobile.html:106
-#: .\users\templates\logged_in_home_mobile.html:203
+#: .\users\templates\logged_in_home_mobile.html:201
 #: .\users\templates\new_wrap.html:12
 msgid "Top Tracks"
 msgstr "Canciones Principales"
@@ -363,22 +372,20 @@ msgid "Followed Artists"
 msgstr "Artistas seguidos"
 
 #: .\users\templates\logged_in_home.html:217
-#: .\users\templates\logged_in_home_mobile.html:137
 msgid "Previous"
 msgstr "Anterior"
 
 #: .\users\templates\logged_in_home.html:221
-#: .\users\templates\logged_in_home_mobile.html:141
 msgid "Next"
 msgstr "Siguiente"
 
 #: .\users\templates\logged_in_home.html:237
-#: .\users\templates\logged_in_home_mobile.html:152
+#: .\users\templates\logged_in_home_mobile.html:150
 msgid "Generate a New Wrap"
 msgstr "Generar un Nuevo Resumen"
 
 #: .\users\templates\logged_in_home.html:245
-#: .\users\templates\logged_in_home_mobile.html:159
+#: .\users\templates\logged_in_home_mobile.html:157
 msgid "Time Range"
 msgstr "Título del Resumen"
 
@@ -399,7 +406,7 @@ msgid "Limit:"
 msgstr "Límite:"
 
 #: .\users\templates\logged_in_home.html:256
-#: .\users\templates\logged_in_home_mobile.html:170
+#: .\users\templates\logged_in_home_mobile.html:168
 msgid "Generate"
 msgstr "Géneros"
 
@@ -408,17 +415,17 @@ msgid "Custom Wrap Name"
 msgstr "Nombre personalizado del resumen"
 
 #: .\users\templates\logged_in_home.html:273
-#: .\users\templates\logged_in_home_mobile.html:207
+#: .\users\templates\logged_in_home_mobile.html:205
 msgid "Enter a name for your wrap"
 msgstr "Introduce un nombre para tu resumen"
 
 #: .\users\templates\logged_in_home.html:274
-#: .\users\templates\logged_in_home_mobile.html:208
+#: .\users\templates\logged_in_home_mobile.html:206
 msgid "Save"
 msgstr "Guardar"
 
 #: .\users\templates\logged_in_home.html:275
-#: .\users\templates\logged_in_home_mobile.html:209
+#: .\users\templates\logged_in_home_mobile.html:207
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -434,47 +441,47 @@ msgstr "Compartir en Twitter"
 msgid "Download Image"
 msgstr "Descargar imagen"
 
-#: .\users\templates\logged_in_home.html:287
+#: .\users\templates\logged_in_home.html:288
 msgid "Make this wrap public on our site"
 msgstr "Hacer público este wrap en nuestro sitio"
 
-#: .\users\templates\logged_in_home.html:301
-#: .\users\templates\logged_in_home_mobile.html:184
+#: .\users\templates\logged_in_home.html:302
+#: .\users\templates\logged_in_home_mobile.html:182
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
 msgstr "Aún no hay resúmenes guardados. ¡Genera uno nuevo para verlo aquí!"
 
-#: .\users\templates\logged_in_home_mobile.html:161
+#: .\users\templates\logged_in_home_mobile.html:159
 msgid "Short Term"
 msgstr "Corto Plazo"
 
-#: .\users\templates\logged_in_home_mobile.html:162
+#: .\users\templates\logged_in_home_mobile.html:160
 msgid "Medium Term"
 msgstr "Mediano Plazo"
 
-#: .\users\templates\logged_in_home_mobile.html:163
+#: .\users\templates\logged_in_home_mobile.html:161
 msgid "Long Term"
 msgstr "Largo Plazo"
 
-#: .\users\templates\logged_in_home_mobile.html:167
+#: .\users\templates\logged_in_home_mobile.html:165
 msgid "Limit"
 msgstr "Límite"
 
-#: .\users\templates\logged_in_home_mobile.html:177
+#: .\users\templates\logged_in_home_mobile.html:175
 msgid "Saved Wraps"
 msgstr "Resúmenes Guardados"
 
-#: .\users\templates\logged_in_home_mobile.html:257
-#: .\users\templates\logged_in_home_mobile.html:310
-#: .\users\templates\logged_in_home_mobile.html:353
-#: .\users\templates\logged_in_home_mobile.html:379
+#: .\users\templates\logged_in_home_mobile.html:255
+#: .\users\templates\logged_in_home_mobile.html:308
+#: .\users\templates\logged_in_home_mobile.html:351
+#: .\users\templates\logged_in_home_mobile.html:377
 msgid "Error"
 msgstr ""
 
-#: .\users\templates\logged_in_home_mobile.html:358
+#: .\users\templates\logged_in_home_mobile.html:356
 msgid "Please enter a custom name."
 msgstr "Por favor, introduzca un nombre personalizado."
 
-#: .\users\templates\logged_in_home_mobile.html:366
+#: .\users\templates\logged_in_home_mobile.html:364
 msgid "Are you sure you want to delete this wrap?"
 msgstr "¿Estás seguro de que deseas eliminar esta resumen?"
 
@@ -492,14 +499,15 @@ msgstr "Conectar cuenta"
 
 #: .\users\templates\login.html:49
 #: .\users\templates\password_reset_confirm.html:49
-#: .\users\templates\register.html:27
+#: .\users\templates\password_reset_confirm_mobile.html:21
+#: .\users\templates\register.html:51
 #, python-format
 msgid "%(label)s"
 msgstr ""
 
 #: .\users\templates\login_mobile.html:9
-msgid "Login to Spotify Wrapped Bootleg"
-msgstr "Iniciar sesión en Spotify Wrapped Bootleg"
+msgid "Login to"
+msgstr "Iniciar sesión en"
 
 #: .\users\templates\new_wrap.html:21
 msgid "Wrap Title:"
@@ -511,10 +519,15 @@ msgstr "Guardar resumen"
 
 #: .\users\templates\password_change.html:6
 #: .\users\templates\password_change.html:10
+#: .\users\templates\password_change_mobile.html:3
+#: .\users\templates\password_change_mobile.html:8
+#: .\users\templates\password_change_mobile.html:24
 msgid "Change Password"
 msgstr "Cambiar Contraseña"
 
 #: .\users\templates\password_change_done.html:7
+#: .\users\templates\password_change_done_mobile.html:3
+#: .\users\templates\password_change_done_mobile.html:8
 msgid "Password Changed"
 msgstr "Contraseña cambiada"
 
@@ -522,13 +535,29 @@ msgstr "Contraseña cambiada"
 msgid "Your password has been changed successfully"
 msgstr "Tu contraseña ha sido cambiada exitosamente"
 
+#: .\users\templates\password_change_done_mobile.html:9
+#, fuzzy
+#| msgid "Your password has been changed successfully"
+msgid "Your password has been changed successfully."
+msgstr "Tu contraseña ha sido cambiada exitosamente"
+
+#: .\users\templates\password_change_done_mobile.html:10
+#, fuzzy
+#| msgid "Back to Login"
+msgid "Return to Login"
+msgstr "Volver a Iniciar Sesión"
+
 #: .\users\templates\password_reset.html:9
 #: .\users\templates\password_reset.html:36
 #: .\users\templates\password_reset.html:68
+#: .\users\templates\password_reset_mobile.html:4
+#: .\users\templates\password_reset_mobile.html:10
+#: .\users\templates\password_reset_mobile.html:40
 msgid "Reset Password"
 msgstr "Restablecer Contraseña"
 
 #: .\users\templates\password_reset.html:37
+#: .\users\templates\password_reset_mobile.html:11
 msgid ""
 "Enter your email address, and we'll send you an email with instructions to "
 "reset your password."
@@ -537,47 +566,61 @@ msgstr ""
 "instrucciones para restablecer tu contraseña."
 
 #: .\users\templates\password_reset_complete.html:7
+#: .\users\templates\password_reset_complete_mobile.html:3
+#: .\users\templates\password_reset_complete_mobile.html:8
 msgid "Password Reset Complete"
 msgstr "Restablecimiento de Contraseña Completo"
 
 #: .\users\templates\password_reset_complete.html:8
+#: .\users\templates\password_reset_complete_mobile.html:9
 msgid "Your password has been reset successfully. You can now"
 msgstr "Tu contraseña ha sido restablecida exitosamente. Ahora puedes"
 
 #: .\users\templates\password_reset_complete.html:9
+#: .\users\templates\password_reset_complete_mobile.html:10
 msgid "log in"
 msgstr "iniciar sesión"
 
 #: .\users\templates\password_reset_complete.html:10
+#: .\users\templates\password_reset_complete_mobile.html:11
 msgid "with your new password."
 msgstr "¿Olvidó su contraseña?"
 
 #: .\users\templates\password_reset_confirm.html:10
 #: .\users\templates\password_reset_confirm.html:37
+#: .\users\templates\password_reset_confirm_mobile.html:4
+#: .\users\templates\password_reset_confirm_mobile.html:9
 msgid "Set New Password"
 msgstr "Reingresar Contraseña"
 
 #: .\users\templates\password_reset_confirm.html:64
+#: .\users\templates\password_reset_confirm_mobile.html:36
 msgid "New Password"
 msgstr "Nueva Contraseña"
 
 #: .\users\templates\password_reset_confirm.html:70
+#: .\users\templates\password_reset_confirm_mobile.html:42
 msgid "Confirm New Password"
 msgstr "Confirmar Nueva Contraseña"
 
 #: .\users\templates\password_reset_confirm.html:74
+#: .\users\templates\password_reset_confirm_mobile.html:46
 msgid "Set Password"
 msgstr "Establecer Contraseña"
 
 #: .\users\templates\password_reset_confirm.html:78
+#: .\users\templates\password_reset_confirm_mobile.html:50
 msgid "Back to Login"
 msgstr "Volver a Iniciar Sesión"
 
 #: .\users\templates\password_reset_done.html:7
+#: .\users\templates\password_reset_done_mobile.html:4
+#: .\users\templates\password_reset_done_mobile.html:9
 msgid "Password Reset Sent"
 msgstr "Restablecimiento de Contraseña Enviado"
 
 #: .\users\templates\password_reset_done.html:8
+#: .\users\templates\password_reset_done_mobile.html:10
 msgid ""
 "An email has been sent to your email address with instructions to reset your "
 "password."
@@ -609,27 +652,30 @@ msgstr "Nombre para mostrar"
 msgid "Are you sure you want to log out?"
 msgstr "¿Estás seguro de que deseas cerrar sesión?"
 
-#: .\users\templates\public_profile.html:39
-msgid "User"
-msgstr "Usuario"
-
-#: .\users\templates\public_profile.html:41
+#: .\users\templates\public_profile.html:75
 msgid "Wraps"
 msgstr "Resúmenes"
 
-#: .\users\templates\public_profile.html:45
+#: .\users\templates\public_profile.html:86
+#, fuzzy
+#| msgid "No shared wraps. Be the first!"
+msgid "No shared wraps."
+msgstr "No hay resúmenes compartidos. ¡Sé el primero!"
+
+#: .\users\templates\public_profile.html:92
 msgid "Back"
 msgstr "Atrás"
 
-#: .\users\templates\register.html:73
+#: .\users\templates\register.html:97
 msgid "Re-enter Password"
 msgstr "Reingresar Contraseña"
 
-#: .\users\templates\register.html:77
+#: .\users\templates\register.html:101
 msgid "Create Account"
 msgstr "Crea una cuenta"
 
-#: .\users\templates\register.html:79 .\users\templates\register_mobile.html:57
+#: .\users\templates\register.html:103
+#: .\users\templates\register_mobile.html:57
 msgid "Already have an account?"
 msgstr "¿Ya tienes una cuenta?"
 
@@ -740,8 +786,11 @@ msgstr "Volver a Explorar"
 msgid "Generate Wrap"
 msgstr "Álbum"
 
-#~ msgid "Login to"
-#~ msgstr "Iniciar sesión en"
+#~ msgid "Login to Spotify Wrapped Bootleg"
+#~ msgstr "Iniciar sesión en Spotify Wrapped Bootleg"
+
+#~ msgid "User"
+#~ msgstr "Usuario"
 
 #~ msgid "Delete Wrap"
 #~ msgstr "Eliminar Resumen"
