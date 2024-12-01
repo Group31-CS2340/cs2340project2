@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 21:33-0500\n"
+"POT-Creation-Date: 2024-11-29 19:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,99 +16,82 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-
-#: .\users\forms.py:9 .\users\templates\password_reset.html:64
-#: .\users\templates\profile.html:57 .\users\templates\register.html:61
-#: .\users\templates\register_mobile.html:29
-msgid "Email"
-msgstr "电子邮箱"
-
-#: .\users\forms.py:23 .\users\templates\login.html:64
-#: .\users\templates\login_mobile.html:20 .\users\templates\profile.html:55
-#: .\users\templates\register.html:55 .\users\templates\register_mobile.html:20
-msgid "Username"
-msgstr "帐号"
-
-#: .\users\forms.py:24 .\users\templates\login.html:70
-#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:67
-#: .\users\templates\register_mobile.html:38
-msgid "Password"
-msgstr "密码"
-
-#: .\users\templates\account_deleted.html:4
-#: .\users\templates\account_deleted.html:21
-msgid "Account Deleted"
-msgstr "帐号已删除"
-
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 #: .\users\templates\account_deleted.html:6
 #: .\users\templates\base_site_mobile.html:114
-#: .\users\templates\contact.html:78
+#: .\users\templates\contact.html:78 .\users\templates\explore.html:5
 msgid "Toggle navigation"
-msgstr "切换导航"
+msgstr ""
 
-#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:80
-#: .\users\templates\home.html:5 .\users\templates\home_mobile.html:4
-#: .\users\templates\profile.html:50 .\users\templates\wrap_detail.html:91
+#: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:14
+#: .\users\templates\profile.html:51
 msgid "Home"
-msgstr "首页"
+msgstr ""
+
+#: .\users\templates\account_deleted.html:21
+msgid "Account Deleted"
+msgstr ""
 
 #: .\users\templates\account_deleted.html:22
 msgid "Thank you for using Spotify Wrapped Bootleg."
-msgstr "感谢您使用 Spotify Wrapped Bootleg"
+msgstr ""
 
 #: .\users\templates\account_deleted.html:23
 msgid "Send Feedback"
-msgstr "提交反馈"
+msgstr ""
 
 #: .\users\templates\base_site.html:30
-#: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:10
-#: .\users\templates\login.html:37 .\users\templates\login.html:74
-#: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
-#: .\users\templates\register.html:79
+#: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:37
+#: .\users\templates\login.html:68 .\users\templates\login_mobile.html:36
+#: .\users\templates\register.html:81
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
-msgstr "登录"
+msgstr ""
 
 #: .\users\templates\base_site.html:33
 #: .\users\templates\base_site_mobile.html:123
-#: .\users\templates\register.html:7 .\users\templates\register.html:14
-#: .\users\templates\register_mobile.html:54
+#: .\users\templates\register.html:14 .\users\templates\register_mobile.html:54
 #: .\users\templates\try_again.html:18
 msgid "Register"
-msgstr "注册"
+msgstr ""
 
-#: .\users\templates\base_site.html:36 .\users\templates\songs.html:13
+#: .\users\templates\base_site.html:36 .\users\templates\explore.html:17
+#: .\users\templates\songs.html:13
 msgid "Contact"
-msgstr "联系"
+msgstr ""
 
 #: .\users\templates\base_site.html:56
 #: .\users\templates\base_site_mobile.html:146
 msgid "Mobile"
-msgstr "移动端"
+msgstr ""
 
 #: .\users\templates\base_site.html:57
 #: .\users\templates\base_site_mobile.html:147
 msgid "Desktop"
-msgstr "桌面端"
+msgstr ""
 
 #: .\users\templates\base_site_mobile.html:8
-#: .\users\templates\home_mobile.html:4 .\users\templates\login_mobile.html:4
-#: .\users\templates\spotify_data_mobile.html:4
-msgid "(Mobile View)"
-msgstr "（移动视图）"
+msgid "Spotify Wrapped Bootleg (Mobile View)"
+msgstr ""
+
+#: .\users\templates\base_site_mobile.html:113
+#: .\users\templates\contact.html:77 .\users\templates\invalid_login.html:24
+#: .\users\templates\password_reset.html:27
+#: .\users\templates\password_reset_confirm.html:28
+msgid "Spotify Wrapped Bootleg"
+msgstr ""
 
 #: .\users\templates\base_site_mobile.html:120
 msgid "My Wraps"
-msgstr "我的汇总"
+msgstr ""
 
 #: .\users\templates\contact.html:20
 msgid "Contact the Developers"
-msgstr "联系开发者"
+msgstr ""
 
 #: .\users\templates\contact.html:86
 msgid "Meet the Team"
-msgstr "认识团队"
+msgstr ""
 
 #: .\users\templates\contact.html:90
 msgid "Jacob"
@@ -116,142 +99,164 @@ msgstr ""
 
 #: .\users\templates\contact.html:92 .\users\templates\contact.html:98
 msgid "Backend"
-msgstr "后端"
+msgstr ""
+
+#: .\users\templates\contact.html:96
+msgid "Shrayes"
+msgstr ""
+
+#: .\users\templates\contact.html:102
+msgid "Katya"
+msgstr ""
 
 #: .\users\templates\contact.html:104 .\users\templates\contact.html:110
 msgid "Frontend"
-msgstr "前端"
+msgstr ""
+
+#: .\users\templates\contact.html:108
+msgid "Anderson"
+msgstr ""
+
+#: .\users\templates\contact.html:114
+msgid "Audrey"
+msgstr ""
 
 #: .\users\templates\contact.html:116
 msgid "Fullstack"
-msgstr "全栈"
+msgstr ""
 
 #: .\users\templates\contact.html:124
 msgid "We’d Love to Hear From You!"
-msgstr "我们期待您的来信"
+msgstr ""
 
 #: .\users\templates\contact.html:142
 msgid "Feedback"
-msgstr "反馈"
+msgstr ""
 
 #: .\users\templates\contact.html:150
 msgid "Submit"
-msgstr "提交"
+msgstr ""
 
-#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:77
+#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:11
 #: .\users\templates\logged_in_home.html:92
 #: .\users\templates\logged_in_home_no_spotify.html:6
-#: .\users\templates\profile.html:28 .\users\templates\public_profile.html:25
-#: .\users\templates\songs.html:7 .\users\templates\wrap_detail.html:88
+#: .\users\templates\profile.html:29 .\users\templates\public_profile.html:25
+#: .\users\templates\songs.html:7
 msgid "Profile"
-msgstr "个人资料"
+msgstr ""
 
 #: .\users\templates\edit_profile.html:46
 #: .\users\templates\logged_in_home.html:95
 #: .\users\templates\logged_in_home_no_spotify.html:9
-#: .\users\templates\profile.html:31 .\users\templates\public_profile.html:28
+#: .\users\templates\profile.html:32 .\users\templates\public_profile.html:28
 #: .\users\templates\songs.html:10
 msgid "Explore"
-msgstr "探索"
+msgstr ""
 
 #: .\users\templates\edit_profile.html:52
 msgid "Edit Profile"
-msgstr "编辑资料"
+msgstr ""
 
-#: .\users\templates\edit_profile.html:59 .\users\templates\register.html:43
-msgid "First Name"
-msgstr "名字"
+#: .\users\templates\edit_profile.html:59
+msgid "First Name:"
+msgstr ""
 
-#: .\users\templates\edit_profile.html:63 .\users\templates\register.html:49
-msgid "Last Name"
-msgstr "姓"
+#: .\users\templates\edit_profile.html:63
+msgid "Last Name:"
+msgstr ""
 
 #: .\users\templates\edit_profile.html:69
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 #: .\users\templates\edit_profile.html:71
 msgid "Save changes"
-msgstr "保存更改"
+msgstr ""
 
 #: .\users\templates\edit_profile.html:73
 msgid "Delete account"
-msgstr "创建帐号"
+msgstr ""
 
 #: .\users\templates\edit_profile.html:80
 msgid "Are you sure you want to delete your account?"
-msgstr "您确定要删除您的帐号吗？"
+msgstr ""
 
-#: .\users\templates\explore.html:85
-msgid "Explore Public Wraps"
-msgstr "探索公开汇总"
+#: .\users\templates\home.html:5
+msgid "Home - Spotify Wrapped Bootleg"
+msgstr ""
 
-#: .\users\templates\explore.html:93
-msgid "No shared wraps. Be the first!"
-msgstr "暂无分享汇总。成为第一个分享的人！"
+#: .\users\templates\home.html:11 .\users\templates\home_mobile.html:9
+msgid "Spotify Wrapped Bootleg 2024"
+msgstr ""
 
 #: .\users\templates\home.html:12 .\users\templates\home_mobile.html:10
 msgid "Discover your personalized music journey."
-msgstr "探索您的个性化音乐之旅。"
+msgstr ""
 
 #: .\users\templates\home.html:13 .\users\templates\home_mobile.html:11
 msgid "Get Started"
-msgstr "开始体验"
+msgstr ""
 
 #: .\users\templates\home.html:20 .\users\templates\home_mobile.html:17
 msgid "Why use Spotify Wrapped Bootleg?"
-msgstr "为什么使用 Spotify Wrapped Bootleg？"
+msgstr ""
 
 #: .\users\templates\home.html:24 .\users\templates\home_mobile.html:22
 msgid "Released Early"
-msgstr "提前发布"
+msgstr ""
 
 #: .\users\templates\home.html:25 .\users\templates\home_mobile.html:23
 msgid "Access your music insights before anyone else."
-msgstr "比他人更早获取您的音乐洞察。"
+msgstr ""
 
 #: .\users\templates\home.html:29 .\users\templates\home_mobile.html:27
 msgid "In-depth Analysis"
-msgstr "深入分析"
+msgstr ""
 
 #: .\users\templates\home.html:30 .\users\templates\home_mobile.html:28
 msgid "Get detailed stats on your listening habits."
-msgstr "获取关于您的听歌习惯的详细数据。"
+msgstr ""
 
 #: .\users\templates\home.html:34 .\users\templates\home_mobile.html:32
 msgid "Personalized Playlists"
-msgstr "个性化播放列表"
+msgstr ""
 
 #: .\users\templates\home.html:35 .\users\templates\home_mobile.html:33
 msgid "Enjoy playlists tailored just for you."
-msgstr "畅享专为您定制的播放列表。"
+msgstr ""
+
+#: .\users\templates\home_mobile.html:4
+msgid "Home - Spotify Wrapped Bootleg (Mobile View)"
+msgstr ""
 
 #: .\users\templates\invalid_login.html:9
+msgid "Invalid Login - Spotify Wrapped Bootleg"
+msgstr ""
+
 #: .\users\templates\invalid_login.html:30
 msgid "Invalid Login"
-msgstr "登录无效"
+msgstr ""
 
 #: .\users\templates\invalid_login.html:31
 msgid "The username or password you entered is incorrect."
-msgstr "您输入的用户名或密码不正确。"
+msgstr ""
 
 #: .\users\templates\invalid_login.html:32
 msgid "Try Logging In Again"
-msgstr "请重试登录"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:103
 msgid "Welcome to your Spotify Wrapped!"
-msgstr "欢迎来到您的 Spotify Wrapped！"
+msgstr ""
 
-#: .\users\templates\logged_in_home.html:112
-#: .\users\templates\logged_in_home.html:267 .\users\templates\new_wrap.html:1
-#: .\users\templates\wrap_detail.html:107
+#: .\users\templates\logged_in_home.html:112 .\users\templates\new_wrap.html:1
+#: .\users\templates\wrap_detail.html:3
 msgid "Top Artists"
-msgstr "顶级艺术家"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:125
 msgid "Top Albums"
-msgstr "顶级专辑"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:130
 #: .\users\templates\logged_in_home.html:155
@@ -259,387 +264,388 @@ msgstr "顶级专辑"
 #: .\users\templates\logged_in_home.html:181
 #: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
+#: .\users\templates\wrap_detail.html:16
 msgid "by"
-msgstr "由"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:138
 msgid "Top Episodes"
-msgstr "顶级剧集"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:142
 #: .\users\templates\logged_in_home.html:168
 #: .\users\templates\logged_in_home.html:194
 msgid "from"
-msgstr "来自"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:142
 msgid "Added on"
-msgstr "添加于"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:150
 msgid "Top Playlists"
-msgstr "顶级播放列表"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:155
 msgid "track(s)"
-msgstr " 曲目"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:163
 msgid "Recent Tracks"
-msgstr "最近曲目"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:168
 msgid "Played at"
-msgstr "播放时间"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:176
 msgid "Top Audiobooks"
-msgstr "顶级有声书"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:181
 msgid "narrated by"
-msgstr "旁白:"
+msgstr ""
 
-#: .\users\templates\logged_in_home.html:189
-#: .\users\templates\logged_in_home.html:269 .\users\templates\new_wrap.html:11
+#: .\users\templates\logged_in_home.html:189 .\users\templates\new_wrap.html:11
+#: .\users\templates\wrap_detail.html:13
 msgid "Top Tracks"
-msgstr "顶级曲目"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:194
 msgid "Duration:"
-msgstr "时长："
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:202
 msgid "Followed Artists"
-msgstr "关注的艺术家"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:217
 msgid "Previous"
-msgstr "上一页"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:221
 msgid "Next"
-msgstr "下一页"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:237
 msgid "Generate a New Wrap"
-msgstr "生成新的汇总"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:245
-msgid "Time Range"
-msgstr "时间范围："
+msgid "Time Range:"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:247
 msgid "Last month"
-msgstr "上个月"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:248
 msgid "Last 6 months"
-msgstr "过去6个月"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:249
 msgid "Last few years"
-msgstr "过去几年"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:253
 msgid "Limit:"
-msgstr "限制："
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:256
 msgid "Generate"
-msgstr "生成"
+msgstr ""
+
+#: .\users\templates\logged_in_home.html:267
+msgid "Top Artists:"
+msgstr ""
+
+#: .\users\templates\logged_in_home.html:269
+msgid "Top Tracks:"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:272
-msgid "Custom Wrap Name"
-msgstr "自定义汇总名称"
-
-#: .\users\templates\logged_in_home.html:273
-msgid "Enter a name for your wrap"
-msgstr "输入您的汇总名称"
+msgid "Custom Wrap Name:"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:274
 msgid "Save"
-msgstr "保存"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:275
 msgid "Delete"
-msgstr "删除"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:278
-msgid "Make this wrap public"
-msgstr "将此汇总设置为公开"
+msgid "Make this wrap public:"
+msgstr ""
 
 #: .\users\templates\logged_in_home.html:292
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
-msgstr "尚无保存的汇总。生成一个新的汇总来查看它！"
-
-#: .\users\templates\logged_in_home_no_spotify.html:16
-msgid "Link your Spotify Account"
-msgstr "连接您的 Spotify 帐号"
-
-#: .\users\templates\logged_in_home_no_spotify.html:17
-msgid "to generate and share your own wraps!"
-msgstr "生成并分享您自己的汇总！"
-
-#: .\users\templates\logged_in_home_no_spotify.html:22
-msgid "Link Account"
-msgstr "连接帐号"
-
-#: .\users\templates\login.html:49
-#: .\users\templates\password_reset_confirm.html:49
-#: .\users\templates\register.html:27
-#, python-format
-msgid "%(label)s"
 msgstr ""
 
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:48 .\users\templates\login_mobile.html:20
+#: .\users\templates\register.html:37 .\users\templates\register_mobile.html:20
+msgid "Username"
+msgstr ""
+
+#: .\users\templates\login.html:59 .\users\templates\login_mobile.html:29
+#: .\users\templates\register.html:59 .\users\templates\register_mobile.html:38
+msgid "Password"
+msgstr ""
+
+#: .\users\templates\login.html:71 .\users\templates\login_mobile.html:39
 msgid "Don't have an account?"
-msgstr "没有帐号?"
+msgstr ""
 
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:71 .\users\templates\login_mobile.html:39
 msgid "Register here."
-msgstr "在此注册"
+msgstr ""
 
-#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:42
+#: .\users\templates\login.html:74 .\users\templates\login_mobile.html:42
 msgid "Forgot your password?"
-msgstr "忘记密码?"
+msgstr ""
 
 #: .\users\templates\login_mobile.html:9
-msgid "Login to"
-msgstr "登录到"
+msgid "Login to Spotify Wrapped Bootleg"
+msgstr ""
 
 #: .\users\templates\new_wrap.html:20
 msgid "Wrap Title:"
-msgstr "汇总标题："
+msgstr ""
 
 #: .\users\templates\new_wrap.html:22
 msgid "Save Wrap"
-msgstr "保存汇总"
+msgstr ""
 
 #: .\users\templates\password_change.html:7
 #: .\users\templates\password_change.html:11
 msgid "Change Password"
-msgstr "更改密码"
-
-#: .\users\templates\password_change_done.html:7
-msgid "Password Changed"
-msgstr "密码已更改"
+msgstr ""
 
 #: .\users\templates\password_change_done.html:8
 msgid "Your password has been changed successfully"
-msgstr "您的密码已更改成功"
+msgstr ""
 
-#: .\users\templates\password_reset.html:9
 #: .\users\templates\password_reset.html:36
-#: .\users\templates\password_reset.html:68
+#: .\users\templates\password_reset.html:50
 msgid "Reset Password"
-msgstr "重置密码"
+msgstr ""
 
 #: .\users\templates\password_reset.html:37
 msgid ""
 "Enter your email address, and we'll send you an email with instructions to "
 "reset your password."
-msgstr "输入您的电子邮箱地址，我们将发送一封包含重置密码说明的邮件给您。"
+msgstr ""
+
+#: .\users\templates\password_reset.html:47 .\users\templates\register.html:48
+#: .\users\templates\register_mobile.html:29
+msgid "Email"
+msgstr ""
 
 #: .\users\templates\password_reset_complete.html:7
 msgid "Password Reset Complete"
-msgstr "密码重置完成"
+msgstr ""
 
 #: .\users\templates\password_reset_complete.html:8
 msgid "Your password has been reset successfully. You can now"
-msgstr "您的密码已成功重置。您现在可以"
+msgstr ""
 
 #: .\users\templates\password_reset_complete.html:9
 msgid "log in"
-msgstr "登录"
+msgstr ""
 
 #: .\users\templates\password_reset_complete.html:10
 msgid "with your new password."
-msgstr "使用您的新密码。"
+msgstr ""
 
-#: .\users\templates\password_reset_confirm.html:10
 #: .\users\templates\password_reset_confirm.html:37
 msgid "Set New Password"
-msgstr "设置新密码"
+msgstr ""
 
-#: .\users\templates\password_reset_confirm.html:64
+#: .\users\templates\password_reset_confirm.html:48
 msgid "New Password"
-msgstr "新密码"
+msgstr ""
 
-#: .\users\templates\password_reset_confirm.html:70
+#: .\users\templates\password_reset_confirm.html:59
 msgid "Confirm New Password"
-msgstr "确认新密码"
+msgstr ""
 
-#: .\users\templates\password_reset_confirm.html:74
+#: .\users\templates\password_reset_confirm.html:68
 msgid "Set Password"
-msgstr "设置密码"
+msgstr ""
 
-#: .\users\templates\password_reset_confirm.html:78
+#: .\users\templates\password_reset_confirm.html:71
 msgid "Back to Login"
-msgstr "返回登录"
+msgstr ""
 
 #: .\users\templates\password_reset_done.html:7
 msgid "Password Reset Sent"
-msgstr "密码重置邮件已发送"
+msgstr ""
 
 #: .\users\templates\password_reset_done.html:8
 msgid ""
 "An email has been sent to your email address with instructions to reset your "
 "password."
-msgstr "一封包含重置密码说明的邮件已发送到您的邮箱。"
+msgstr ""
 
-#: .\users\templates\profile.html:38
+#: .\users\templates\profile.html:39
 msgid "Your Profile"
-msgstr "您的个人资料"
+msgstr ""
 
-#: .\users\templates\profile.html:41
+#: .\users\templates\profile.html:42
 msgid "Edit"
-msgstr "编辑"
+msgstr ""
 
-#: .\users\templates\profile.html:44
+#: .\users\templates\profile.html:45
 msgid "Public Profile"
-msgstr "公开个人资料"
+msgstr ""
 
-#: .\users\templates\profile.html:47
+#: .\users\templates\profile.html:48
 msgid "Log Out"
-msgstr "登出"
+msgstr ""
 
 #: .\users\templates\profile.html:56
-msgid "Display Name"
-msgstr "显示名称"
+msgid "Username:"
+msgstr ""
 
-#: .\users\templates\profile.html:64
+#: .\users\templates\profile.html:57
+msgid "Display Name:"
+msgstr ""
+
+#: .\users\templates\profile.html:58
+msgid "Email:"
+msgstr ""
+
+#: .\users\templates\profile.html:65
 msgid "Are you sure you want to log out?"
-msgstr "您确定要删除您的账号吗"
+msgstr ""
 
 #: .\users\templates\public_profile.html:39
 msgid "User"
-msgstr "用户"
+msgstr ""
 
 #: .\users\templates\public_profile.html:41
 msgid "Wraps"
-msgstr "汇总"
+msgstr ""
 
 #: .\users\templates\public_profile.html:45
+#: .\users\templates\wrap_detail.html:26
 msgid "Back"
-msgstr "返回"
+msgstr ""
 
-#: .\users\templates\register.html:73
+#: .\users\templates\register.html:25
+msgid "First Name"
+msgstr ""
+
+#: .\users\templates\register.html:31
+msgid "Last Name"
+msgstr ""
+
+#: .\users\templates\register.html:70
 msgid "Re-enter Password"
-msgstr "重新输入密码"
+msgstr ""
 
-#: .\users\templates\register.html:77
+#: .\users\templates\register.html:79
 msgid "Create Account"
-msgstr "创建帐号"
+msgstr ""
 
-#: .\users\templates\register.html:79 .\users\templates\register_mobile.html:57
+#: .\users\templates\register.html:81 .\users\templates\register_mobile.html:57
 msgid "Already have an account?"
-msgstr "已有帐号?"
+msgstr ""
 
 #: .\users\templates\register_mobile.html:9
-msgid "Register for"
-msgstr "注册"
+msgid "Register for Spotify Wrapped Bootleg"
+msgstr ""
 
 #: .\users\templates\register_mobile.html:47
 msgid "Confirm Password"
-msgstr "确认密码"
+msgstr ""
 
 #: .\users\templates\register_mobile.html:57
 msgid "Login here."
-msgstr "在此登录。"
-
-#: .\users\templates\registration_successful.html:2
-msgid "Account Created"
-msgstr "帐号已创建"
+msgstr ""
 
 #: .\users\templates\registration_successful.html:8
 msgid "Account Created!"
-msgstr "帐号已创建!"
+msgstr ""
 
 #: .\users\templates\registration_successful.html:9
 msgid "Welcome to Spotify Wrapped Bootleg."
-msgstr "欢迎来到 Spotify Wrapped Bootleg。"
+msgstr ""
 
 #: .\users\templates\songs.html:21
 msgid "Songs"
-msgstr "歌曲"
+msgstr ""
 
-#: .\users\templates\spotify_data_mobile.html:4
 #: .\users\templates\spotify_data_mobile.html:9
 msgid "Your Spotify Wrapped"
-msgstr "您的 Spotify Wrapped"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:11
-#: .\users\templates\spotify_data_mobile.html:27
-msgid "(Last Month)"
-msgstr "（上个月）"
+msgid "Top Artists (Last Month)"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:18
 msgid "Genres"
-msgstr "类型"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:19
 #: .\users\templates\spotify_data_mobile.html:40
 msgid "Popularity"
-msgstr "热度"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:24
 msgid "No top artists data available."
-msgstr "无顶级艺术家数据。"
+msgstr ""
+
+#: .\users\templates\spotify_data_mobile.html:27
+msgid "Top Tracks (Last Month)"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:39
 msgid "Album"
-msgstr "专辑"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:45
 msgid "No top tracks data available."
-msgstr "无顶级曲目数据。"
+msgstr ""
 
 #: .\users\templates\spotify_data_mobile.html:50
 msgid "Logout from Spotify"
-msgstr "从 Spotify 注销"
+msgstr ""
 
 #: .\users\templates\try_again.html:6 .\users\templates\try_again.html:11
 msgid "Try again"
-msgstr "再试一次"
+msgstr ""
 
 #: .\users\templates\try_again.html:13
 msgid "Is your password at least 8 characters?"
-msgstr "您的密码至少有 8 个字符吗？"
+msgstr ""
 
 #: .\users\templates\try_again.html:14
 msgid "Is your password unique?"
-msgstr "您的密码是否独特？"
+msgstr ""
 
 #: .\users\templates\try_again.html:15
 msgid "Is your password too common?"
-msgstr "您的密码是否过于常见？"
+msgstr ""
 
 #: .\users\templates\try_again.html:16
 msgid "Do your passwords match?"
-msgstr "您的密码是否一致？"
+msgstr ""
 
 #: .\users\templates\user_doesnt_exist.html:5
 msgid "User Doesn't Exist"
-msgstr "用户不存在"
+msgstr ""
 
-#: .\users\templates\wrap_detail.html:100
-msgid "By"
-msgstr "由"
-
-#: .\users\templates\wrap_detail.html:125
-#, fuzzy
-#| msgid "Songs"
-msgid "Top Songs"
-msgstr "歌曲"
-
-#: .\users\templates\wrap_detail.html:147
-msgid "Back to Explore"
-msgstr "返回探索"
+#: .\users\templates\wrap_detail.html:22
+msgid "Delete Wrap"
+msgstr ""
 
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
-msgstr "生成汇总"
+msgstr ""
 
-#~ msgid "Delete Wrap"
-#~ msgstr "删除汇总"
+#: .\users\views.py:207
+msgid "Enter a name for your wrap"
+msgstr ""

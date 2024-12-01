@@ -13,13 +13,13 @@
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center">
     <div class="text-center" style="max-width: 600px; width: 100%;">
-        <h2 class="mb-4">Link your Spotify Account</h2>
-        <p>to generate and share your own wraps!</p>
+        <h2 class="mb-4">{% trans "Link your Spotify Account" %}</h2>
+        <p>{% trans "to generate and share your own wraps!" %}</p>
     </div>
 </div>
 <div class="container d-flex justify-content-center align-items-center">
     <a href="{% url 'users:spotify_login' %}">
-        <button id="linkSpotify" class="btn btn-primary">Link Account</button>
+        <button id="linkSpotify" class="btn btn-primary">{% trans "Link Account" %}</button>
     </a>
 </div>
 

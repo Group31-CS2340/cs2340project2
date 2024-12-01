@@ -1,5 +1,5 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Generate Wrap</button>
+    <button type="submit">{% trans "Generate Wrap" %}</button>
 </form>

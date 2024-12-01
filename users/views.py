@@ -23,6 +23,7 @@ from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.utils.translation import gettext as _
 
 from .forms import RegistrationForm, LoginForm, ProfileEditForm, FeedbackForm, WrapForm
 from .models import Profile, Feedback, Wrap
