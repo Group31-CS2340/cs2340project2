@@ -13,9 +13,9 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+
 # Load environment variables from .env file
 load_dotenv()
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,8 +33,8 @@ SECRET_KEY = 'django-insecure-)e7!ps#nabv5q!#nzjm@l-1wyuiv0e$))o#)qzy8z0s*07o3^=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# api/settings.py
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
