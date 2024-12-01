@@ -40,7 +40,7 @@ urlpatterns = [
      ), name='password_reset_mobile'),
      path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
      path('password-reset-mobile/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done_mobile.html'), name='password_reset_done_mobile'),
-     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='password_reset_confirm_mobile.html'), name='password_reset_confirm'),
+     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm_mobile.html'), name='password_reset_confirm'),
      path('password-reset-complete-mobile/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete_mobile.html'), name='password_reset_complete_mobile'),
      path('password-change-mobile/', auth_views.PasswordChangeView.as_view(template_name='password_change_mobile.html'), name='password_change_mobile'),
      path('password-change-mobile/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done_mobile.html'), name='password_change_done_mobile'),
