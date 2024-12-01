@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>{% block title %}Spotify Wrapped Bootleg (Mobile View){% endblock %}</title>
+    <title>{% block title %}Spotify Wrapped Bootleg {% trans "(Mobile View)" %}{% endblock %}</title>
 
     <!-- Including Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -151,11 +151,11 @@
    <div>
     <a href="{% if user.is_authenticated %}{% url 'home_logged_in' user.username %}{% else %}{% url 'home' %}{% endif %}" 
        class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">
-       Desktop
+       {% trans "Desktop" %}
     </a>
     <a href="{% if user.is_authenticated %}{% url 'home_logged_in_mobile' user.username %}{% else %}{% url 'home-mobile' %}{% endif %}" 
        class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">
-       Mobile
+       {% trans "Mobile" %}
     </a>
 </div>
 </div>

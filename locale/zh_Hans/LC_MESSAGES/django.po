@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 23:05-0500\n"
+"POT-Creation-Date: 2024-12-01 17:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,15 +41,13 @@ msgstr "密码"
 msgid "Account Deleted"
 msgstr "帐号已删除"
 
-#: .\users\templates\account_deleted.html:6
-#: .\users\templates\base_site_mobile.html:114
-#: .\users\templates\contact.html:78
+#: .\users\templates\account_deleted.html:6 .\users\templates\contact.html:78
 msgid "Toggle navigation"
 msgstr "切换导航"
 
 #: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:80
 #: .\users\templates\home.html:5 .\users\templates\home_mobile.html:4
-#: .\users\templates\profile.html:50 .\users\templates\wrap_detail.html:91
+#: .\users\templates\profile.html:50 .\users\templates\wrap_detail.html:142
 msgid "Home"
 msgstr "首页"
 
@@ -62,7 +60,7 @@ msgid "Send Feedback"
 msgstr "提交反馈"
 
 #: .\users\templates\base_site.html:30
-#: .\users\templates\base_site_mobile.html:126 .\users\templates\login.html:10
+#: .\users\templates\base_site_mobile.html:132 .\users\templates\login.html:10
 #: .\users\templates\login.html:37 .\users\templates\login.html:74
 #: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
 #: .\users\templates\register.html:79
@@ -71,7 +69,7 @@ msgid "Login"
 msgstr "登录"
 
 #: .\users\templates\base_site.html:33
-#: .\users\templates\base_site_mobile.html:123
+#: .\users\templates\base_site_mobile.html:129
 #: .\users\templates\register.html:7 .\users\templates\register.html:14
 #: .\users\templates\register_mobile.html:54
 #: .\users\templates\try_again.html:18
@@ -83,24 +81,30 @@ msgid "Contact"
 msgstr "联系"
 
 #: .\users\templates\base_site.html:56
-#: .\users\templates\base_site_mobile.html:146
+#: .\users\templates\base_site_mobile.html:158
 msgid "Mobile"
 msgstr "移动端"
 
 #: .\users\templates\base_site.html:57
-#: .\users\templates\base_site_mobile.html:147
+#: .\users\templates\base_site_mobile.html:154
 msgid "Desktop"
 msgstr "桌面端"
 
 #: .\users\templates\base_site_mobile.html:8
-#: .\users\templates\home_mobile.html:4 .\users\templates\login_mobile.html:4
+#: .\users\templates\home_mobile.html:4
+#: .\users\templates\invalid_login_mobile.html:4
+#: .\users\templates\login_mobile.html:4
 #: .\users\templates\spotify_data_mobile.html:4
 msgid "(Mobile View)"
 msgstr "（移动视图）"
 
-#: .\users\templates\base_site_mobile.html:120
+#: .\users\templates\base_site_mobile.html:122
 msgid "My Wraps"
 msgstr "我的回顾"
+
+#: .\users\templates\base_site_mobile.html:125
+msgid "Logout"
+msgstr "退出登录"
 
 #: .\users\templates\contact.html:20
 msgid "Contact the Developers"
@@ -126,27 +130,27 @@ msgstr "前端"
 msgid "Fullstack"
 msgstr "全栈"
 
-#: .\users\templates\contact.html:124
+#: .\users\templates\contact.html:125
 msgid "We’d Love to Hear From You!"
 msgstr "我们期待您的来信"
 
-#: .\users\templates\contact.html:142
+#: .\users\templates\contact.html:150
 msgid "Feedback"
 msgstr "反馈"
 
-#: .\users\templates\contact.html:150
+#: .\users\templates\contact.html:154
 msgid "Submit"
 msgstr "提交"
 
-#: .\users\templates\edit_profile.html:43 .\users\templates\explore.html:77
+#: .\users\templates\edit_profile.html:42 .\users\templates\explore.html:77
 #: .\users\templates\logged_in_home.html:92
 #: .\users\templates\logged_in_home_no_spotify.html:6
 #: .\users\templates\profile.html:28 .\users\templates\public_profile.html:25
-#: .\users\templates\songs.html:7 .\users\templates\wrap_detail.html:88
+#: .\users\templates\songs.html:7 .\users\templates\wrap_detail.html:139
 msgid "Profile"
 msgstr "个人资料"
 
-#: .\users\templates\edit_profile.html:46
+#: .\users\templates\edit_profile.html:45
 #: .\users\templates\logged_in_home.html:95
 #: .\users\templates\logged_in_home_no_spotify.html:9
 #: .\users\templates\profile.html:31 .\users\templates\public_profile.html:28
@@ -154,31 +158,31 @@ msgstr "个人资料"
 msgid "Explore"
 msgstr "探索"
 
-#: .\users\templates\edit_profile.html:52
+#: .\users\templates\edit_profile.html:51
 msgid "Edit Profile"
 msgstr "编辑资料"
 
-#: .\users\templates\edit_profile.html:59 .\users\templates\register.html:43
+#: .\users\templates\edit_profile.html:58 .\users\templates\register.html:43
 msgid "First Name"
 msgstr "名字"
 
-#: .\users\templates\edit_profile.html:63 .\users\templates\register.html:49
+#: .\users\templates\edit_profile.html:62 .\users\templates\register.html:49
 msgid "Last Name"
 msgstr "姓"
 
-#: .\users\templates\edit_profile.html:69
+#: .\users\templates\edit_profile.html:68
 msgid "Cancel"
 msgstr "取消"
 
-#: .\users\templates\edit_profile.html:71
+#: .\users\templates\edit_profile.html:70
 msgid "Save changes"
 msgstr "保存更改"
 
-#: .\users\templates\edit_profile.html:73
+#: .\users\templates\edit_profile.html:72
 msgid "Delete account"
 msgstr "创建帐号"
 
-#: .\users\templates\edit_profile.html:80
+#: .\users\templates\edit_profile.html:79
 msgid "Are you sure you want to delete your account?"
 msgstr "您确定要删除您的帐号吗？"
 
@@ -194,7 +198,7 @@ msgstr "暂无分享回顾。成为第一个分享的人！"
 msgid "Discover your personalized music journey."
 msgstr "探索您的个性化音乐之旅。"
 
-#: .\users\templates\home.html:13 .\users\templates\home_mobile.html:11
+#: .\users\templates\home.html:13
 msgid "Get Started"
 msgstr "开始体验"
 
@@ -228,28 +232,51 @@ msgstr "畅享专为您定制的播放列表。"
 
 #: .\users\templates\invalid_login.html:9
 #: .\users\templates\invalid_login.html:30
+#: .\users\templates\invalid_login_mobile.html:4
+#: .\users\templates\invalid_login_mobile.html:9
 msgid "Invalid Login"
 msgstr "登录无效"
 
 #: .\users\templates\invalid_login.html:31
+#: .\users\templates\invalid_login_mobile.html:10
 msgid "The username or password you entered is incorrect."
 msgstr "您输入的用户名或密码不正确。"
 
 #: .\users\templates\invalid_login.html:32
+#: .\users\templates\invalid_login_mobile.html:11
 msgid "Try Logging In Again"
 msgstr "请重试登录"
 
+#: .\users\templates\invalid_login_mobile.html:13
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+msgid "Don't have an account?"
+msgstr "没有帐号?"
+
+#: .\users\templates\invalid_login_mobile.html:13
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+msgid "Register here."
+msgstr "在此注册"
+
+#: .\users\templates\invalid_login_mobile.html:16
+#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:42
+msgid "Forgot your password?"
+msgstr "忘记密码?"
+
 #: .\users\templates\logged_in_home.html:103
+#: .\users\templates\logged_in_home_mobile.html:10
 msgid "Welcome to your Spotify Wrapped!"
 msgstr "欢迎来到您的 Spotify Wrapped！"
 
 #: .\users\templates\logged_in_home.html:112
-#: .\users\templates\logged_in_home.html:267 .\users\templates\new_wrap.html:1
-#: .\users\templates\wrap_detail.html:107
+#: .\users\templates\logged_in_home.html:267
+#: .\users\templates\logged_in_home_mobile.html:17
+#: .\users\templates\logged_in_home_mobile.html:201
+#: .\users\templates\new_wrap.html:2 .\users\templates\wrap_detail.html:158
 msgid "Top Artists"
 msgstr "顶级艺术家"
 
 #: .\users\templates\logged_in_home.html:125
+#: .\users\templates\logged_in_home_mobile.html:32
 msgid "Top Albums"
 msgstr "顶级专辑"
 
@@ -257,52 +284,71 @@ msgstr "顶级专辑"
 #: .\users\templates\logged_in_home.html:155
 #: .\users\templates\logged_in_home.html:168
 #: .\users\templates\logged_in_home.html:181
-#: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
+#: .\users\templates\logged_in_home.html:194
+#: .\users\templates\logged_in_home_mobile.html:67
+#: .\users\templates\logged_in_home_mobile.html:82
+#: .\users\templates\logged_in_home_mobile.html:97
+#: .\users\templates\logged_in_home_mobile.html:112
+#: .\users\templates\new_wrap.html:15
 #: .\users\templates\spotify_data_mobile.html:34
-#: .\users\templates\wrap_detail.html:135
+#: .\users\templates\wrap_detail.html:186
 msgid "by"
 msgstr "由"
 
 #: .\users\templates\logged_in_home.html:138
+#: .\users\templates\logged_in_home_mobile.html:47
 msgid "Top Episodes"
 msgstr "顶级剧集"
 
 #: .\users\templates\logged_in_home.html:142
 #: .\users\templates\logged_in_home.html:168
 #: .\users\templates\logged_in_home.html:194
+#: .\users\templates\logged_in_home_mobile.html:52
+#: .\users\templates\logged_in_home_mobile.html:82
+#: .\users\templates\logged_in_home_mobile.html:112
 msgid "from"
 msgstr "来自"
 
 #: .\users\templates\logged_in_home.html:142
+#: .\users\templates\logged_in_home_mobile.html:52
 msgid "Added on"
 msgstr "添加于"
 
 #: .\users\templates\logged_in_home.html:150
+#: .\users\templates\logged_in_home_mobile.html:61
 msgid "Top Playlists"
 msgstr "顶级播放列表"
 
 #: .\users\templates\logged_in_home.html:155
+#: .\users\templates\logged_in_home_mobile.html:67
 msgid "track(s)"
 msgstr " 曲目"
 
 #: .\users\templates\logged_in_home.html:163
+#: .\users\templates\logged_in_home_mobile.html:76
 msgid "Recent Tracks"
 msgstr "最近曲目"
 
 #: .\users\templates\logged_in_home.html:168
+#: .\users\templates\logged_in_home_mobile.html:82
 msgid "Played at"
 msgstr "播放时间"
 
 #: .\users\templates\logged_in_home.html:176
+#: .\users\templates\logged_in_home_mobile.html:91
 msgid "Top Audiobooks"
 msgstr "顶级有声书"
 
 #: .\users\templates\logged_in_home.html:181
+#: .\users\templates\logged_in_home_mobile.html:97
 msgid "narrated by"
 msgstr "旁白:"
 
 #: .\users\templates\logged_in_home.html:189
-#: .\users\templates\logged_in_home.html:269 .\users\templates\new_wrap.html:11
+#: .\users\templates\logged_in_home.html:269
+#: .\users\templates\logged_in_home_mobile.html:106
+#: .\users\templates\logged_in_home_mobile.html:203
+#: .\users\templates\new_wrap.html:12
 msgid "Top Tracks"
 msgstr "顶级曲目"
 
@@ -311,22 +357,27 @@ msgid "Duration:"
 msgstr "时长："
 
 #: .\users\templates\logged_in_home.html:202
+#: .\users\templates\logged_in_home_mobile.html:121
 msgid "Followed Artists"
 msgstr "关注的艺术家"
 
 #: .\users\templates\logged_in_home.html:217
+#: .\users\templates\logged_in_home_mobile.html:137
 msgid "Previous"
 msgstr "上一页"
 
 #: .\users\templates\logged_in_home.html:221
+#: .\users\templates\logged_in_home_mobile.html:141
 msgid "Next"
 msgstr "下一页"
 
 #: .\users\templates\logged_in_home.html:237
+#: .\users\templates\logged_in_home_mobile.html:152
 msgid "Generate a New Wrap"
 msgstr "生成新的回顾"
 
 #: .\users\templates\logged_in_home.html:245
+#: .\users\templates\logged_in_home_mobile.html:159
 msgid "Time Range"
 msgstr "时间范围："
 
@@ -347,6 +398,7 @@ msgid "Limit:"
 msgstr "限制："
 
 #: .\users\templates\logged_in_home.html:256
+#: .\users\templates\logged_in_home_mobile.html:170
 msgid "Generate"
 msgstr "生成"
 
@@ -355,37 +407,79 @@ msgid "Custom Wrap Name"
 msgstr "自定义回顾名称"
 
 #: .\users\templates\logged_in_home.html:273
+#: .\users\templates\logged_in_home_mobile.html:207
 msgid "Enter a name for your wrap"
 msgstr "输入您的回顾名称"
 
 #: .\users\templates\logged_in_home.html:274
+#: .\users\templates\logged_in_home_mobile.html:208
 msgid "Save"
 msgstr "保存"
 
 #: .\users\templates\logged_in_home.html:275
+#: .\users\templates\logged_in_home_mobile.html:209
 msgid "Delete"
 msgstr "删除"
 
-#: .\users\templates\logged_in_home.html:278
-#: .\users\templates\logged_in_home.html:291
-msgid "Make this wrap public"
-msgstr "将此回顾设置为公开"
-
-#: .\users\templates\logged_in_home.html:284
+#: .\users\templates\logged_in_home.html:280
 msgid "Share your Wrap"
 msgstr "分享你的年度回顾"
 
-#: .\users\templates\logged_in_home.html:285
+#: .\users\templates\logged_in_home.html:281
 msgid "Share on Twitter"
 msgstr "在推特上分享"
 
-#: .\users\templates\logged_in_home.html:286
+#: .\users\templates\logged_in_home.html:282
 msgid "Download Image"
 msgstr "下载图片"
 
-#: .\users\templates\logged_in_home.html:305
+#: .\users\templates\logged_in_home.html:287
+#, fuzzy
+#| msgid "Make this wrap public"
+msgid "Make this wrap public on our site"
+msgstr "将此回顾设置为公开"
+
+#: .\users\templates\logged_in_home.html:301
+#: .\users\templates\logged_in_home_mobile.html:184
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
 msgstr "尚无保存的回顾。生成一个新的回顾来查看它！"
+
+#: .\users\templates\logged_in_home_mobile.html:161
+msgid "Short Term"
+msgstr "短期"
+
+#: .\users\templates\logged_in_home_mobile.html:162
+msgid "Medium Term"
+msgstr "中期"
+
+#: .\users\templates\logged_in_home_mobile.html:163
+msgid "Long Term"
+msgstr "长期"
+
+#: .\users\templates\logged_in_home_mobile.html:167
+msgid "Limit"
+msgstr "限制"
+
+#: .\users\templates\logged_in_home_mobile.html:177
+msgid "Saved Wraps"
+msgstr "保存回顾"
+
+#: .\users\templates\logged_in_home_mobile.html:257
+#: .\users\templates\logged_in_home_mobile.html:310
+#: .\users\templates\logged_in_home_mobile.html:353
+#: .\users\templates\logged_in_home_mobile.html:379
+msgid "Error"
+msgstr "错误"
+
+#: .\users\templates\logged_in_home_mobile.html:358
+msgid "Please enter a custom name."
+msgstr "请输入自定义名称"
+
+#: .\users\templates\logged_in_home_mobile.html:366
+#, fuzzy
+#| msgid "Are you sure you want to delete your account?"
+msgid "Are you sure you want to delete this wrap?"
+msgstr "您确定要删除您的帐号吗？"
 
 #: .\users\templates\logged_in_home_no_spotify.html:16
 msgid "Link your Spotify Account"
@@ -406,32 +500,22 @@ msgstr "连接帐号"
 msgid "%(label)s"
 msgstr ""
 
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
-msgid "Don't have an account?"
-msgstr "没有帐号?"
-
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
-msgid "Register here."
-msgstr "在此注册"
-
-#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:42
-msgid "Forgot your password?"
-msgstr "忘记密码?"
-
 #: .\users\templates\login_mobile.html:9
-msgid "Login to"
-msgstr "登录到"
+#, fuzzy
+#| msgid "Welcome to Spotify Wrapped Bootleg."
+msgid "Login to Spotify Wrapped Bootleg"
+msgstr "欢迎来到 Spotify Wrapped Bootleg。"
 
-#: .\users\templates\new_wrap.html:20
+#: .\users\templates\new_wrap.html:21
 msgid "Wrap Title:"
 msgstr "回顾标题："
 
-#: .\users\templates\new_wrap.html:22
+#: .\users\templates\new_wrap.html:23
 msgid "Save Wrap"
 msgstr "保存回顾"
 
-#: .\users\templates\password_change.html:7
-#: .\users\templates\password_change.html:11
+#: .\users\templates\password_change.html:6
+#: .\users\templates\password_change.html:10
 msgid "Change Password"
 msgstr "更改密码"
 
@@ -562,7 +646,7 @@ msgstr "确认密码"
 msgid "Login here."
 msgstr "在此登录。"
 
-#: .\users\templates\registration_successful.html:2
+#: .\users\templates\registration_successful.html:3
 msgid "Account Created"
 msgstr "帐号已创建"
 
@@ -633,27 +717,34 @@ msgstr "您的密码是否过于常见？"
 msgid "Do your passwords match?"
 msgstr "您的密码是否一致？"
 
-#: .\users\templates\user_doesnt_exist.html:5
+#: .\users\templates\user_doesnt_exist.html:6
 msgid "User Doesn't Exist"
 msgstr "用户不存在"
 
-#: .\users\templates\wrap_detail.html:100
+#: .\users\templates\wrap_detail.html:151
 msgid "By"
 msgstr "由"
 
-#: .\users\templates\wrap_detail.html:125
+#: .\users\templates\wrap_detail.html:176
 #, fuzzy
 #| msgid "Songs"
 msgid "Top Songs"
 msgstr "歌曲"
 
-#: .\users\templates\wrap_detail.html:147
+#: .\users\templates\wrap_detail.html:200
+msgid "Top Genres Palette"
+msgstr ""
+
+#: .\users\templates\wrap_detail.html:213
 msgid "Back to Explore"
 msgstr "返回探索"
 
-#: .\users\templates\wrap_setup.html:4
+#: .\users\templates\wrap_setup.html:5
 msgid "Generate Wrap"
 msgstr "生成回顾"
+
+#~ msgid "Login to"
+#~ msgstr "登录到"
 
 #~ msgid "Delete Wrap"
 #~ msgstr "删除回顾"
