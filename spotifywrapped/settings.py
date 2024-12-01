@@ -161,5 +161,12 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'cs2340project2@gmail.com' 
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+
+# login redirects
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = 'home-mobile'  # Default redirect for logged-out users
+LOGOUT_REDIRECT_URL = 'home-mobile'  # Default redirect after logout
      

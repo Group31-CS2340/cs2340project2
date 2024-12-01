@@ -603,6 +603,5 @@ def home(request):
     return render(request, 'home.html')
 
 
-@login_required
 def home_mobile(request):
     return render(request, 'home_mobile.html', {'user': request.user})
