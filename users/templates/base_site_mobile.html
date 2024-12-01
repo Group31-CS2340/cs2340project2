@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>{% block title %} Spotify Wrapped Bootleg {% trans "(Mobile View)" %}{% endblock %}</title>
+    <title>{% block title %}Spotify Wrapped Bootleg (Mobile View){% endblock %}</title>
 
     <!-- Including Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -42,7 +42,8 @@
             justify-content: center;
             width: 100%; /* Center the nav items */
             padding: 10px 0;
-            margin: 0; /* Remove default margin */
+            margin: 0; /* Remove default margin
+             */
         }
 
         .nav-item {
@@ -110,27 +111,32 @@
 
 <!-- Mobile Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="{% url 'logged_in_home_mobile' %}">Spotify Wrapped Bootleg</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavMobile" aria-controls="navbarNavMobile" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
+    <a class="navbar-brand" href="{% url 'home-mobile' %}">Spotify Wrapped Bootleg</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavMobile" aria-controls="navbarNavMobile" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavMobile">
         <ul class="navbar-nav mx-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'logged_in_home_mobile' %}">{% trans "My Wraps" %}</a>
+                <a class="nav-link" href="{% url 'home_logged_in_mobile' user.username %}">{% trans "My Wraps" %}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout-mobile' %}">{% trans "Logout" %}</a>
+            </li>
+            {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'register_mobile' %}">{% trans "Register" %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login_mobile' %}">{% trans "Login" %}</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
 
-<!-- Language and View Toggles -->
-<div class="toggle-container">
+<!-- Language and View Toggles --><div class="toggle-container">
     <form action="{% url 'set_language' %}" method="post" class="form-inline">
         <input name="next" type="hidden" value="{{ redirect_to }}">
         {% csrf_token %}
@@ -143,8 +149,8 @@
         </select>
     </form>
     <div>
-        <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">{% trans "Mobile" %}</a>
-        <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">{% trans "Desktop" %}</a>
+        <a href="?view=mobile" class="btn btn-sm btn-outline-light {% if request.GET.view == 'mobile' %}active{% endif %}">Mobile</a>
+        <a href="?view=desktop" class="btn btn-sm btn-outline-light {% if request.GET.view == 'desktop' %}active{% endif %}">Desktop</a>
     </div>
 </div>
 
