@@ -569,7 +569,7 @@ def wrap_delete(request, wrap_id):
     return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=405)
 
 @login_required
-def update_wrap_public(request, wrap_id):
+def wrap_update_public(request, wrap_id):
     if request.method == 'POST':
         try:
             wrap = get_object_or_404(Wrap, id=wrap_id)
@@ -603,6 +603,5 @@ def home(request):
     return render(request, 'home.html')
 
 
-@login_required
 def home_mobile(request):
     return render(request, 'home_mobile.html', {'user': request.user})
