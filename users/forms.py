@@ -26,6 +26,13 @@ class LoginForm(forms.Form):
         model = User
         fields = ['username', 'password']
 
+class LoginFormMobile(forms.Form):
+    username = forms.CharField(required=True)
+    password = forms.CharField(widget=forms.PasswordInput)
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
 class FeedbackForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
 
