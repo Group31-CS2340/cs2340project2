@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-30 21:33-0500\n"
+"POT-Creation-Date: 2024-11-30 23:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgstr "（移动视图）"
 
 #: .\users\templates\base_site_mobile.html:120
 msgid "My Wraps"
-msgstr "我的汇总"
+msgstr "我的回顾"
 
 #: .\users\templates\contact.html:20
 msgid "Contact the Developers"
@@ -184,11 +184,11 @@ msgstr "您确定要删除您的帐号吗？"
 
 #: .\users\templates\explore.html:85
 msgid "Explore Public Wraps"
-msgstr "探索公开汇总"
+msgstr "探索公开回顾"
 
 #: .\users\templates\explore.html:93
 msgid "No shared wraps. Be the first!"
-msgstr "暂无分享汇总。成为第一个分享的人！"
+msgstr "暂无分享回顾。成为第一个分享的人！"
 
 #: .\users\templates\home.html:12 .\users\templates\home_mobile.html:10
 msgid "Discover your personalized music journey."
@@ -259,6 +259,7 @@ msgstr "顶级专辑"
 #: .\users\templates\logged_in_home.html:181
 #: .\users\templates\logged_in_home.html:194 .\users\templates\new_wrap.html:14
 #: .\users\templates\spotify_data_mobile.html:34
+#: .\users\templates\wrap_detail.html:135
 msgid "by"
 msgstr "由"
 
@@ -323,7 +324,7 @@ msgstr "下一页"
 
 #: .\users\templates\logged_in_home.html:237
 msgid "Generate a New Wrap"
-msgstr "生成新的汇总"
+msgstr "生成新的回顾"
 
 #: .\users\templates\logged_in_home.html:245
 msgid "Time Range"
@@ -351,11 +352,11 @@ msgstr "生成"
 
 #: .\users\templates\logged_in_home.html:272
 msgid "Custom Wrap Name"
-msgstr "自定义汇总名称"
+msgstr "自定义回顾名称"
 
 #: .\users\templates\logged_in_home.html:273
 msgid "Enter a name for your wrap"
-msgstr "输入您的汇总名称"
+msgstr "输入您的回顾名称"
 
 #: .\users\templates\logged_in_home.html:274
 msgid "Save"
@@ -366,12 +367,25 @@ msgid "Delete"
 msgstr "删除"
 
 #: .\users\templates\logged_in_home.html:278
+#: .\users\templates\logged_in_home.html:291
 msgid "Make this wrap public"
-msgstr "将此汇总设置为公开"
+msgstr "将此回顾设置为公开"
 
-#: .\users\templates\logged_in_home.html:292
+#: .\users\templates\logged_in_home.html:284
+msgid "Share your Wrap"
+msgstr "分享你的年度回顾"
+
+#: .\users\templates\logged_in_home.html:285
+msgid "Share on Twitter"
+msgstr "在推特上分享"
+
+#: .\users\templates\logged_in_home.html:286
+msgid "Download Image"
+msgstr "下载图片"
+
+#: .\users\templates\logged_in_home.html:305
 msgid "No saved wraps yet. Generate a new wrap to see it here!"
-msgstr "尚无保存的汇总。生成一个新的汇总来查看它！"
+msgstr "尚无保存的回顾。生成一个新的回顾来查看它！"
 
 #: .\users\templates\logged_in_home_no_spotify.html:16
 msgid "Link your Spotify Account"
@@ -379,7 +393,7 @@ msgstr "连接您的 Spotify 帐号"
 
 #: .\users\templates\logged_in_home_no_spotify.html:17
 msgid "to generate and share your own wraps!"
-msgstr "生成并分享您自己的汇总！"
+msgstr "生成并分享您自己的回顾！"
 
 #: .\users\templates\logged_in_home_no_spotify.html:22
 msgid "Link Account"
@@ -410,11 +424,11 @@ msgstr "登录到"
 
 #: .\users\templates\new_wrap.html:20
 msgid "Wrap Title:"
-msgstr "汇总标题："
+msgstr "回顾标题："
 
 #: .\users\templates\new_wrap.html:22
 msgid "Save Wrap"
-msgstr "保存汇总"
+msgstr "保存回顾"
 
 #: .\users\templates\password_change.html:7
 #: .\users\templates\password_change.html:11
@@ -518,7 +532,7 @@ msgstr "用户"
 
 #: .\users\templates\public_profile.html:41
 msgid "Wraps"
-msgstr "汇总"
+msgstr "回顾"
 
 #: .\users\templates\public_profile.html:45
 msgid "Back"
@@ -639,7 +653,7 @@ msgstr "返回探索"
 
 #: .\users\templates\wrap_setup.html:4
 msgid "Generate Wrap"
-msgstr "生成汇总"
+msgstr "生成回顾"
 
 #~ msgid "Delete Wrap"
-#~ msgstr "删除汇总"
+#~ msgstr "删除回顾"
