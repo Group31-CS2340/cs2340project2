@@ -1,34 +1,97 @@
 {% extends 'base_site.html' %}
 {% load i18n %}
 
+{% block style %}
+    <style>
+    .gallery-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        white-space: nowrap;
+        padding: 10px;
+        gap: 10px;
+        scroll-behavior: smooth;
+        }
+
+        .gallery-item {
+            width: calc(100% - 40px);
+            height: 100px;
+            background-color: #03C03C;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal styles */
+        /* static/css/splash_page.css */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-height: 80%; /* Limit height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            color: black; /* Make text black */
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
 {% block nav %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"     aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav"> 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' request.user.username %}">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-            </li>
-            <form style="margin-top: 9px;"action="{% url 'set_language' %}" method="post">
-                <input name="next" type="hidden" value="{{ redirect_to }}">
-                {% csrf_token %}
-                <select name="language" onchange="this.form.submit()">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% for code, name in LANGUAGES %}
-                        <option style="background-color: black; font-weight: bold" value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>
-                            {{ name }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </form>
-        </ul>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' username=user.username %}">{% trans "Profile" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home_logged_in' username=user.username %}">{% trans "Home" %}</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Explore Public Wraps" %}</h1>
+<div id="wraps" class="mt-4">
+    <div class="gallery-container">
+        {% for wrap in wraps %}
+            <a href="{% url 'wrap_detail_view' wrap.id %}" class="gallery-item" data-wrap-id="{{ wrap.id }}">
+                    {{ wrap.title }}
+                </a>
+        {% empty %}
+            <p>No shared wraps. Be the first!</p>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
