@@ -283,8 +283,6 @@ def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
     data = fetch_data(request)
-    print(data)
-    data = fetch_data(request)
     if isinstance(data, JsonResponse) and data.status_code == 400:
         return redirect(home_logged_in_no_spotify, user)
     return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
@@ -609,7 +607,6 @@ def wrap_delete(request, wrap_id):
 @login_required
 def wrap_update_public(request, wrap_id):
     csrf_token = request.headers.get('X-CSRFToken', None)
-    print(f"Received CSRF token: {csrf_token}")
     if request.method == 'POST':
 
         try:
