@@ -1,0 +1,255 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    background-color: #121212; /* Spotify's dark background */
+    color: white;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #000000; /* Black background */
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #FFFFFF !important; /* White text */
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #1DB954 !important; /* Spotify Green on hover */
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1DB954, #191414);
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    background-image: url("{% static 'users/wrapped_background.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #1DB954;
+    border-color: #1DB954;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    border-radius: 50px;
+}
+
+.btn-primary:hover {
+    background-color: #1ed760;
+    border-color: #1ed760;
+}
+
+/* Features Section */
+.features-section {
+    padding: 60px 0;
+    background-color: #121212;
+}
+
+.features-section h3 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.features-section .col-lg-4 {
+    margin-bottom: 30px;
+}
+
+.features-section i {
+    color: #1DB954;
+    margin-bottom: 15px;
+}
+
+.features-section h4 {
+    font-size: 1.5em;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.features-section p {
+    font-size: 1.1em;
+    color: #B3B3B3;
+}
+
+/* Existing styles... */
+
+/* Form Styles */
+.form-control {
+    background-color: #282828;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.form-control:focus {
+    background-color: #383838;
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.form-group label {
+    color: #B3B3B3;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card {
+    background-color: #191414;
+    color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+.card .alert {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+a {
+    color: #1DB954;
+}
+
+a:hover {
+    color: #1ed760;
+    text-decoration: none;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #1DB954;
+    border-color: #1DB954;
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-size: 1em;
+}
+
+.btn-primary:hover {
+    background-color: #1ed760;
+    border-color: #1ed760;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Adjust card shadow */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Text Centering */
+.text-center {
+    text-align: center;
+}
+
+/* Alerts */
+.alert-danger {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+/* List Styles */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+select{
+    width: 100px; 
+    background-color: black; 
+    color: white; 
+    font-weight: bold; 
+    border-width: 0;
+
+}
+
+select:focus {
+    outline: none; 
+    
+  }
+
+.view-toggle .btn {
+    margin-right: 5px;
+}
+
+.view-toggle .btn.active {
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+}
+
+/* Mobile-specific adjustments */
+.navbar-nav .nav-link {
+    font-size: 1em;
+    /* center all of the navbar content */
+    display: flex;
+    align-items: center;
+}
+
+.form-inline .form-control-sm {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.hero-section h1 {
+    font-size: 2em;
+}
+
+.hero-section p {
+    font-size: 1em;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 1em;
+}
