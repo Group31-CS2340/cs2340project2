@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 18:55-0500\n"
+"POT-Creation-Date: 2024-12-01 20:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,10 +42,6 @@ msgstr "Contraseña"
 #: .\users\templates\account_deleted.html:21
 msgid "Account Deleted"
 msgstr "Cuenta Eliminada"
-
-#: .\users\templates\account_deleted.html:6
-msgid "Toggle navigation"
-msgstr "Alternar navegación"
 
 #: .\users\templates\account_deleted.html:12 .\users\templates\explore.html:80
 #: .\users\templates\home.html:5 .\users\templates\home_mobile.html:4
@@ -785,6 +781,9 @@ msgstr "Volver a Explorar"
 #: .\users\templates\wrap_setup.html:5
 msgid "Generate Wrap"
 msgstr "Álbum"
+
+#~ msgid "Toggle navigation"
+#~ msgstr "Alternar navegación"
 
 #~ msgid "Login to Spotify Wrapped Bootleg"
 #~ msgstr "Iniciar sesión en Spotify Wrapped Bootleg"
