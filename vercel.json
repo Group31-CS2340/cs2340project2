@@ -15,6 +15,14 @@
             "config": {
                 "distDir": "staticfiles"
             }
+        },
+        {
+            "src": "manage.py",
+            "use": "@vercel/python",
+            "config": {
+                "includeFiles": ["locale/**"]
+      }
+
         }
     ],
     "routes": [
@@ -26,6 +34,8 @@
             "src": "/(.*)",
             "dest": "spotifywrapped/wsgi.py"
         }
-    ]
-
+    ],
+    "scripts": {
+    "build": "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py compilemessages"
+  }
 }
