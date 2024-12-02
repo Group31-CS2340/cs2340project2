@@ -314,6 +314,9 @@ def spotify_login(request):
     }
     return redirect("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def spotify_callback(request):
     spotifyToken = request.session.get('spotify_token', None)
     code = request.GET.get('code')
@@ -333,7 +336,12 @@ def spotify_callback(request):
         r = requests.post("https://accounts.spotify.com/api/token", data=token_data, headers=token_headers)
         token = r.json()["access_token"]
         request.session["spotify_token"] = token
+    
+    if not request.user.is_authenticated or not request.user.username:
+        return redirect('login')  # or another appropriate view
+
     return redirect('home_logged_in', username=request.user.username)
+
 
 @never_cache
 def spotify_data(request):
