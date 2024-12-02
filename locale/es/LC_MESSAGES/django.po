@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 20:19-0500\n"
+"POT-Creation-Date: 2024-12-01 21:38-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,13 +27,13 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 #: .\users\forms.py:23 .\users\templates\login.html:64
-#: .\users\templates\login_mobile.html:20 .\users\templates\profile.html:55
+#: .\users\templates\login_mobile.html:22 .\users\templates\profile.html:55
 #: .\users\templates\register.html:79 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "Nombre de usuario"
 
 #: .\users\forms.py:24 .\users\templates\login.html:70
-#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:91
+#: .\users\templates\login_mobile.html:31 .\users\templates\register.html:91
 #: .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "Contraseña"
@@ -60,7 +60,7 @@ msgstr "Comentarios"
 #: .\users\templates\base_site.html:30
 #: .\users\templates\base_site_mobile.html:132 .\users\templates\login.html:10
 #: .\users\templates\login.html:37 .\users\templates\login.html:74
-#: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
+#: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:38
 #: .\users\templates\register.html:103
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
@@ -254,17 +254,17 @@ msgid "Try Logging In Again"
 msgstr "Intenta iniciar sesión de nuevo"
 
 #: .\users\templates\invalid_login_mobile.html:13
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:41
 msgid "Don't have an account?"
 msgstr "¿No tienes una cuenta?"
 
 #: .\users\templates\invalid_login_mobile.html:13
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:41
 msgid "Register here."
 msgstr "Regístrate aquí."
 
 #: .\users\templates\invalid_login_mobile.html:16
-#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:42
+#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:44
 msgid "Forgot your password?"
 msgstr "¿Olvidó su contraseña?"
 
@@ -532,14 +532,10 @@ msgid "Your password has been changed successfully"
 msgstr "Tu contraseña ha sido cambiada exitosamente"
 
 #: .\users\templates\password_change_done_mobile.html:9
-#, fuzzy
-#| msgid "Your password has been changed successfully"
 msgid "Your password has been changed successfully."
-msgstr "Tu contraseña ha sido cambiada exitosamente"
+msgstr "Tu contraseña ha sido cambiada exitosamente."
 
 #: .\users\templates\password_change_done_mobile.html:10
-#, fuzzy
-#| msgid "Back to Login"
 msgid "Return to Login"
 msgstr "Volver a Iniciar Sesión"
 
@@ -653,10 +649,8 @@ msgid "Wraps"
 msgstr "Resúmenes"
 
 #: .\users\templates\public_profile.html:86
-#, fuzzy
-#| msgid "No shared wraps. Be the first!"
 msgid "No shared wraps."
-msgstr "No hay resúmenes compartidos. ¡Sé el primero!"
+msgstr "No hay resúmenes compartidos."
 
 #: .\users\templates\public_profile.html:92
 msgid "Back"

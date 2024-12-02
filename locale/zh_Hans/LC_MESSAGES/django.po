@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 20:20-0500\n"
+"POT-Creation-Date: 2024-12-01 22:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,13 @@ msgid "Email"
 msgstr "电子邮箱"
 
 #: .\users\forms.py:23 .\users\templates\login.html:64
-#: .\users\templates\login_mobile.html:20 .\users\templates\profile.html:55
+#: .\users\templates\login_mobile.html:22 .\users\templates\profile.html:55
 #: .\users\templates\register.html:79 .\users\templates\register_mobile.html:20
 msgid "Username"
 msgstr "帐号"
 
 #: .\users\forms.py:24 .\users\templates\login.html:70
-#: .\users\templates\login_mobile.html:29 .\users\templates\register.html:91
+#: .\users\templates\login_mobile.html:31 .\users\templates\register.html:91
 #: .\users\templates\register_mobile.html:38
 msgid "Password"
 msgstr "密码"
@@ -59,7 +59,7 @@ msgstr "提交反馈"
 #: .\users\templates\base_site.html:30
 #: .\users\templates\base_site_mobile.html:132 .\users\templates\login.html:10
 #: .\users\templates\login.html:37 .\users\templates\login.html:74
-#: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:36
+#: .\users\templates\login_mobile.html:4 .\users\templates\login_mobile.html:38
 #: .\users\templates\register.html:103
 #: .\users\templates\registration_successful.html:10
 msgid "Login"
@@ -253,17 +253,17 @@ msgid "Try Logging In Again"
 msgstr "请重试登录"
 
 #: .\users\templates\invalid_login_mobile.html:13
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:41
 msgid "Don't have an account?"
 msgstr "没有帐号?"
 
 #: .\users\templates\invalid_login_mobile.html:13
-#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:39
+#: .\users\templates\login.html:78 .\users\templates\login_mobile.html:41
 msgid "Register here."
 msgstr "在此注册"
 
 #: .\users\templates\invalid_login_mobile.html:16
-#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:42
+#: .\users\templates\login.html:81 .\users\templates\login_mobile.html:44
 msgid "Forgot your password?"
 msgstr "忘记密码?"
 
@@ -437,10 +437,8 @@ msgid "Download Image"
 msgstr "下载图片"
 
 #: .\users\templates\logged_in_home.html:288
-#, fuzzy
-#| msgid "Make this wrap public"
 msgid "Make this wrap public on our site"
-msgstr "将此回顾设置为公开"
+msgstr "在我们的网站上公开此回顾"
 
 #: .\users\templates\logged_in_home.html:302
 #: .\users\templates\logged_in_home_mobile.html:182
@@ -479,10 +477,8 @@ msgid "Please enter a custom name."
 msgstr "请输入自定义名称"
 
 #: .\users\templates\logged_in_home_mobile.html:364
-#, fuzzy
-#| msgid "Are you sure you want to delete your account?"
 msgid "Are you sure you want to delete this wrap?"
-msgstr "您确定要删除您的帐号吗？"
+msgstr "你确定要删除这个回顾吗？"
 
 #: .\users\templates\logged_in_home_no_spotify.html:16
 msgid "Link your Spotify Account"
@@ -535,14 +531,10 @@ msgid "Your password has been changed successfully"
 msgstr "您的密码已更改成功"
 
 #: .\users\templates\password_change_done_mobile.html:9
-#, fuzzy
-#| msgid "Your password has been changed successfully"
 msgid "Your password has been changed successfully."
-msgstr "您的密码已更改成功"
+msgstr "您的密码已更改成功。"
 
 #: .\users\templates\password_change_done_mobile.html:10
-#, fuzzy
-#| msgid "Back to Login"
 msgid "Return to Login"
 msgstr "返回登录"
 
@@ -652,10 +644,8 @@ msgid "Wraps"
 msgstr "回顾"
 
 #: .\users\templates\public_profile.html:86
-#, fuzzy
-#| msgid "No shared wraps. Be the first!"
 msgid "No shared wraps."
-msgstr "暂无分享回顾。成为第一个分享的人！"
+msgstr "暂无分享回顾。"
 
 #: .\users\templates\public_profile.html:92
 msgid "Back"
@@ -766,14 +756,12 @@ msgid "By"
 msgstr "由"
 
 #: .\users\templates\wrap_detail.html:176
-#, fuzzy
-#| msgid "Songs"
 msgid "Top Songs"
-msgstr "歌曲"
+msgstr "顶级歌曲"
 
 #: .\users\templates\wrap_detail.html:200
 msgid "Top Genres Palette"
-msgstr ""
+msgstr "顶级类型调色板" 
 
 #: .\users\templates\wrap_detail.html:213
 msgid "Back to Explore"
@@ -786,10 +774,8 @@ msgstr "生成回顾"
 #~ msgid "Toggle navigation"
 #~ msgstr "切换导航"
 
-#, fuzzy
-#~| msgid "Welcome to Spotify Wrapped Bootleg."
 #~ msgid "Login to Spotify Wrapped Bootleg"
-#~ msgstr "欢迎来到 Spotify Wrapped Bootleg。"
+#~ msgstr "登录到Spotify Wrapped Bootleg。"
 
 #~ msgid "User"
 #~ msgstr "用户"
