@@ -341,7 +341,7 @@ def spotify_callback(request):
         r = requests.post("https://accounts.spotify.com/api/token", data=token_data, headers=token_headers)
         token = r.json()["access_token"]
         request.session["spotify_token"] = token
-    return redirect('home_logged_in', username=request.user.username)
+    return redirect('users:spotify_data')
 
 def login_view(request):
     if request.method == 'POST':
