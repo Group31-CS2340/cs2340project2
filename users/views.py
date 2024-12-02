@@ -589,8 +589,6 @@ def wrap_update_public(request, wrap_id):
                 wrap.public = data["public"]
                 wrap.save()
                 return JsonResponse({'success': True})
-            # wrap.public = data.get('public', wrap.public)
-            # wrap.save()
             return JsonResponse({'error':'Invalid data'}, status=400)
         except Wrap.DoesNotExist:
             return JsonResponse({'error': 'Wrap not found'}, status=404)

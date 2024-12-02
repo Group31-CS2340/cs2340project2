@@ -21,10 +21,10 @@
     }
 
     .gallery-item img {
-        width: 250px;  /* Adjust size of images */
+        width: 250px;
         height: 250px;
-        border-radius: 50%;  /* To make images round */
-        object-fit: cover;   /* Ensure images are properly cropped */
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     .gallery-item p {
@@ -37,18 +37,18 @@
     .gallery-item.left {
         margin-right: 250px;
         margin-top: 200px;
+        text-align: center;
     }
 
     .gallery-item.right {
         margin-top: 275px;
+        text-align: center;
     }
 
     #tracks-container {
         margin-left:20px;
         height: fit-content;
     }
-
-
     #track_list {
         display: flex;
         flex-direction: column;
@@ -59,12 +59,10 @@
         scroll-behavior: smooth;
         margin-left: 20px;
     }
-
     #track {
         display: flex;
         width: auto;
     }
-
     #track-name {
         margin: 20px;
     }
@@ -188,9 +186,7 @@
                     {{ artist }}{% if not forloop.last %}, {% endif %}
                 {% endfor %}
             </p>
-            </div>
-            </div>
-            </div>
+            </div></div></div>
         {% endfor %}
     </div>
     </div>
@@ -207,15 +203,13 @@
         </div>
         {% endfor %}
     </div>
-</div>
-
+    </div>
     <div id="back-button" style="">
         <a href="{% url 'explore' %}">{% trans "Back to Explore" %}</a>
-
     </div>
 
+    
     <script>
-
         const genreColors = [
             {"name":"pop", "color":"#FF10F0", "description":"vibrant and catchy, with universal appeal"},
             {"name":"rap", "color":"#000000", "description":"rhythmic and expressive, storytelling through beats"},
@@ -283,17 +277,16 @@
             {"name":"rap metal", "color":"#C0AA00", "description":"a blend of lyricism and aggression"},
 ];
 
-
+        
         document.querySelectorAll('.genre-item').forEach(item => {
-    const genreName = item.dataset.genre.toLowerCase();
-    const genreData = genreColors.find(genre => genre.name.toLowerCase() === genreName);
-
-    if (genreData) {
-        const colorDiv = item.querySelector('.genre-color');
-        colorDiv.style.backgroundColor = genreData.color;
-        item.setAttribute('data-description', genreData.description);
-    }
-});
+        const genreName = item.dataset.genre.toLowerCase();
+        const genreData = genreColors.find(genre => genre.name.toLowerCase() === genreName);
+        if (genreData) {
+            const colorDiv = item.querySelector('.genre-color');
+            colorDiv.style.backgroundColor = genreData.color;
+            item.setAttribute('data-description', genreData.description);
+        }
+        });
 
     </script>
 {% endblock %}
