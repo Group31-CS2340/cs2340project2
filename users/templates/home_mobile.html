@@ -1,36 +1,36 @@
 {% extends "base_site_mobile.html" %}
 {% load static %}
 {% load i18n %}
-{% block title %}Home - Spotify Wrapped Bootleg (Mobile View){% endblock %}
+{% block title %}{% trans "Home" %} - Spotify Wrapped Bootleg {% trans "(Mobile View)" %}{% endblock %}
 {% block content %}
 <!-- Hero Section for Mobile -->
 <section class="hero-section">
     <div class="hero-content text-center">
         <h1 style="font-size: 2.0em;">Spotify Wrapped Bootleg 2024</h1>
-        <p class="lead" style="font-size: 1.1em;">Discover your personalized music journey.</p>
-        <a href="{% url 'register_mobile' %}" class="btn btn-primary btn-lg" style="font-size: 1em; padding: 10px 20px;">Get Started</a>
+        <p class="lead" style="font-size: 1.1em;">{% trans "Discover your personalized music journey." %}</p>
+        <a href="{% url 'register_mobile' %}" class="btn btn-primary btn-lg" style="font-size: 1em; padding: 10px 20px;">{% trans "Get Started" %}</a>
     </div>
 </section>
 <!-- Features Section for Mobile -->
 <section class="features-section">
     <div class="container text-center">
-        <h3 style="font-size: 1.8em;">Why use Spotify Wrapped Bootleg?</h3>
+        <h3 style="font-size: 1.8em;">{% trans "Why use Spotify Wrapped Bootleg?" %}</h3>
         <div class="row">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
             <div class="col-12 mb-4">
                 <i class="fas fa-calendar-alt fa-2x"></i>
-                <h4 style="font-size: 1.2em;">Released Early</h4>
-                <p style="font-size: 1em;">Access your music insights before anyone else.</p>
+                <h4 style="font-size: 1.2em;">{% trans "Released Early" %}</h4>
+                <p style="font-size: 1em;">{% trans "Access your music insights before anyone else." %}</p>
             </div>
             <div class="col-12 mb-4">
                 <i class="fas fa-chart-line fa-2x"></i>
-                <h4 style="font-size: 1.2em;">In-depth Analysis</h4>
-                <p style="font-size: 1em;">Get detailed stats on your listening habits.</p>
+                <h4 style="font-size: 1.2em;">{% trans "In-depth Analysis" %}</h4>
+                <p style="font-size: 1em;">{% trans "Get detailed stats on your listening habits." %}</p>
             </div>
             <div class="col-12 mb-4">
                 <i class="fas fa-music fa-2x"></i>
-                <h4 style="font-size: 1.2em;">Personalized Playlists</h4>
-                <p style="font-size: 1em;">Enjoy playlists tailored just for you.</p>
+                <h4 style="font-size: 1.2em;">{% trans "Personalized Playlists" %}</h4>
+                <p style="font-size: 1em;">{% trans "Enjoy playlists tailored just for you." %}</p>
             </div>
         </div>
     </div>

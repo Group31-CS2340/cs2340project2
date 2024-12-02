@@ -75,7 +75,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="{% url 'home' %}">Spotify Wrapped Bootleg</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
@@ -120,37 +120,46 @@
     </div>
 
     <!-- Feedback Section -->
-    <br><br>
-    <h2 class="text-center">{% trans "We’d Love to Hear From You!" %}</h2>
-    <br>
-    <div class="wrap">
-      <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;">
-        <form method="POST" action="{% url 'contact' %}">
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card p-4 shadow-lg" style="max-width: 600px; width: 100%;">
+      <h2 class="text-center mb-4">{% trans "We’d Love to Hear From You!" %}</h2>
+
+      <form method="POST" action="{% url 'contact' %}">
           {% csrf_token %}
-          {% if messages %}
-          {% for message in messages %}
-              <div class="alert alert-success">{{ message }}</div>
-          {% endfor %}
+
+          <!-- Display all errors at the top -->
+          {% if form.errors %}
+          <div class="alert alert-danger">
+              <ul>
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                          <li>{{ error }}</li>
+                      {% endfor %}
+                  {% endfor %}
+                  {% if form.non_field_errors %}
+                      {% for error in form.non_field_errors %}
+                          <li>{{ error }}</li>
+                      {% endfor %}
+                  {% endif %}
+              </ul>
+          </div>
           {% endif %}
-          {% if form.non_field_errors %}
-              <div class="alert alert-danger">
-                  {{ form.non_field_errors }}
-              </div>
-          {% endif %}
-    
+
+          <!-- Feedback Field -->
           <div class="form-group">
               <label for="message">{% trans "Feedback" %}</label>
               <textarea id="message" name="message" class="form-control" style="height:150px;">{{ form.message.value|default_if_none:'' }}</textarea>
-              {% if form.message.errors %}
-                  <div class="alert alert-danger">
-                      {{ form.message.errors }}
-                  </div>
-              {% endif %}
           </div>
+
           <button type="submit" class="btn btn-primary btn-block">{% trans "Submit" %}</button>
-        </form>
-      </div>
-    </div>
+      </form>
+  </div>
+</div>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
