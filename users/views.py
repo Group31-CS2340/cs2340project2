@@ -31,6 +31,8 @@ from .models import Profile, Feedback, Wrap
 from django.conf import settings
 
 
+
+#REGISTRATION VIEWS
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -44,7 +46,6 @@ def register(request):
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
-
 
 def register_mobile(request):
     if request.method == 'POST':
@@ -60,7 +61,12 @@ def register_mobile(request):
         form = RegistrationForm()
     return render(request, 'register_mobile.html', {'form': form})
 
+def registration_successful(request):
+    return render(request, 'registration_successful.html')
 
+
+
+#LOGIN VIEWS
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -78,7 +84,6 @@ def login_view(request):
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
-
 
 def login_view_mobile(request):
     if request.method == 'POST':
@@ -98,44 +103,19 @@ def login_view_mobile(request):
         form = LoginForm()
     return render(request, 'login_mobile.html', {'form': form})
 
-
 def invalid_login(request):
     return render(request, 'invalid_login.html')
-
 
 def invalid_login_mobile(request):
     return render(request, 'invalid_login_mobile.html')
 
 
-def song_view(request):
-    api_key = settings.SPOTIFY_API_KEY
-    user = Profile.objects.get(user=request.user)
-    return render(request, 'songs.html', {'api_key': api_key})
 
-
-def registration_successful(request):
-    return render(request, 'registration_successful.html')
-    
-
-@login_required(login_url='login')
-def favorites(request):
-    if request.method == 'PATCH':
-        data = json.loads(request.body)
-        user = Profile.objects.get(user=request.user)
-        user.save()
-        return user
-    if request.method == 'GET':
-        user = Profile.objects.get(user=request.user)
-        api_key = settings.SPOTIFY_API_KEY
-        return render(request, 'songs.html', {"api_key": api_key})
-    return render(request, 'songs.html')
-
-
+#PROFILE VIEWS
 @login_required(login_url='login')
 def profile(request, username):
     user_profile = get_object_or_404(Profile, user__username=username)
     return render(request, 'profile.html', {'profile': user_profile})
-
 
 def edit_profile(request, username):
     user = request.user
@@ -149,7 +129,6 @@ def edit_profile(request, username):
         form = ProfileEditForm(instance=user)
     return render(request, 'edit_profile.html', {'form': form})
 
-
 def public_profile(request, username):
     user = request.user
     user_profile = request.user.profile
@@ -157,6 +136,8 @@ def public_profile(request, username):
     return render(request, 'public_profile.html', {'user': user, 'profile': user_profile, 'wraps': wraps})
 
 
+
+#PASSWORD RESET VIEWS
 def password_reset(request):
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
@@ -211,14 +192,11 @@ def password_reset_mobile(request):
         form = PasswordResetForm()
     return render(request, 'password_reset_mobile.html', {'form': form})
 
-
 def password_reset_done(request):
     return render(request, 'password_reset_done.html')
 
-
 def password_reset_confirm(request, uidb64, token):
     return render(request, 'password_reset_confirm.html')
-
 
 def password_reset_complete(request):
     return render(request, 'password_reset_complete.html')
@@ -233,14 +211,14 @@ def password_reset_complete_mobile(request):
     return render(request, 'password_reset_complete_mobile.html')
 
 
+
+#USER DOESNT EXIST
 def user_doesnt_exist(request):
     return render(request, 'user_doesnt_exist.html')
 
 
-def songs_view(request):
-    return render(request, 'songs.html')
 
-
+#CONTACT VIEWS
 def contact_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
@@ -257,20 +235,22 @@ def contact_view(request):
     return render(request, 'contact.html', {'form': form})
 
 
+
+#DELETE ACCOUNT VIEWS
 def delete_account(request):
     user = request.user
     user.delete()
     return redirect('deleted')
 
-
 def account_deleted(request):
     return render(request, 'account_deleted.html')
 
 
+
+#LOGOUT VIEWS
 def logout_view(request):
     logout(request)
     return redirect('home')
-
 
 def logout_view_mobile(request):
     logout(request)  # log out the user
@@ -278,6 +258,8 @@ def logout_view_mobile(request):
     return redirect('home-mobile')
 
 
+
+#HOMEPAGE VIEWS
 @login_required(login_url='login')
 def home_logged_in(request, username):
     user = get_object_or_404(User, username=username)
@@ -287,7 +269,6 @@ def home_logged_in(request, username):
         return redirect(home_logged_in_no_spotify, user)
     return render(request, 'logged_in_home.html', {'data': data, 'wraps': wraps})
 
-
 @login_required(login_url='login_mobile')
 def home_logged_in_mobile(request, username):
     user = get_object_or_404(User, username=username)
@@ -295,19 +276,31 @@ def home_logged_in_mobile(request, username):
     data = fetch_data(request)
     return render(request, 'logged_in_home_mobile.html', {'data': data, 'wraps': wraps})
 
-
 @login_required(login_url='login')
 def home_logged_in_no_spotify(request, username):
     user = get_object_or_404(User, username=username)
     wraps = Wrap.objects.filter(user=user)
     return render(request, 'logged_in_home_no_spotify.html')
 
+def home(request):
+    view_mode = request.GET.get('view', 'desktop')
+    if view_mode == 'mobile':
+        return render(request, 'home_mobile.html')
+    return render(request, 'home.html')
 
+def home_mobile(request):
+    return render(request, 'home_mobile.html', {'user': request.user})
+
+
+
+#EXPLORE PAGE VIEWS
 def explore(request):
     wraps = Wrap.objects.filter(public=True)
     return render(request, 'explore.html', {'wraps': wraps})
 
 
+
+#SPOTIFY VIEWS
 def spotify_login(request):
     if "spotify_token" in request.session:
         del request.session["spotify_token"]
@@ -320,7 +313,6 @@ def spotify_login(request):
         "scope": "user-top-read user-library-read user-read-recently-played user-follow-read"
     }
     return redirect("https://accounts.spotify.com/authorize?" + urlencode(auth_headers))
-
 
 def spotify_callback(request):
     spotifyToken = request.session.get('spotify_token', None)
@@ -342,24 +334,6 @@ def spotify_callback(request):
         token = r.json()["access_token"]
         request.session["spotify_token"] = token
     return redirect('home_logged_in', username=request.user.username)
-
-def login_view(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home_logged_in', user)
-            else:
-                return redirect('invalid_login')
-        else:
-            return render(request, 'login.html', {'form': form})
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
 
 @never_cache
 def spotify_data(request):
@@ -492,7 +466,6 @@ def fetch_data(request):
     data = [artists, albums, episodes, playlists, recent_tracks, audiobooks, top_tracks, followed_artists, genres]
     return data
 
-
 def sort_genres(genres):
     all_genres = []
     for genre_list in genres:
@@ -502,6 +475,8 @@ def sort_genres(genres):
     return top_genres
 
 
+
+#WRAP VIEWS
 @csrf_exempt
 @login_required
 def wrap_generate(request):
@@ -591,7 +566,6 @@ def wrap_detail_view(request, wrap_id):
     wrap = Wrap.objects.get(id=wrap_id)
     return render(request, 'wrap_detail.html', {'wrap': wrap})
 
-
 @csrf_exempt
 @login_required
 def wrap_delete(request, wrap_id):
@@ -608,7 +582,6 @@ def wrap_delete(request, wrap_id):
 def wrap_update_public(request, wrap_id):
     csrf_token = request.headers.get('X-CSRFToken', None)
     if request.method == 'POST':
-
         try:
             wrap = get_object_or_404(Wrap, id=wrap_id, user=request.user)
             data = json.loads(request.body)
@@ -637,14 +610,3 @@ def cleanup():
         if filename.startswith(".cache"):
             os.remove(filename)
             print(f"Removed cache file: {filename}")
-.0
-
-def home(request):
-    view_mode = request.GET.get('view', 'desktop')
-    if view_mode == 'mobile':
-        return render(request, 'home_mobile.html')
-    return render(request, 'home.html')
-
-
-def home_mobile(request):
-    return render(request, 'home_mobile.html', {'user': request.user})

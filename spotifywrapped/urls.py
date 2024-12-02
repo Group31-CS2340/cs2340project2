@@ -29,9 +29,10 @@ urlpatterns = [
      path('register/', user_views.register, name='register'),
      path('success/', user_views.registration_successful, name='success'),
      path('login/', user_views.login_view, name='login'),
-     path('songs/', user_views.songs_view, name='songs'),
      path('invalid_login/', user_views.invalid_login, name='invalid_login'),
      path('profile/<str:username>/', user_views.profile, name='profile'),
+     path('public-profile/<str:username>/', user_views.public_profile, name='public_profile'),
+
      path('edit-profile/<str:username>/', user_views.edit_profile, name='edit-profile'),
      path('password-reset/', auth_views.PasswordResetView.as_view(template_name='password_reset.html'), name='password_reset'),
      path('password-reset-mobile/', auth_views.PasswordResetView.as_view(
@@ -52,7 +53,6 @@ urlpatterns = [
      path('homepage/<str:username>/', user_views.home_logged_in, name='home_logged_in'),
      path('home/<str:username>/', user_views.home_logged_in_no_spotify, name='home_logged_in_no_spotify'),
      path('explore/', user_views.explore, name='explore'),
-     path('public-profile/<str:username>/', user_views.public_profile, name='public_profile'),
      path('i18n/', include('django.conf.urls.i18n')),
      path('wrap-generate/', user_views.wrap_generate, name='wrap_generate'),
      path('wrap-detail/<int:wrap_id>/', user_views.wrap_detail, name='wrap_detail'),
